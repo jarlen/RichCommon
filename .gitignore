@@ -4,5 +4,3 @@ app/build/
 .gradle/
 build/
 app/app.iml
-build.gradle
-gradle.properties
