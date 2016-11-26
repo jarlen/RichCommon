@@ -38,7 +38,7 @@ public abstract class RvCommonAdapter<D> extends RecyclerView.Adapter<RvViewHold
 
     @Override
     public RvViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        RvViewHolder viewHolder = RvViewHolder.getViewHolder(mContext, parent, getLayoutResId());
+        RvViewHolder viewHolder = RvViewHolder.getViewHolder(mContext, parent, getLayoutResId(viewType));
         return viewHolder;
     }
 
@@ -57,7 +57,7 @@ public abstract class RvCommonAdapter<D> extends RecyclerView.Adapter<RvViewHold
 
     public abstract void onBindView(RvViewHolder viewHolder, D item);
 
-    public abstract int getLayoutResId();
+    public abstract int getLayoutResId(int viewType);
 
     public void addDataList(List<D> mList) {
         if (listData != null) {

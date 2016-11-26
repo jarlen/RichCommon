@@ -20,5 +20,5 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'cn.jarlen.maven:richcommon:1.2.4'
+    compile project(':richcommon')
 }
