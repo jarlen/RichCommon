@@ -3,6 +3,7 @@ package cn.jarlen.richcommon2;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import java.util.List;
 import cn.jarlen.richcommon.adapter.RvCommonAdapter;
 import cn.jarlen.richcommon.adapter.RvViewHolder;
 import cn.jarlen.richcommon.ui.BaseActivity;
+import cn.jarlen.richcommon.utils.ToastUtil;
 
 /**
  * Created by jarlen on 2016/11/26.
@@ -33,10 +35,10 @@ public class RvAdapterActivity extends BaseActivity {
 
         List<Bean> datas = new ArrayList<Bean>();
 
-        for (int index = 0; index < 5; index++) {
+        for (int index = 0; index < 15; index++) {
             Bean bean = new Bean();
             bean.setType(index % 3);
-            bean.setName("test" + index);
+            bean.setName("test " + index);
 
             datas.add(bean);
         }
@@ -59,9 +61,15 @@ public class RvAdapterActivity extends BaseActivity {
         }
 
         @Override
-        public void onBindView(RvViewHolder viewHolder, Bean item) {
+        public void onBindView(RvViewHolder viewHolder, final Bean item) {
             TextView tv = viewHolder.getView(R.id.name);
             tv.setText(item.getName());
+            tv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ToastUtil.makeToast(mContext).setText(item.getName()).show();
+                }
+            });
         }
 
         @Override

@@ -84,12 +84,12 @@ public abstract class CommonAdapter<D> extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder = ViewHolder.getViewHolder(mContext, parent, convertView, position, getLayoutResId());
+        ViewHolder viewHolder = ViewHolder.getViewHolder(mContext, parent, convertView, position, getLayoutResId(position));
         onBindView(viewHolder, listData.get(position));
         return viewHolder.getConvertView();
     }
 
     public abstract void onBindView(ViewHolder viewHolder, D item);
 
-    public abstract int getLayoutResId();
+    public abstract int getLayoutResId(int position);
 }

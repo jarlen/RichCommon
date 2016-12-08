@@ -33,7 +33,7 @@ public class AdapterActivity extends BaseActivity {
             }
 
             @Override
-            public int getLayoutResId() {
+            public int getLayoutResId(int position) {
                 return R.layout.layout_list_item;
             }
         };
