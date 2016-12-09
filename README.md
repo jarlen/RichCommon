@@ -1,6 +1,6 @@
 #RichCommon
 
-基础框架(水印view, 可循环回收的Imageview,复用的ListView.Adapter、RecycleView.Adapter,工具类)、MVP基础架构
+RichCommon是一个基于android的基础框架库；其中包括基础Activity、Fragment、Adapter类，MVP基础框架，工具Util类，水印view, 可循环回收Imageview等View
 
 ##Usage
 
@@ -9,7 +9,7 @@
 ```
 dependencies {
     ......
-    compile 'cn.jarlen.maven:richcommon:1.2.4'
+    compile 'cn.jarlen.maven:richcommon:1.2.5'
     ......
 }
 ```
@@ -40,6 +40,41 @@ dependencies {
 ```
 
 ##ChangeLogs
+
+####发布 richcommon1.2.5        2016-12-9
+
+** RvCommonAdapter的扩展,支持多类型ItemView的列表 **
+
+```
+public int getLayoutResId(int viewType) {
+
+            switch (viewType) {
+                case 0:
+                    return R.layout.layout_rv_item_one;
+                case 1:
+                    return R.layout.layout_rv_item_two;
+                case 2:
+                    return R.layout.layout_rv_item_three;
+                case 3:
+                    return R.layout.layout_rv_item_four;
+
+                default:
+
+                    return R.layout.layout_rv_item_one;
+
+            }
+        }
+
+```
+
+** CommonAdapter的扩展,支持多类型ItemView的列表 **
+
+```
+public int getLayoutResId(int position) {
+                return R.layout.layout_list_item;
+            }
+```
+
 
 ####发布 richcommon1.2.4        2016-11-23
 
