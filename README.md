@@ -43,7 +43,7 @@ dependencies {
 
 ####发布 richcommon1.2.5        2016-12-9
 
-** RvCommonAdapter的扩展,支持多类型ItemView的列表 **
+**RvCommonAdapter的扩展,支持多类型ItemView的列表 **
 
 ```
 public int getLayoutResId(int viewType) {
@@ -67,7 +67,7 @@ public int getLayoutResId(int viewType) {
 
 ```
 
-** CommonAdapter的扩展,支持多类型ItemView的列表 **
+**CommonAdapter的扩展,支持多类型ItemView的列表 **
 
 ```
 public int getLayoutResId(int position) {
