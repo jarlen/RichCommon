@@ -9,7 +9,7 @@ RichCommon是一个基于android的基础框架库；其中包括基础Activity�
 ```
 dependencies {
     ......
-    compile 'cn.jarlen.maven:richcommon:1.2.5'
+    compile 'cn.jarlen.maven:richcommon:1.2.4'
     ......
 }
 ```
@@ -19,8 +19,6 @@ dependencies {
 
 add this to repositories section in build.gradle
 
-**less than 1.2.2**
-
 ```
 repositories {
         maven { url 'https://raw.githubusercontent.com/jarlen/maven-repo/master/' }
@@ -29,8 +27,9 @@ repositories {
     }
 ```
 
-##OR
-**more than 1.2.3**
+##AND
+
+
 ```
 dependencies {
     ......
@@ -41,7 +40,7 @@ dependencies {
 
 ##ChangeLogs
 
-####发布 richcommon1.2.5        2016-12-9
+####发布 richcommon1.2.4        2016-12-13
 
 **RvCommonAdapter的扩展,支持多类型ItemView的列表 **
 
@@ -74,9 +73,6 @@ public int getLayoutResId(int position) {
                 return R.layout.layout_list_item;
             }
 ```
-
-
-####发布 richcommon1.2.4        2016-11-23
 
 **实现MVP基础架构**
 
