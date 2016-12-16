@@ -2,11 +2,11 @@
 <resources>
 
     <declare-styleable name="WaterMarkView">
-        <attr name="degree" format="integer|reference" />
-        <attr name="text" format="string|reference" />
-        <attr name="textColor" format="color|reference" />
-        <attr name="textSize" format="dimension|reference" />
-        <attr name="dx" format="dimension|reference" />
-        <attr name="dy" format="dimension|reference" />
+        <attr name="wm_degree" format="integer|reference" />
+        <attr name="wm_text" format="string|reference" />
+        <attr name="wm_textColor" format="color|reference" />
+        <attr name="wm_textSize" format="dimension|reference" />
+        <attr name="wm_dx" format="dimension|reference" />
+        <attr name="wm_dy" format="dimension|reference" />
     </declare-styleable>
 </resources>
