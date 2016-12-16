@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".RvAdapterActivity"
+            android:name=".WaterMarkActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,7 +20,8 @@
 
         <!-- <activity android:name="cn.jarlen.richcommon.PreviewActivity" -->
         <!-- android:screenOrientation="portrait"/> -->
-        <!--<activity android:name=".AdapterActivity"></activity>-->
+        <!-- <activity android:name=".AdapterActivity"></activity> -->
+        <!--<activity android:name=".WaterMarkActivity"></activity>-->
     </application>
 
 </manifest>

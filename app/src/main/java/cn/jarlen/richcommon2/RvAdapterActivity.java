@@ -35,7 +35,7 @@ public class RvAdapterActivity extends BaseActivity {
 
         List<Bean> datas = new ArrayList<Bean>();
 
-        for (int index = 0; index < 15; index++) {
+        for (int index = 0; index < 1000; index++) {
             Bean bean = new Bean();
             bean.setType(index % 3);
             bean.setName("test " + index);
