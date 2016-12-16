@@ -20,11 +20,13 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Rect;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
+
 import cn.jarlen.richcommon.R;
 import cn.jarlen.richcommon.utils.SystemUtil;
 
@@ -48,8 +50,6 @@ public class WaterMarkView extends View {
     /* content size of WaterMark */
     private int wmTextSize;
 
-    private int maxWidth = 1080;
-
     private int dx;
 
     private int dy;
@@ -66,19 +66,20 @@ public class WaterMarkView extends View {
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.WaterMarkView);
 
-        mDegrees = typedArray.getInt(R.styleable.WaterMarkView_degree, -30);
+        mDegrees = typedArray.getInt(R.styleable.WaterMarkView_wm_degree, -30);
 
-        wmText = typedArray.getString(R.styleable.WaterMarkView_text);
-        dx = typedArray.getDimensionPixelSize(R.styleable.WaterMarkView_dx, SystemUtil.dp2px(context, 50));
-        dy = typedArray.getDimensionPixelSize(R.styleable.WaterMarkView_dy, SystemUtil.dp2px(context, 120));
-        wmTextColor = typedArray.getColor(R.styleable.WaterMarkView_textColor, Color.parseColor("#66000000"));
-        wmTextSize = typedArray.getDimensionPixelSize(R.styleable.WaterMarkView_textSize, SystemUtil.dp2px(context, 20));
+        wmText = typedArray.getString(R.styleable.WaterMarkView_wm_text);
+        dx = typedArray.getDimensionPixelSize(R.styleable.WaterMarkView_wm_dx, SystemUtil.dp2px(context, 50));
+        dy = typedArray.getDimensionPixelSize(R.styleable.WaterMarkView_wm_dy, SystemUtil.dp2px(context, 120));
+        wmTextColor = typedArray.getColor(R.styleable.WaterMarkView_wm_textColor, Color.parseColor("#66000000"));
+        wmTextSize = typedArray.getDimensionPixelSize(R.styleable.WaterMarkView_wm_textSize, SystemUtil.dp2px(context, 20));
 
         typedArray.recycle();
 
         setBackgroundColor(Color.parseColor("#00000000"));
 
         mTextPaint.setAntiAlias(true);
+        mTextPaint.setFlags(Paint.ANTI_ALIAS_FLAG);
         mTextPaint.setColor(wmTextColor);
         mTextPaint.setTextSize(wmTextSize);
         if (!TextUtils.isEmpty(wmText)) {
@@ -110,23 +111,31 @@ public class WaterMarkView extends View {
             return;
         }
 
+        int canvasLength = measuredWidth > measuredHeight ? measuredWidth : measuredHeight;
+
         canvas.rotate(mDegrees, measuredWidth / 2, measuredHeight / 2);
 
-        int maxRow = measuredHeight / (textHeight + dy);
+        int ylocation = (measuredHeight - canvasLength) / 2;
 
-        for (int row = 1; row < maxRow; row++) {
+        while (ylocation < canvasLength - (measuredHeight - canvasLength) / 2) {
             canvas.save();
-            int maxCol = measuredWidth / (textWidth + dx);
-            for (int col = 0; col < maxCol; col++) {
-                canvas.drawText(wmText, (textWidth + dx) * col + dx, (textHeight + dy) * row, mTextPaint);
+            int xlocation = (measuredWidth - canvasLength) / 2;
+
+            while (xlocation < canvasLength - (measuredWidth - canvasLength) / 2) {
+
+                canvas.drawText(wmText, xlocation, ylocation, mTextPaint);
+                xlocation = xlocation + textWidth + dx;
             }
+
+            ylocation = ylocation + textHeight + dy;
             canvas.restore();
         }
     }
 
     /**
      * content of WaterMark
-     * @param text
+     *
+     * @param text content of WaterMark
      */
     public void setWaterMarkText(String text) {
         this.wmText = text;
@@ -135,11 +144,6 @@ public class WaterMarkView extends View {
         mTextPaint.getTextBounds(wmText, 0, wmText.length(), tvRect);
         textWidth = tvRect.width();
         textHeight = tvRect.height();
-
-        int measuredWidth = getMeasuredWidth();
-
-        maxWidth = (int) (measuredWidth / (Math.cos(mDegrees) * Math.cos(mDegrees)));
-
         postInvalidate();
     }
 
