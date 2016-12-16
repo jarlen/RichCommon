@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_water_mark"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <cn.jarlen.richcommon.view.WaterMarkView
+        android:id="@+id/wmView"
+        app:wm_degree="-30"
+        app:wm_dx="50dp"
+        app:wm_dy="60dp"
+        app:wm_textColor="#55CDCDCD"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</RelativeLayout>
