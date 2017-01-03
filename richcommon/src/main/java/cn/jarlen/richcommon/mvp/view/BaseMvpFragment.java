@@ -24,15 +24,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import cn.jarlen.richcommon.log.Log;
 import cn.jarlen.richcommon.mvp.presenter.BaseFragmentPresenter;
+import cn.jarlen.richcommon.mvp.presenter.IBasePresenter;
 
 /**
  * Created by jarlen on 2016/11/23.
  */
-public abstract class BaseMvpFragment<P extends BaseFragmentPresenter, V extends IBaseView> extends Fragment implements IBaseView {
+public abstract class BaseMvpFragment<IP extends IBasePresenter, V extends IBaseView> extends Fragment implements IBaseView {
 
     private View rootView = null;
-    private P presenter;
+    private BaseFragmentPresenter presenter;
 
     @Nullable
     @Override
@@ -54,9 +56,11 @@ public abstract class BaseMvpFragment<P extends BaseFragmentPresenter, V extends
             onBindView(savedInstanceState);
             presenter.onBindView(savedInstanceState);
         } catch (java.lang.InstantiationException e) {
-            e.printStackTrace();
+            Log.e("mvp", e.toString());
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            Log.e("mvp", e.toString());
+        } catch (Exception e) {
+            Log.e("mvp", e.toString());
         }
     }
 
@@ -125,10 +129,15 @@ public abstract class BaseMvpFragment<P extends BaseFragmentPresenter, V extends
         }
     }
 
-    protected abstract Class<P> getPresenter();
+    protected abstract Class<? extends BaseFragmentPresenter> getPresenter();
 
-    protected P getCommand() {
-        return presenter;
+    protected IP getProxyPresenter() {
+        try {
+            return (IP) presenter;
+        } catch (Exception e) {
+            Log.e("mvp", e.toString());
+            return null;
+        }
     }
 
     protected abstract V getProxyView();

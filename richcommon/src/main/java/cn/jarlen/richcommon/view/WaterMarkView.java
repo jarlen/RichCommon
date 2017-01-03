@@ -33,6 +33,7 @@ import cn.jarlen.richcommon.utils.SystemUtil;
 /**
  * DESCRIBE: watermark
  * Created by jarlen on 2016/8/29.
+ * github: https://github.com/jarlen/RichCommon
  */
 public class WaterMarkView extends View {
 

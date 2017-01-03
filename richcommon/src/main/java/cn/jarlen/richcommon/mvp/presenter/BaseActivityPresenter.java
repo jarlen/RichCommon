@@ -26,7 +26,7 @@ import cn.jarlen.richcommon.mvp.view.IBaseView;
 /**
  * Created by jarlen on 2016/11/23.
  */
-public abstract class BaseActivityPresenter<V extends IBaseView> {
+public abstract class BaseActivityPresenter<V extends IBaseView> implements IBasePresenter{
 
     private V v;
 
