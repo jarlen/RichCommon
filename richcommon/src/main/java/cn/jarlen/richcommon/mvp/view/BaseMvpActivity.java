@@ -22,14 +22,16 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.view.KeyEvent;
 
+import cn.jarlen.richcommon.log.Log;
 import cn.jarlen.richcommon.mvp.presenter.BaseActivityPresenter;
+import cn.jarlen.richcommon.mvp.presenter.IBasePresenter;
 
 /**
  * Created by jarlen on 2016/11/23.
  */
-public abstract class BaseMvpActivity<P extends BaseActivityPresenter, V extends IBaseView> extends FragmentActivity implements IBaseView {
+public abstract class BaseMvpActivity<IP extends IBasePresenter, V extends IBaseView> extends FragmentActivity implements IBaseView {
 
-    private P presenter;
+    private BaseActivityPresenter presenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,9 +46,11 @@ public abstract class BaseMvpActivity<P extends BaseActivityPresenter, V extends
             onBindView(savedInstanceState);
             presenter.onBindView(savedInstanceState);
         } catch (InstantiationException e) {
-            e.printStackTrace();
+            Log.e("mvp", e.toString());
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            Log.e("mvp", e.toString());
+        } catch (Exception e) {
+            Log.e("mvp", e.toString());
         }
     }
 
@@ -117,10 +121,15 @@ public abstract class BaseMvpActivity<P extends BaseActivityPresenter, V extends
         }
     }
 
-    protected abstract Class<P> getPresenter();
+    protected abstract Class<? extends BaseActivityPresenter> getPresenter();
 
-    protected P getCommand() {
-        return presenter;
+    protected IP getProxyPresenter() {
+        try {
+            return (IP) presenter;
+        } catch (Exception e) {
+            Log.e("mvp", e.toString());
+            return null;
+        }
     }
 
     protected abstract V getProxyView();
