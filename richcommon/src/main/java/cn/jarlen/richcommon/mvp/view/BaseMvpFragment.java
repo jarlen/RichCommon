@@ -29,6 +29,7 @@ import cn.jarlen.richcommon.mvp.presenter.BaseFragmentPresenter;
 import cn.jarlen.richcommon.mvp.presenter.IBasePresenter;
 
 /**
+ * View(Fragment) of MVP
  * Created by jarlen on 2016/11/23.
  */
 public abstract class BaseMvpFragment<IP extends IBasePresenter, V extends IBaseView> extends Fragment implements IBaseView {
