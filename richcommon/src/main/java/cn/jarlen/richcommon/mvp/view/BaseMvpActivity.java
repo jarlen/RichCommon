@@ -27,6 +27,7 @@ import cn.jarlen.richcommon.mvp.presenter.BaseActivityPresenter;
 import cn.jarlen.richcommon.mvp.presenter.IBasePresenter;
 
 /**
+ * View(Activity) of MVP
  * Created by jarlen on 2016/11/23.
  */
 public abstract class BaseMvpActivity<IP extends IBasePresenter, V extends IBaseView> extends FragmentActivity implements IBaseView {
