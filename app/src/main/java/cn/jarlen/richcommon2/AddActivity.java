@@ -58,7 +58,7 @@ public class AddActivity extends BaseMvpActivity<AddPresenter, AddView> implemen
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.testBtn:
-                getCommand().add(inputOne.getText().toString(), inputTwo.getText().toString());
+                getProxyPresenter().add(inputOne.getText().toString(), inputTwo.getText().toString());
                 break;
             default:
 
