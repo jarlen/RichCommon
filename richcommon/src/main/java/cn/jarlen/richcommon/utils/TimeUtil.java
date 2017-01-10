@@ -17,9 +17,13 @@
 package cn.jarlen.richcommon.utils;
 
 import java.text.NumberFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
+
+import cn.jarlen.richcommon.log.Log;
 
 /**
  * DESCRIBE: Time Util
@@ -30,16 +34,16 @@ public class TimeUtil {
     /**
      * format: xxxx-xx-xx
      */
-    public final static SimpleDateFormat Y_M_D = new SimpleDateFormat("yyyy-MM-dd",Locale.ENGLISH);
+    public final static SimpleDateFormat Y_M_D = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
 
     /**
      * format: xxxx-xx-xx xx:xx:xx
      */
     public final static SimpleDateFormat Y_M_D_H_M_S = new SimpleDateFormat(
-            "yyyy-MM-dd HH:mm:ss",Locale.ENGLISH);
+            "yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
 
     public final static SimpleDateFormat MDHM = new SimpleDateFormat(
-            "MM-dd HH:mm",Locale.ENGLISH);
+            "MM-dd HH:mm", Locale.ENGLISH);
 
     public final static SimpleDateFormat YMD = new SimpleDateFormat(
             "yyyy/MM/dd", Locale.ENGLISH);
@@ -47,21 +51,64 @@ public class TimeUtil {
     /**
      * milliseconds in one day
      */
-    public final static long MS_ONE_DAY = 1000*24*60*60;
+    public final static long MS_ONE_DAY = 1000 * 24 * 60 * 60;
 
     /**
      * milliseconds in an hour
      */
-    public final static long MS_AN_HOUR = 1000*60*60;
+    public final static long MS_AN_HOUR = 1000 * 60 * 60;
 
     /**
      * milliseconds in one minute
      */
-    public final static long MS_ONE_MINUTE = 1000*60;
+    public final static long MS_ONE_MINUTE = 1000 * 60;
+
+
+    /**
+     * convert formatSrc's date to formatDesc's date
+     *
+     * @param dateSrc    which format is formatSrc
+     * @param formatSrc
+     * @param formatDesc format after convert
+     * @return
+     */
+    public static String convertDate(String dateSrc, SimpleDateFormat formatSrc, SimpleDateFormat formatDesc) {
+
+        String result = "";
+        try {
+            Date date = formatSrc.parse(dateSrc);
+            result = formatDesc.format(date);
+        } catch (ParseException e) {
+            Log.e(TimeUtil.class.getName(), e.toString());
+        }
+
+        return result;
+    }
+
+
+    /**
+     * get time in date of format
+     *
+     * @param dateSrc
+     * @param format
+     * @return
+     */
+    public static long getTime(String dateSrc, SimpleDateFormat format) {
+
+        try {
+            Date date = format.parse(dateSrc);
+            return date.getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
 
     /**
      * get time of today
      * <br>
+     *
      * @return
      */
     public static int getToday() {
@@ -81,8 +128,8 @@ public class TimeUtil {
 
     /**
      * get time of today
-     * @return
-     * <br>format: xxxx/xx/xx/weekdays
+     *
+     * @return <br>format: xxxx/xx/xx/weekdays
      */
     public static String getToday2() {
         Calendar calendar = Calendar.getInstance();
