@@ -27,7 +27,7 @@ import cn.jarlen.richcommon.log.Log;
 
 /**
  * DESCRIBE: Time Util
- * Created by hjl on 2016/6/28.
+ * Created by jarlen on 2016/6/28.
  */
 public class TimeUtil {
 

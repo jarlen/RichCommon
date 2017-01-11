@@ -22,20 +22,20 @@ import android.content.SharedPreferences.Editor;
 import java.util.HashSet;
 import java.util.Set;
 
-public class PreferenceUtils {
+public class SpUtils {
 
     SharedPreferences sp;
     Context context;
-    String TAG = PreferenceUtils.class.getSimpleName();
+    String TAG = SpUtils.class.getSimpleName();
     Editor ed;
 
-    private volatile static PreferenceUtils INSTANCE = null;
+    private volatile static SpUtils INSTANCE = null;
 
-    public static PreferenceUtils newInstance(Context context, String name) {
+    public static SpUtils newInstance(Context context, String name) {
         if (INSTANCE == null) {
-            synchronized (PreferenceUtils.class) {
+            synchronized (SpUtils.class) {
                 if (INSTANCE == null) {
-                    INSTANCE = new PreferenceUtils(context, name,
+                    INSTANCE = new SpUtils(context, name,
                             Context.MODE_PRIVATE);
                 }
             }
@@ -43,7 +43,7 @@ public class PreferenceUtils {
         return INSTANCE;
     }
 
-    public PreferenceUtils(Context context, String name, int mode) {
+    public SpUtils(Context context, String name, int mode) {
         this.context = context;
         sp = this.context.getSharedPreferences(name, mode);
         ed = sp.edit();

@@ -31,7 +31,7 @@ public class RvViewHolder extends RecyclerView.ViewHolder {
     private SparseArray<View> mViews;
     private View mConvertView;
 
-    private RvViewHolder(Context context, View itemView, ViewGroup parent) {
+    private RvViewHolder(Context context, View itemView) {
         super(itemView);
         mConvertView = itemView;
         mViews = new SparseArray<View>();
@@ -41,7 +41,7 @@ public class RvViewHolder extends RecyclerView.ViewHolder {
 
         View itemView = LayoutInflater.from(context).inflate(layoutId, parent,
                 false);
-        RvViewHolder holder = new RvViewHolder(context, itemView, parent);
+        RvViewHolder holder = new RvViewHolder(context, itemView);
         return holder;
     }
 
