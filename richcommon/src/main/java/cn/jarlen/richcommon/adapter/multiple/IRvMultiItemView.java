@@ -1,6 +1,7 @@
 /*
  * Copyright (C) 2016 jarlen
  * fork form https://github.com/sockeqwe/AdapterDelegates
+ * and modify
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +28,7 @@ import cn.jarlen.richcommon.adapter.RvViewHolder;
 
 /**
  * This delegate provide method to hook in this delegate to {@link RecyclerView.Adapter} lifecycle.
- * This "hook in" mechanism is provided by {@link AdapterDelegatesManager} and that is the
+ * This "hook in" mechanism is provided by {@link RvMultiItemManager} and that is the
  * component
  * you have to use.
  *
@@ -35,36 +36,36 @@ import cn.jarlen.richcommon.adapter.RvViewHolder;
  * @author jarlen
  * @since 1.0
  */
-public abstract class AdapterDelegate<T> {
+public abstract class IRvMultiItemView<T> {
 
   /**
    * Called to determine whether this AdapterDelegate is the responsible for the given data
    * element.
    *
-   * @param items The data source of the Adapter
+   * @param item The data source of the item
    * @param position The position in the datasource
    * @return true, if this item is responsible,  otherwise false
    */
-  protected abstract boolean isForViewType(@NonNull T items, int position);
+  protected abstract boolean isForViewType(@NonNull T item, int position);
 
   /**
-   * Creates the  {@link RecyclerView.ViewHolder} for the given data source item
+   * Creates the  {@Link RvViewHolder } for the given data source item
    *
    * @param parent The ViewGroup parent of the given datasource
-   * @return The new instantiated {@link RecyclerView.ViewHolder}
+   * @return The new instantiated {@link RvViewHolder}
    */
   @NonNull
   abstract protected RvViewHolder onCreateViewHolder(ViewGroup parent);
 
   /**
-   * Called to bind the {@link RecyclerView.ViewHolder} to the item of the datas source set
+   * Called to bind the {@link RvViewHolder} to the item of the datas source set
    *
-   * @param items The data source
+   * @param item The data source
    * @param position The position in the datasource
    * @param holder The {@link RvViewHolder} to bind
    * @param payloads A non-null list of merged payloads. Can be empty list if requires full update.
    */
-  protected abstract void onBindViewHolder(@NonNull T items, int position,
+  protected abstract void onBindViewHolder(@NonNull T item, int position,
                                            @NonNull RvViewHolder holder, @NonNull List<Object> payloads);
 
   /**
@@ -83,7 +84,7 @@ public abstract class AdapterDelegate<T> {
    * get
    * its adapter position.
    *
-   * @param viewHolder The ViewHolder for the view being recycled
+   * @param viewHolder The RvViewHolder for the view being recycled
    */
   protected void onViewRecycled(@NonNull RvViewHolder viewHolder) {
   }
@@ -97,7 +98,7 @@ public abstract class AdapterDelegate<T> {
    * <p>
    * In some cases, it is acceptable to recycle a View although it has transient state. Most
    * of the time, this is a case where the transient state will be cleared in
-   * {@link RecyclerView.Adapter#onBindViewHolder(RecyclerView.ViewHolder, int)} call when View is
+   * {@link #onBindViewHolder(T,int,RvViewHolder,int)} call when View is
    * rebound to a new position.
    * For this reason, RecyclerView leaves the decision to the Adapter and uses the return
    * value of this method to decide whether the View should be recycled or not.
@@ -124,7 +125,7 @@ public abstract class AdapterDelegate<T> {
    * RecyclerView will check the View's transient state again before giving a final decision.
    * Default implementation returns false.
    */
-  protected boolean onFailedToRecycleView(@NonNull RecyclerView.ViewHolder holder) {
+  protected boolean onFailedToRecycleView(@NonNull RvViewHolder holder) {
     return false;
   }
 
@@ -133,13 +134,13 @@ public abstract class AdapterDelegate<T> {
    *
    * <p>This can be used as a reasonable signal that the view is about to be seen
    * by the user. If the adapter previously freed any resources in
-   * {@link RecyclerView.Adapter#onViewDetachedFromWindow(RecyclerView.ViewHolder)
+   * {@link #onViewDetachedFromWindow(RvViewHolder)
    * onViewDetachedFromWindow}
    * those resources should be restored here.</p>
    *
    * @param holder Holder of the view being attached
    */
-  protected void onViewAttachedToWindow(@NonNull RecyclerView.ViewHolder holder) {
+  protected void onViewAttachedToWindow(@NonNull RvViewHolder holder) {
   }
 
   /**
@@ -151,6 +152,6 @@ public abstract class AdapterDelegate<T> {
    *
    * @param holder Holder of the view being detached
    */
-  protected void onViewDetachedFromWindow(RecyclerView.ViewHolder holder) {
+  protected void onViewDetachedFromWindow(RvViewHolder holder) {
   }
 }

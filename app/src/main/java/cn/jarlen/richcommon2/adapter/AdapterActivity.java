@@ -1,4 +1,4 @@
-package cn.jarlen.richcommon2;
+package cn.jarlen.richcommon2.adapter;
 
 import android.widget.ListView;
 import android.widget.TextView;
@@ -9,6 +9,7 @@ import java.util.List;
 import cn.jarlen.richcommon.adapter.CommonAdapter;
 import cn.jarlen.richcommon.adapter.ViewHolder;
 import cn.jarlen.richcommon.ui.BaseActivity;
+import cn.jarlen.richcommon2.R;
 
 public class AdapterActivity extends BaseActivity {
 
@@ -28,12 +29,12 @@ public class AdapterActivity extends BaseActivity {
 
             @Override
             public void onBindView(ViewHolder viewHolder, String item) {
-                TextView tv = viewHolder.getView(R.id.tv);
+                TextView tv = viewHolder.getView(R.id.name);
                 tv.setText(item);
             }
 
             @Override
-            public int getLayoutResId(int position) {
+            public int getLayoutResId() {
                 return R.layout.layout_list_item;
             }
         };

@@ -67,7 +67,7 @@ public class NormalAdapterActivity extends BaseActivity {
                 viewHolder = (ViewHolder) convertView.getTag();
             }
 
-            viewHolder.tv = (TextView) convertView.findViewById(R.id.tv);
+            viewHolder.tv = (TextView) convertView.findViewById(R.id.name);
             viewHolder.tv.setText(listData.get(position));
 
             return convertView;

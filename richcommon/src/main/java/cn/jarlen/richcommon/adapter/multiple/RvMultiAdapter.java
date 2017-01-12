@@ -33,33 +33,37 @@ public abstract class RvMultiAdapter<D> extends RecyclerView.Adapter<RvViewHolde
 
     public Context mContext = null;
 
-    private AdapterDelegatesManager<List<D>> delegatesManager;
+    private RvMultiItemManager<D> itemManager;
 
     protected List<D> listData = new ArrayList<D>();
 
     public RvMultiAdapter(Context context) {
         this.mContext = context;
-        delegatesManager = new AdapterDelegatesManager<List<D>>();
+        itemManager = new RvMultiItemManager<D>();
+        preMultiItemView(itemManager);
     }
 
     @Override
     public int getItemViewType(int position) {
-        return delegatesManager.getItemViewType(listData, position);
+        if(listData == null || listData.isEmpty()){
+            return super.getItemViewType(position);
+        }
+        return itemManager.getItemViewType(listData.get(position), position);
     }
 
     @Override
     public RvViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return delegatesManager.onCreateViewHolder(parent, viewType);
+        return itemManager.onCreateViewHolder(parent, viewType);
     }
 
     @Override
     public void onBindViewHolder(RvViewHolder holder, int position) {
-        delegatesManager.onBindViewHolder(listData, position, holder);
+        itemManager.onBindViewHolder(listData.get(position), position, holder);
     }
 
     @Override
     public void onBindViewHolder(RvViewHolder holder, int position, List payloads) {
-        delegatesManager.onBindViewHolder(listData, position, holder, payloads);
+        itemManager.onBindViewHolder(listData.get(position), position, holder, payloads);
     }
 
     @Override
@@ -98,5 +102,6 @@ public abstract class RvMultiAdapter<D> extends RecyclerView.Adapter<RvViewHolde
         this.notifyDataSetChanged();
     }
 
+    protected abstract void preMultiItemView(RvMultiItemManager itemManager);
 
 }
