@@ -13,45 +13,65 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package cn.jarlen.richcommon.adapter;
+package cn.jarlen.richcommon.adapter.multiple;
 
 import android.content.Context;
-import android.view.View;
+import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.jarlen.richcommon.adapter.RvViewHolder;
+
 /**
- * For normal adapter
- * Created by jarlen on 2016/11/9.
+ * DESCRIBE:
+ * Created by jarlen on 2017/1/11.
  */
-public abstract class CommonAdapter<D> extends BaseAdapter {
+
+public abstract class RvMultiAdapter<D> extends RecyclerView.Adapter<RvViewHolder> {
 
     public Context mContext = null;
+
+    private RvMultiItemManager<D> itemManager;
+
     protected List<D> listData = new ArrayList<D>();
 
-    public CommonAdapter(Context context) {
+    public RvMultiAdapter(Context context) {
         this.mContext = context;
+        itemManager = new RvMultiItemManager<D>();
+        preMultiItemView(itemManager);
     }
 
     @Override
-    public int getCount() {
+    public int getItemViewType(int position) {
+        if(listData == null || listData.isEmpty()){
+            return super.getItemViewType(position);
+        }
+        return itemManager.getItemViewType(listData.get(position), position);
+    }
+
+    @Override
+    public RvViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return itemManager.onCreateViewHolder(parent, viewType);
+    }
+
+    @Override
+    public void onBindViewHolder(RvViewHolder holder, int position) {
+        itemManager.onBindViewHolder(listData.get(position), position, holder);
+    }
+
+    @Override
+    public void onBindViewHolder(RvViewHolder holder, int position, List payloads) {
+        itemManager.onBindViewHolder(listData.get(position), position, holder, payloads);
+    }
+
+    @Override
+    public int getItemCount() {
         if (listData == null) {
             return 0;
         }
         return listData.size();
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return listData.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
     }
 
     public void addDataList(List<D> mList) {
@@ -82,14 +102,6 @@ public abstract class CommonAdapter<D> extends BaseAdapter {
         this.notifyDataSetChanged();
     }
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder = ViewHolder.getViewHolder(mContext, parent, convertView, position, getLayoutResId());
-        onBindView(viewHolder, listData.get(position));
-        return viewHolder.getConvertView();
-    }
+    protected abstract void preMultiItemView(RvMultiItemManager itemManager);
 
-    public abstract void onBindView(ViewHolder viewHolder, D item);
-
-    public abstract int getLayoutResId();
 }

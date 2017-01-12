@@ -35,7 +35,7 @@ public abstract class BaseFragment extends Fragment {
 
     protected abstract void onBindView();
 
-    protected abstract void preBindView();
+    protected void preBindView(){}
 
     protected View getRootView() {
         return rootView;
