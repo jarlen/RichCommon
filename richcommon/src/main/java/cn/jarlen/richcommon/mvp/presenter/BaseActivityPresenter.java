@@ -24,6 +24,7 @@ import android.view.KeyEvent;
 import cn.jarlen.richcommon.mvp.view.IBaseView;
 
 /**
+ * base P of MVP
  * Created by jarlen on 2016/11/23.
  */
 public abstract class BaseActivityPresenter<V extends IBaseView> implements IBasePresenter{
@@ -38,7 +39,7 @@ public abstract class BaseActivityPresenter<V extends IBaseView> implements IBas
         this.intent = intent;
     }
 
-    public void setView(V v) {
+    public void setProxyView(V v) {
         this.v = v;
     }
 
@@ -50,7 +51,7 @@ public abstract class BaseActivityPresenter<V extends IBaseView> implements IBas
         return activity;
     }
 
-    public V getView() {
+    public V getProxyView() {
         return v;
     }
 

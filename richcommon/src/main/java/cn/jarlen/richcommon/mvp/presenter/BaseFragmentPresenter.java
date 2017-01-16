@@ -25,7 +25,7 @@ import cn.jarlen.richcommon.mvp.view.IBaseView;
 /**
  * Created by jarlen on 2016/11/23.
  */
-public abstract class BaseFragmentPresenter<V extends IBaseView> implements IBasePresenter{
+public abstract class BaseFragmentPresenter<V extends IBaseView> implements IBasePresenter {
     private V v;
     private FragmentActivity activity;
 
@@ -39,7 +39,7 @@ public abstract class BaseFragmentPresenter<V extends IBaseView> implements IBas
         return mArguments;
     }
 
-    public void setView(V v) {
+    public void setProxyView(V v) {
         this.v = v;
     }
 
@@ -51,7 +51,7 @@ public abstract class BaseFragmentPresenter<V extends IBaseView> implements IBas
         return activity;
     }
 
-    public V getView() {
+    public V getProxyView() {
         return v;
     }
 

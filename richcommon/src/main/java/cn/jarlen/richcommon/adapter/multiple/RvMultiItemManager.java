@@ -20,7 +20,6 @@ package cn.jarlen.richcommon.adapter.multiple;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.util.SparseArrayCompat;
-import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
 import java.util.Collections;
@@ -28,46 +27,13 @@ import java.util.List;
 
 import cn.jarlen.richcommon.adapter.RvViewHolder;
 
-/**
- * This class is the element that ties {@link RecyclerView.Adapter} together with {@link
- * IRvMultiItemView}.
- * <p>
- * So you have to add / register your {@link IRvMultiItemView}s to this manager by calling {@link
- * #addMultiItemView(IRvMultiItemView)}
- * </p>
- * <p>
- * <p>
- * Next you have to add this AdapterMultiItemViewManager to the {@link RecyclerView.Adapter} by calling
- * corresponding methods:
- * <ul>
- * <li> {@link #getItemViewType(Object, int)}: Must be called from {@link
- * RecyclerView.Adapter#getItemViewType(int)}</li>
- * <li> {@link #onCreateViewHolder(ViewGroup, int)}: Must be called from {@link
- * RecyclerView.Adapter#onCreateViewHolder(ViewGroup, int)}</li>
- * <li> {@link #onBindViewHolder(Object, int, RvViewHolder)}: Must be called from {@link
- * RecyclerView.Adapter#onBindViewHolder(RecyclerView.ViewHolder, int)}</li>
- * </ul>
- * <p>
- * You can also set a fallback {@link IRvMultiItemView} by using {@link
- * #setFallbackMultiItemView(IRvMultiItemView)} that will be used if no {@link IRvMultiItemView} is
- * responsible to handle a certain view type. If no fallback is specified, an Exception will be
- * thrown if no {@link IRvMultiItemView} is responsible to handle a certain view type
- * </p>
- *
- * @param <T> The type of the data source of the adapter
- * @author jarlen
- */
 public class RvMultiItemManager<T> {
 
     /**
-     * This id is used internally to claim that the {@link}
+     * This id is used internally to claim that the
      */
     static final int FALLBACK_MULTI_VIEW_TYPE = Integer.MAX_VALUE - 1;
 
-    /**
-     * Used internally for {@link #onBindViewHolder(Object, int, RvViewHolder)} as empty
-     * payload parameter
-     */
     private static final List<Object> PAYLOADS_EMPTY_LIST = Collections.emptyList();
 
     /**
@@ -76,20 +42,6 @@ public class RvMultiItemManager<T> {
     protected SparseArrayCompat<IRvMultiItemView<T>> multiItemViews = new SparseArrayCompat();
     protected IRvMultiItemView<T> fallbackMultiItemView;
 
-    /**
-     * Adds an {@link IRvMultiItemView}.
-     * <b>This method automatically assign internally the view type integer by using the next
-     * unused</b>
-     * <p>
-     * Internally calls {@link #addMultiItemView(int, boolean, IRvMultiItemView)} with
-     * allowReplacingMultiItemView = false as parameter.
-     *
-     * @param multiItemView the multiItemView to add
-     * @return self
-     * @throws NullPointerException if passed multiItemView is null
-     * @see #addMultiItemView(int, IRvMultiItemView)
-     * @see #addMultiItemView(int, boolean, IRvMultiItemView)
-     */
     public RvMultiItemManager<T> addMultiItemView(@NonNull IRvMultiItemView<T> multiItemView) {
         // algorithm could be improved since there could be holes,
         // but it's very unlikely that we reach Integer.MAX_VALUE and run out of unused indexes
@@ -104,45 +56,13 @@ public class RvMultiItemManager<T> {
         return addMultiItemView(viewType, false, multiItemView);
     }
 
-    /**
-     * Adds an {@link IRvMultiItemView} with the specified view type.
-     * <p>
-     * Internally calls {@link #addMultiItemView(int, boolean, IRvMultiItemView)} with
-     * allowReplacingaItemView = false as parameter.
-     *
-     * @param viewType the view type integer if you want to assign manually the view type. Otherwise
-     *                 use {@link #addMultiItemView(IRvMultiItemView)} where a viewtype will be assigned manually.
-     * @param itemView the multiItemView to add
-     * @return self
-     * @throws NullPointerException if passed multiItemView is null
-     * @see #addMultiItemView(IRvMultiItemView)
-     * @see #addMultiItemView(int, boolean, IRvMultiItemView)
-     */
     public RvMultiItemManager<T> addMultiItemView(int viewType,
-                                             @NonNull IRvMultiItemView<T> itemView) {
+                                                  @NonNull IRvMultiItemView<T> itemView) {
         return addMultiItemView(viewType, false, itemView);
     }
 
-    /**
-     * Adds an {@link IRvMultiItemView}.
-     *
-     * @param viewType               The viewType id
-     * @param allowReplacingaItemView if true, you allow to replacing the given multiItemView any previous
-     *                               multiItemView for the same view type. if false, you disallow and a {@link IllegalArgumentException}
-     *                               will be thrown if you try to replace an already registered {@link IRvMultiItemView} for the
-     *                               same view type.
-     * @param multiItemView               The multiItemView to add
-     * @throws IllegalArgumentException if <b>allowReplacingMultiItemView</b>  is false and an {@link
-     *                                  IRvMultiItemView} is already added (registered)
-     *                                  with the same ViewType.
-     * @throws IllegalArgumentException if viewType is {@link #FALLBACK_MULTI_VIEW_TYPE} which is
-     *                                  reserved
-     * @see #addMultiItemView(IRvMultiItemView)
-     * @see #addMultiItemView(int, IRvMultiItemView)
-     * @see #setFallbackMultiItemView(IRvMultiItemView)
-     */
     public RvMultiItemManager<T> addMultiItemView(int viewType, boolean allowReplacingaItemView,
-                                             @NonNull IRvMultiItemView<T> multiItemView) {
+                                                  @NonNull IRvMultiItemView<T> multiItemView) {
 
         if (multiItemView == null) {
             throw new NullPointerException("multiItemView is null!");
@@ -167,14 +87,6 @@ public class RvMultiItemManager<T> {
         return this;
     }
 
-    /**
-     * Removes a previously registered itemView if and only if the passed itemView is registered
-     * (checks the reference of the object). This will not remove any other itemView for the same
-     * viewType (if there is any).
-     *
-     * @param multiItemView The itemView to remove
-     * @return self
-     */
     public RvMultiItemManager<T> removeMultiItemView(@NonNull IRvMultiItemView<T> multiItemView) {
 
         if (multiItemView == null) {
@@ -189,30 +101,11 @@ public class RvMultiItemManager<T> {
         return this;
     }
 
-    /**
-     * Removes the multiItemView for the given view types.
-     *
-     * @param viewType The Viewtype
-     * @return self
-     */
     public RvMultiItemManager<T> removeMultiItemView(int viewType) {
         multiItemViews.remove(viewType);
         return this;
     }
 
-    /**
-     * Must be called from {@link RecyclerView.Adapter#getItemViewType(int)}. Internally it scans all
-     * the registered {@link IRvMultiItemView} and picks the right one to return the ViewType integer.
-     *
-     * @param item     Adapter's data source
-     * @param position the position in adapters data source
-     * @return the ViewType (integer). Returns {@link #FALLBACK_MULTI_VIEW_TYPE} in case that the
-     * fallback adapter ItemView should be used
-     * @throws NullPointerException if no {@link IRvMultiItemView} has been found that is
-     *                              responsible for the given data element in data set (No {@link IRvMultiItemView} for the given
-     *                              ViewType)
-     * @throws NullPointerException if item is null
-     */
     public int getItemViewType(@NonNull T item, int position) {
 
         if (item == null) {
@@ -236,15 +129,6 @@ public class RvMultiItemManager<T> {
                 "No multiItemView added that matches position=" + position + " in data source");
     }
 
-    /**
-     * This method must be called in {@link RecyclerView.Adapter#onCreateViewHolder(ViewGroup, int)}
-     *
-     * @param parent   the parent
-     * @param viewType the view type
-     * @return The new created ViewHolder
-     * @throws NullPointerException if no multiItemView has been registered for ViewHolders
-     *                              viewType
-     */
     @NonNull
     public RvViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         IRvMultiItemView<T> multiItemView = getItemForViewType(viewType);
@@ -263,17 +147,6 @@ public class RvMultiItemManager<T> {
         return vh;
     }
 
-    /**
-     * Must be called from{@link RecyclerView.Adapter#onBindViewHolder(RecyclerView.ViewHolder, int,
-     * List)}
-     *
-     * @param item       Adapter's data source
-     * @param position   the position in data source
-     * @param viewHolder the ViewHolder to bind
-     * @param payloads   A non-null list of merged payloads. Can be empty list if requires full update.
-     * @throws NullPointerException if no multiItemView has been registered for ViewHolders
-     *                              viewType
-     */
     public void onBindViewHolder(@NonNull T item, int position,
                                  @NonNull RvViewHolder viewHolder, List payloads) {
 
@@ -288,26 +161,11 @@ public class RvMultiItemManager<T> {
                 payloads != null ? payloads : PAYLOADS_EMPTY_LIST);
     }
 
-    /**
-     * Must be called from {@link RecyclerView.Adapter#onBindViewHolder(RecyclerView.ViewHolder, int,
-     * List)}
-     *
-     * @param item       Adapter's data source
-     * @param position   the position in data source
-     * @param viewHolder the ViewHolder to bind
-     * @throws NullPointerException if no multiItemView has been registered for ViewHolders
-     *                              viewType
-     */
     public void onBindViewHolder(@NonNull T item, int position,
                                  @NonNull RvViewHolder viewHolder) {
         onBindViewHolder(item, position, viewHolder, PAYLOADS_EMPTY_LIST);
     }
 
-    /**
-     * Must be called from {@link RecyclerView.Adapter#onViewRecycled(RecyclerView.ViewHolder)}
-     *
-     * @param viewHolder The ViewHolder for the view being recycled
-     */
     public void onViewRecycled(@NonNull RvViewHolder viewHolder) {
         IRvMultiItemView<T> multiItemView = getItemForViewType(viewHolder.getItemViewType());
         if (multiItemView == null) {
@@ -321,17 +179,6 @@ public class RvMultiItemManager<T> {
         multiItemView.onViewRecycled(viewHolder);
     }
 
-    /**
-     * Must be called from {@link RecyclerView.Adapter#onFailedToRecycleView(RecyclerView.ViewHolder)}
-     *
-     * @param viewHolder The ViewHolder containing the View that could not be recycled due to its
-     *                   transient state.
-     * @return True if the View should be recycled, false otherwise. Note that if this method
-     * returns <code>true</code>, RecyclerView <em>will ignore</em> the transient state of
-     * the View and recycle it regardless. If this method returns <code>false</code>,
-     * RecyclerView will check the View's transient state again before giving a final decision.
-     * Default implementation returns false.
-     */
     public boolean onFailedToRecycleView(@NonNull RvViewHolder viewHolder) {
         IRvMultiItemView<T> multiItemView = getItemForViewType(viewHolder.getItemViewType());
         if (multiItemView == null) {
@@ -345,11 +192,6 @@ public class RvMultiItemManager<T> {
         return multiItemView.onFailedToRecycleView(viewHolder);
     }
 
-    /**
-     * Must be called from {@link RecyclerView.Adapter#onViewAttachedToWindow(RecyclerView.ViewHolder)}
-     *
-     * @param viewHolder Holder of the view being attached
-     */
     public void onViewAttachedToWindow(RvViewHolder viewHolder) {
         IRvMultiItemView<T> multiItemView = getItemForViewType(viewHolder.getItemViewType());
         if (multiItemView == null) {
@@ -363,11 +205,6 @@ public class RvMultiItemManager<T> {
         multiItemView.onViewAttachedToWindow(viewHolder);
     }
 
-    /**
-     * Must be called from {@link RecyclerView.Adapter#onViewDetachedFromWindow(RecyclerView.ViewHolder)}
-     *
-     * @param viewHolder Holder of the view being attached
-     */
     public void onViewMultiItemViewFromWindow(RvViewHolder viewHolder) {
         IRvMultiItemView<T> multiItemView = getItemForViewType(viewHolder.getItemViewType());
         if (multiItemView == null) {
@@ -381,27 +218,14 @@ public class RvMultiItemManager<T> {
         multiItemView.onViewDetachedFromWindow(viewHolder);
     }
 
-    /**
-     * Set a fallback multiItemView that should be used if no {@link IRvMultiItemView} has been found that
-     * can handle a certain view type.
-     *
-     * @param multiItemView The {@link IRvMultiItemView} that should be used as fallback if no
-     *                         other IRvMultiItemView has handled a certain view type. <code>null</code> you can set this to
-     *                         null if
-     *                         you want to remove a previously set fallback IRvMultiItemView
-     */
+
     public RvMultiItemManager<T> setFallbackMultiItemView(
             @Nullable IRvMultiItemView<T> multiItemView) {
         this.fallbackMultiItemView = multiItemView;
         return this;
     }
 
-    /**
-     * Get the view type integer for the given {@link IRvMultiItemView}
-     *
-     * @param multiItemView The multiItemView we want to know the view type for
-     * @return -1 if passed multiItemView is unknown, otherwise the view type integer
-     */
+
     public int getViewType(@NonNull IRvMultiItemView<T> multiItemView) {
         if (multiItemView == null) {
             throw new NullPointerException("multiItemView is null");
@@ -414,15 +238,7 @@ public class RvMultiItemManager<T> {
         return multiItemViews.keyAt(index);
     }
 
-    /**
-     * Get the {@link IRvMultiItemView} associated with the given view type integer
-     *
-     * @param viewType The view type integer we want to retrieve the associated
-     *                 multiItemView for.
-     * @return The {@link IRvMultiItemView} associated with the view type param if it exists,
-     * the fallback multiItemView otherwise if it is set or returns <code>null</code> if no multiItemView is
-     * associated to this viewType (and no fallback has been set).
-     */
+
     @Nullable
     public IRvMultiItemView<T> getItemForViewType(int viewType) {
         IRvMultiItemView<T> multiItemView = multiItemViews.get(viewType);
@@ -437,12 +253,6 @@ public class RvMultiItemManager<T> {
         return multiItemView;
     }
 
-    /**
-     * Get the fallback multiItemView
-     *
-     * @return The fallback multiItemView or <code>null</code> if no fallback multiItemView has been set
-     * @see #setFallbackMultiItemView(IRvMultiItemView)
-     */
     @Nullable
     public IRvMultiItemView<T> getFallbackMultiItemView() {
         return fallbackMultiItemView;

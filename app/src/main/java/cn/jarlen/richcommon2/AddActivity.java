@@ -13,7 +13,7 @@ import cn.jarlen.richcommon2.adapter.RvMultiActivity;
 /**
  * Created by jarlen on 2016/11/23.
  */
-public class AddActivity extends BaseMvpActivity<AddPresenter, AddView> implements AddView, View.OnClickListener {
+public class AddActivity extends BaseMvpActivity<IAdd, IAddView> implements IAddView, View.OnClickListener {
 
     private TextView result;
     private Button testBtn;
@@ -27,7 +27,7 @@ public class AddActivity extends BaseMvpActivity<AddPresenter, AddView> implemen
     }
 
     @Override
-    public AddView getProxyView() {
+    public IAddView getProxyView() {
         return this;
     }
 
@@ -63,7 +63,7 @@ public class AddActivity extends BaseMvpActivity<AddPresenter, AddView> implemen
                 Intent intent = new Intent(AddActivity.this, RvMultiActivity.class);
                 startActivity(intent);
 
-//                getProxyPresenter().add(inputOne.getText().toString(), inputTwo.getText().toString());
+                getProxyPresenter().add(inputOne.getText().toString(), inputTwo.getText().toString());
                 break;
             default:
 

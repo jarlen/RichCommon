@@ -28,20 +28,7 @@ import android.graphics.BitmapFactory;
 
 public class ImageUtil {
 
-    /**
-     * load a bitmap of arbitrarily large size into an ImageView from Resources.
-     * <br>First decode with inJustDecodeBounds=true to check dimensions
-     * <br>Calculate inSampleSize</>
-     * <br>Decode bitmap with inSampleSize set</>
-     * @param context
-     * @param resId
-     * Resources id
-     * @param reqWidth
-     * width of imageView
-     * @param reqHeight
-     * height of imageView
-     * @return
-     */
+
     public static Bitmap decodeSampledBitmapFromResource(Context context, int resId,
                                                          int reqWidth, int reqHeight) {
 
