@@ -51,7 +51,7 @@ public abstract class BaseMvpFragment<IP extends IBasePresenter, V extends IBase
         try {
             presenter = getPresenter().newInstance();
             presenter.setActivity(getActivity());
-            presenter.setView(getProxyView());
+            presenter.setProxyView(getProxyView());
             presenter.setArguments(getArguments());
             presenter.onCreated();
             onBindView(savedInstanceState);

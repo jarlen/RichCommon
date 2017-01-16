@@ -43,7 +43,7 @@ public abstract class BaseMvpActivity<IP extends IBasePresenter, V extends IBase
             presenter = getPresenter().newInstance();
             presenter.setIntent(getIntent());
             presenter.setActivity(this);
-            presenter.setView(getProxyView());
+            presenter.setProxyView(getProxyView());
             onBindView(savedInstanceState);
             presenter.onBindView(savedInstanceState);
         } catch (InstantiationException e) {
