@@ -146,4 +146,9 @@ public abstract class BaseMvpFragment<IP extends IBasePresenter, V extends IBase
     protected View getRootView() {
         return rootView;
     }
+
+    @Override
+    public void preBindView() {
+
+    }
 }
