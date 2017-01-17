@@ -134,4 +134,9 @@ public abstract class BaseMvpActivity<IP extends IBasePresenter, V extends IBase
     }
 
     protected abstract V getProxyView();
+
+    @Override
+    public void preBindView() {
+
+    }
 }
