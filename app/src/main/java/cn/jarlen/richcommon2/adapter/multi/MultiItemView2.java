@@ -1,4 +1,4 @@
-package cn.jarlen.richcommon2.adapter;
+package cn.jarlen.richcommon2.adapter.multi;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -15,15 +15,14 @@ import cn.jarlen.richcommon2.data.Bean;
  * Created by hjl on 2017/1/12.
  */
 
-public class MultiItemView4 extends BaseRvMultiItemView<Bean> {
-
-    public MultiItemView4(Context context) {
+public class MultiItemView2 extends BaseRvMultiItemView<Bean> {
+    public MultiItemView2(Context context) {
         super(context);
     }
 
     @Override
     protected int getLayoutResId() {
-        return R.layout.layout_rv_item_four;
+        return R.layout.layout_rv_item_two;
     }
 
     @Override
@@ -35,6 +34,6 @@ public class MultiItemView4 extends BaseRvMultiItemView<Bean> {
 
     @Override
     protected boolean isForViewType(@NonNull Bean item, int position) {
-        return 4 == item.getType();
+        return 2 == item.getType();
     }
 }

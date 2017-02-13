@@ -1,4 +1,4 @@
-package cn.jarlen.richcommon2;
+package cn.jarlen.richcommon2.mvp.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +8,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import cn.jarlen.richcommon.mvp.view.BaseMvpActivity;
-import cn.jarlen.richcommon2.adapter.RvMultiActivity;
+import cn.jarlen.richcommon2.R;
+import cn.jarlen.richcommon2.mvp.presenter.AddPresenter;
+import cn.jarlen.richcommon2.adapter.multi.RvMultiActivity;
 
 /**
  * Created by jarlen on 2016/11/23.

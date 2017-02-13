@@ -1,7 +1,8 @@
-package cn.jarlen.richcommon2;
+package cn.jarlen.richcommon2.view;
 
 import cn.jarlen.richcommon.ui.BaseActivity;
 import cn.jarlen.richcommon.view.WaterMarkView;
+import cn.jarlen.richcommon2.R;
 
 public class WaterMarkActivity extends BaseActivity {
 

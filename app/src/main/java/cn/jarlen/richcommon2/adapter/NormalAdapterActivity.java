@@ -1,4 +1,4 @@
-package cn.jarlen.richcommon2.normal;
+package cn.jarlen.richcommon2.adapter;
 
 import android.content.Context;
 import android.view.View;

@@ -1,4 +1,4 @@
-package cn.jarlen.richcommon2.adapter;
+package cn.jarlen.richcommon2.adapter.multi;
 
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;

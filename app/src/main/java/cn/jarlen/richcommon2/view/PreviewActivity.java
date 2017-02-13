@@ -1,8 +1,9 @@
-package cn.jarlen.richcommon2;
+package cn.jarlen.richcommon2.view;
 
 import android.widget.ImageView;
 
 import cn.jarlen.richcommon.ui.BaseActivity;
+import cn.jarlen.richcommon2.R;
 
 public class PreviewActivity extends BaseActivity {
 
