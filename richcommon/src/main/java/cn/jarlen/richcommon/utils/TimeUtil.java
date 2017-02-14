@@ -120,10 +120,9 @@ public class TimeUtil {
         String year = calendar.get(Calendar.YEAR) + "";
         String month = nf.format(calendar.get(Calendar.MONTH) + 1);
         String day = nf.format(calendar.get(Calendar.DAY_OF_MONTH));
-        StringBuffer today = new StringBuffer(year);
-        today.append(month).append(day);
 
-        return Integer.valueOf(today.toString());
+        String today = year+month+day;
+        return Integer.valueOf(today);
     }
 
     /**
@@ -161,9 +160,9 @@ public class TimeUtil {
                 weekdayStr = "Sat";
                 break;
         }
-        StringBuffer today = new StringBuffer(year + "");
-        today.append("/" + month).append("/" + day).append("  " + weekdayStr);
-        return today.toString();
+
+        String today = year+"/"+month+"/"+day+" "+weekdayStr;
+        return today;
     }
 
 }
