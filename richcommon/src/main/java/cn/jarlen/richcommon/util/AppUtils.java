@@ -65,7 +65,7 @@ public class AppUtils {
 
         boolean isRooted = SystemUtils.isRooted();
         if (isRooted) {
-
+            //do nothing
         } else {
             Uri uri = Uri.parse("package:" + packageName);
             Intent intent = new Intent(Intent.ACTION_DELETE, uri);
@@ -122,9 +122,8 @@ public class AppUtils {
      * @return
      */
     public static List<PackageInfo> getPackageInfos(Context context) {
-        List<PackageInfo> appInfos = null;
         PackageManager pm = context.getPackageManager();
-        appInfos = pm.getInstalledPackages(0);
+        List<PackageInfo> appInfos = pm.getInstalledPackages(0);
         return appInfos;
     }
 
