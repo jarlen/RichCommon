@@ -20,11 +20,6 @@ import cn.jarlen.richcommon2.R;
 
 public class NormalAdapterActivity extends BaseActivity {
 
-    private NormalAdapter normalAdapter;
-
-    private ListView listView;
-
-
     @Override
     protected int getLayoutId() {
         return R.layout.activity_adapter;
@@ -32,8 +27,8 @@ public class NormalAdapterActivity extends BaseActivity {
 
     @Override
     protected void onBindView() {
-        listView = (ListView) findViewById(R.id.listview);
-        normalAdapter = new NormalAdapter(this);
+        ListView listView = (ListView) findViewById(R.id.listview);
+        NormalAdapter normalAdapter = new NormalAdapter(this);
         listView.setAdapter(normalAdapter);
 
         List<String> data = new ArrayList<>();

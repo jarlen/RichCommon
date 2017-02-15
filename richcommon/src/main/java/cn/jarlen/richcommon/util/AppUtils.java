@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-package cn.jarlen.richcommon.utils;
+package cn.jarlen.richcommon.util;
 
 import android.content.Context;
 import android.content.Intent;
@@ -30,7 +30,7 @@ import java.util.List;
  * DESCRIBE: App tools
  * Created by jarlen on 2016/6/22.
  */
-public class AppUtil {
+public class AppUtils {
 
 
     /**
@@ -63,9 +63,9 @@ public class AppUtil {
             return;
         }
 
-        boolean isRooted = SystemUtil.isRooted();
+        boolean isRooted = SystemUtils.isRooted();
         if (isRooted) {
-            //SystemUtil.runRootCmd("pm uninstall " + packageName);
+
         } else {
             Uri uri = Uri.parse("package:" + packageName);
             Intent intent = new Intent(Intent.ACTION_DELETE, uri);

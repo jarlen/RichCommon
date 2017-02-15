@@ -28,7 +28,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import cn.jarlen.richcommon.R;
-import cn.jarlen.richcommon.utils.SystemUtil;
+import cn.jarlen.richcommon.util.SystemUtils;
 
 /**
  * DESCRIBE: watermark
@@ -70,10 +70,10 @@ public class WaterMarkView extends View {
         mDegrees = typedArray.getInt(R.styleable.WaterMarkView_wm_degree, -30);
 
         wmText = typedArray.getString(R.styleable.WaterMarkView_wm_text);
-        dx = typedArray.getDimensionPixelSize(R.styleable.WaterMarkView_wm_dx, SystemUtil.dp2px(context, 50));
-        dy = typedArray.getDimensionPixelSize(R.styleable.WaterMarkView_wm_dy, SystemUtil.dp2px(context, 120));
+        dx = typedArray.getDimensionPixelSize(R.styleable.WaterMarkView_wm_dx, SystemUtils.dp2px(context, 50));
+        dy = typedArray.getDimensionPixelSize(R.styleable.WaterMarkView_wm_dy, SystemUtils.dp2px(context, 120));
         wmTextColor = typedArray.getColor(R.styleable.WaterMarkView_wm_textColor, Color.parseColor("#66000000"));
-        wmTextSize = typedArray.getDimensionPixelSize(R.styleable.WaterMarkView_wm_textSize, SystemUtil.dp2px(context, 20));
+        wmTextSize = typedArray.getDimensionPixelSize(R.styleable.WaterMarkView_wm_textSize, SystemUtils.dp2px(context, 20));
 
         typedArray.recycle();
 

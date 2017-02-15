@@ -24,7 +24,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import cn.jarlen.richcommon.log.Log;
+import cn.jarlen.richcommon.util.LogUtils;
 import cn.jarlen.richcommon.mvp.presenter.BaseFragmentPresenter;
 import cn.jarlen.richcommon.mvp.presenter.IBasePresenter;
 
@@ -57,11 +57,11 @@ public abstract class BaseMvpFragment<IP extends IBasePresenter, V extends IBase
             onBindView(savedInstanceState);
             presenter.onBindView(savedInstanceState);
         } catch (java.lang.InstantiationException e) {
-            Log.e("mvp", e.toString());
+            LogUtils.e("mvp", e.toString());
         } catch (IllegalAccessException e) {
-            Log.e("mvp", e.toString());
+            LogUtils.e("mvp", e.toString());
         } catch (Exception e) {
-            Log.e("mvp", e.toString());
+            LogUtils.e("mvp", e.toString());
         }
     }
 
@@ -136,7 +136,7 @@ public abstract class BaseMvpFragment<IP extends IBasePresenter, V extends IBase
         try {
             return (IP) presenter;
         } catch (Exception e) {
-            Log.e("mvp", e.toString());
+            LogUtils.e("mvp", e.toString());
             return null;
         }
     }

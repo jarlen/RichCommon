@@ -18,7 +18,6 @@ import cn.jarlen.richcommon2.adapter.multi.RvMultiActivity;
 public class AddActivity extends BaseMvpActivity<IAdd, IAddView> implements IAddView, View.OnClickListener {
 
     private TextView result;
-    private Button testBtn;
 
     private EditText inputOne;
     private EditText inputTwo;
@@ -42,7 +41,7 @@ public class AddActivity extends BaseMvpActivity<IAdd, IAddView> implements IAdd
     @Override
     public void onBindView(Bundle savedInstanceState) {
         result = (TextView) findViewById(R.id.result);
-        testBtn = (Button) findViewById(R.id.testBtn);
+        Button testBtn = (Button) findViewById(R.id.testBtn);
         testBtn.setOnClickListener(this);
         inputOne = (EditText) findViewById(R.id.input_one);
         inputTwo = (EditText) findViewById(R.id.input_two);

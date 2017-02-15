@@ -6,8 +6,6 @@ import cn.jarlen.richcommon2.R;
 
 public class WaterMarkActivity extends BaseActivity {
 
-    private WaterMarkView markView;
-
     @Override
     protected int getLayoutId() {
         return R.layout.activity_water_mark;
@@ -15,7 +13,7 @@ public class WaterMarkActivity extends BaseActivity {
 
     @Override
     protected void onBindView() {
-        markView = (WaterMarkView) findViewById(R.id.wmView);
+        WaterMarkView markView = (WaterMarkView) findViewById(R.id.wmView);
         markView.setWaterMarkText("测试110110");
     }
 

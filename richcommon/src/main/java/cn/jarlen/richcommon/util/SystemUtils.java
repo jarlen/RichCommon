@@ -15,7 +15,7 @@
  *
  */
 
-package cn.jarlen.richcommon.utils;
+package cn.jarlen.richcommon.util;
 
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -43,13 +43,11 @@ import android.view.WindowManager;
 import java.io.File;
 import java.lang.reflect.Field;
 
-import cn.jarlen.richcommon.log.Log;
-
 /**
  * DESCRIBE:System util
  * Created by jarlen on 2016/6/22.
  */
-public class SystemUtil {
+public class SystemUtils {
 
     /**
      * check whether it is in MainThread
@@ -88,7 +86,7 @@ public class SystemUtil {
                     context.getPackageName(), 0);
             return ai.uid;
         } catch (PackageManager.NameNotFoundException e) {
-            Log.e(e.toString());
+            LogUtils.e(e.toString());
         }
         return 0;
     }
@@ -157,7 +155,7 @@ public class SystemUtil {
             TelephonyManager teleManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
             deviceIMEI = teleManager.getDeviceId();
         } catch (Exception e) {
-            Log.e(e.toString());
+            LogUtils.e(e.toString());
         }
         return deviceIMEI;
     }
@@ -175,7 +173,7 @@ public class SystemUtil {
             adapter = BluetoothAdapter.getDefaultAdapter();
             bluetoothMac = adapter.getAddress();
         } catch (Exception e) {
-            Log.e(e.toString());
+            LogUtils.e(e.toString());
         }
         return bluetoothMac;
     }
@@ -194,7 +192,7 @@ public class SystemUtil {
                     .getSystemService(Context.WIFI_SERVICE);
             wlanMac = wm.getConnectionInfo().getMacAddress();
         } catch (Exception e) {
-            Log.e(e.toString());
+            LogUtils.e(e.toString());
         }
         return wlanMac;
     }
@@ -297,6 +295,7 @@ public class SystemUtil {
             double height = Math.pow(dm.heightPixels / dm.ydpi, 2);
             screenInches = (float) (Math.sqrt(width + height));
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return screenInches;
     }

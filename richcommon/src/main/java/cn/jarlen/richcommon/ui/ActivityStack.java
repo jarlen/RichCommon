@@ -291,6 +291,7 @@ public class ActivityStack {
             try {
                 listView.removeAllViewsInLayout();
             } catch (Throwable mayHappen) {
+                mayHappen.printStackTrace();
             }
             ((ListView) view).destroyDrawingCache();
         }

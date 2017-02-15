@@ -19,10 +19,6 @@ import cn.jarlen.richcommon2.data.Bean;
  */
 public class RvAdapterActivity extends BaseActivity {
 
-    private RecyclerView recyclerView;
-
-    private TestAdapter testAdapter = null;
-
     @Override
     protected int getLayoutId() {
         return R.layout.activity_rv_adapter;
@@ -30,9 +26,9 @@ public class RvAdapterActivity extends BaseActivity {
 
     @Override
     protected void onBindView() {
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        testAdapter = new TestAdapter(this);
+        TestAdapter testAdapter = new TestAdapter(this);
         recyclerView.setAdapter(testAdapter);
 
         List<Bean> datas = new ArrayList<Bean>();

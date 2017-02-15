@@ -19,7 +19,7 @@ package cn.jarlen.richcommon.mvp.view;
 import android.content.Context;
 
 import cn.jarlen.richcommon.adapter.SimpleBaseAdapter;
-import cn.jarlen.richcommon.log.Log;
+import cn.jarlen.richcommon.util.LogUtils;
 import cn.jarlen.richcommon.mvp.presenter.IBasePresenter;
 
 /**
@@ -39,7 +39,7 @@ public abstract class BaseMvpAdapter<D, IP extends IBasePresenter> extends Simpl
         try {
             return presenter;
         } catch (Exception e) {
-            Log.e("mvp", e.toString());
+            LogUtils.e("mvp", e.toString());
             return null;
         }
     }

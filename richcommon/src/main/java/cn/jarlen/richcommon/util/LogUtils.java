@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-package cn.jarlen.richcommon.log;
+package cn.jarlen.richcommon.util;
 
 import android.os.SystemClock;
 
@@ -32,8 +32,8 @@ import java.util.Locale;
  *     or SUPPRESS,SUPPRESS will forbiden all log
  * @author hjl
  */
-public class Log {
-	public static String TAG = "Log";
+public class LogUtils {
+	public static String TAG = LogUtils.class.getName();
 
 	public static boolean DEBUG = android.util.Log.isLoggable(TAG,
 			android.util.Log.INFO);
@@ -143,7 +143,7 @@ public class Log {
 	}
 
 	static class MarkerLog {
-		public static final boolean ENABLED = Log.DEBUG;
+		public static final boolean ENABLED = LogUtils.DEBUG;
 
 		/**
 		 * Minimum duration from first marker to last in an marker log to
