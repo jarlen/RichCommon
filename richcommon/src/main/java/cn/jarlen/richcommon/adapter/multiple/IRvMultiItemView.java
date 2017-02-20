@@ -26,32 +26,25 @@ import java.util.List;
 import cn.jarlen.richcommon.adapter.RvViewHolder;
 
 
-public abstract class IRvMultiItemView<T> {
+public interface IRvMultiItemView<T> {
 
 
-    protected abstract boolean isForViewType(@NonNull T item, int position);
+    boolean isForViewType(@NonNull T item, int position);
 
 
-    @NonNull
-    abstract protected RvViewHolder onCreateViewHolder(ViewGroup parent);
+    RvViewHolder onCreateViewHolder(ViewGroup parent);
 
-    protected abstract void onBindViewHolder(@NonNull T item, int position,
-                                             @NonNull RvViewHolder holder, @NonNull List<Object> payloads);
+    void onBindViewHolder(@NonNull T item, int position,
+                          @NonNull RvViewHolder holder, @NonNull List<Object> payloads);
 
-
-    protected void onViewRecycled(@NonNull RvViewHolder viewHolder) {
-    }
+    void onViewRecycled(@NonNull RvViewHolder viewHolder);
 
 
-    protected boolean onFailedToRecycleView(@NonNull RvViewHolder holder) {
-        return false;
-    }
+    boolean onFailedToRecycleView(@NonNull RvViewHolder holder);
 
 
-    protected void onViewAttachedToWindow(@NonNull RvViewHolder holder) {
-    }
+    void onViewAttachedToWindow(@NonNull RvViewHolder holder);
 
 
-    protected void onViewDetachedFromWindow(RvViewHolder holder) {
-    }
+    void onViewDetachedFromWindow(RvViewHolder holder);
 }

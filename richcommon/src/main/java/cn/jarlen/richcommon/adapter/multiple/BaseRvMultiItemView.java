@@ -30,7 +30,7 @@ import cn.jarlen.richcommon.adapter.RvViewHolder;
  * Created by jarlen on 2017/1/11.
  */
 
-public abstract class BaseRvMultiItemView<D> extends IRvMultiItemView<D> {
+public abstract class BaseRvMultiItemView<D> implements IRvMultiItemView<D> {
 
     protected Context mContext;
 
@@ -40,9 +40,8 @@ public abstract class BaseRvMultiItemView<D> extends IRvMultiItemView<D> {
         this.mContext = context;
     }
 
-    @NonNull
     @Override
-    protected RvViewHolder onCreateViewHolder(ViewGroup parent) {
+    public RvViewHolder onCreateViewHolder(ViewGroup parent) {
         RvViewHolder viewHolder = RvViewHolder.getViewHolder(mContext, parent, getLayoutResId());
         return viewHolder;
     }
@@ -50,7 +49,7 @@ public abstract class BaseRvMultiItemView<D> extends IRvMultiItemView<D> {
     protected abstract int getLayoutResId();
 
     @Override
-    protected void onBindViewHolder(@NonNull D item, int position, @NonNull RvViewHolder holder, @NonNull List<Object> payloads) {
+    public void onBindViewHolder(@NonNull D item, int position, @NonNull RvViewHolder holder, @NonNull List<Object> payloads) {
         this.data = item;
         onBindView(holder, item);
     }
@@ -60,4 +59,24 @@ public abstract class BaseRvMultiItemView<D> extends IRvMultiItemView<D> {
     }
 
     protected abstract void onBindView(RvViewHolder viewHolder, D item);
+
+    @Override
+    public boolean onFailedToRecycleView(@NonNull RvViewHolder holder) {
+        return false;
+    }
+
+    @Override
+    public void onViewRecycled(@NonNull RvViewHolder viewHolder) {
+
+    }
+
+    @Override
+    public void onViewAttachedToWindow(@NonNull RvViewHolder holder) {
+
+    }
+
+    @Override
+    public void onViewDetachedFromWindow(RvViewHolder holder) {
+
+    }
 }

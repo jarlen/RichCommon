@@ -33,7 +33,7 @@ public class MultiItemView2 extends BaseRvMultiItemView<Bean> {
     }
 
     @Override
-    protected boolean isForViewType(@NonNull Bean item, int position) {
+    public boolean isForViewType(@NonNull Bean item, int position) {
         return 2 == item.getType();
     }
 }

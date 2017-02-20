@@ -37,6 +37,15 @@ public abstract class CommonAdapter<D> extends BaseAdapter {
     }
 
     @Override
+    public int getItemViewType(int position) {
+        if(listData == null || listData.isEmpty()){
+            return super.getItemViewType(position);
+        }
+
+        return super.getItemViewType(position);
+    }
+
+    @Override
     public int getCount() {
         if (listData == null) {
             return 0;
