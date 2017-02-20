@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-package cn.jarlen.richcommon.utils;
+package cn.jarlen.richcommon.util;
 
 import android.text.TextUtils;
 
@@ -31,7 +31,7 @@ import cn.jarlen.richcommon.dataoption.SecurityUtils;
  * DESCRIBE: File tools
  * Created by jarlen on 2016/6/22.
  */
-public class FileUtil {
+public class FileUtils {
 
     private static final int IO_BUFFER_SIZE = 16384;
 

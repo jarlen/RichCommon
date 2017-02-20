@@ -1,11 +1,10 @@
-package cn.jarlen.richcommon2;
+package cn.jarlen.richcommon2.view;
 
 import cn.jarlen.richcommon.ui.BaseActivity;
 import cn.jarlen.richcommon.view.WaterMarkView;
+import cn.jarlen.richcommon2.R;
 
 public class WaterMarkActivity extends BaseActivity {
-
-    private WaterMarkView markView;
 
     @Override
     protected int getLayoutId() {
@@ -14,7 +13,7 @@ public class WaterMarkActivity extends BaseActivity {
 
     @Override
     protected void onBindView() {
-        markView = (WaterMarkView) findViewById(R.id.wmView);
+        WaterMarkView markView = (WaterMarkView) findViewById(R.id.wmView);
         markView.setWaterMarkText("测试110110");
     }
 

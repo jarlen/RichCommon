@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-package cn.jarlen.richcommon.utils;
+package cn.jarlen.richcommon.util;
 
 import android.content.Context;
 import android.text.TextUtils;
@@ -27,7 +27,7 @@ import android.widget.Toast;
  * DESCRIBE:Toast util
  * Created by jarlen on 2016/6/22.
  */
-public class ToastUtil {
+public class ToastUtils {
 
     private String mText;
 
@@ -48,16 +48,16 @@ public class ToastUtil {
     public static final int TOP = -1;
 
 
-    private ToastUtil(Context ctx) {
+    private ToastUtils(Context ctx) {
         this.mContext = ctx;
         mToast = Toast.makeText(ctx, "", Toast.LENGTH_SHORT);
     }
 
-    public static ToastUtil makeToast(Context ctx) {
-        return new ToastUtil(ctx);
+    public static ToastUtils makeToast(Context ctx) {
+        return new ToastUtils(ctx);
     }
 
-    public ToastUtil setText(String message) {
+    public ToastUtils setText(String message) {
         this.mText = message;
         return this;
     }
@@ -65,17 +65,17 @@ public class ToastUtil {
     /**
      * @param gravity
      */
-    public ToastUtil setGravity(int gravity) {
+    public ToastUtils setGravity(int gravity) {
         this.mGravity = gravity;
         return this;
     }
 
-    public ToastUtil setImage(int picId) {
+    public ToastUtils setImage(int picId) {
         this.picId = picId;
         return this;
     }
 
-    public ToastUtil setDuration(int duration) {
+    public ToastUtils setDuration(int duration) {
         this.mDuration = duration;
         return this;
     }

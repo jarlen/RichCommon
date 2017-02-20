@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-package cn.jarlen.richcommon.utils;
+package cn.jarlen.richcommon.util;
 
 import java.text.NumberFormat;
 import java.text.ParseException;
@@ -23,13 +23,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-import cn.jarlen.richcommon.log.Log;
-
 /**
  * DESCRIBE: Time Util
  * Created by jarlen on 2016/6/28.
  */
-public class TimeUtil {
+public class TimeUtils {
 
     /**
      * format: xxxx-xx-xx
@@ -79,7 +77,7 @@ public class TimeUtil {
             Date date = formatSrc.parse(dateSrc);
             result = formatDesc.format(date);
         } catch (ParseException e) {
-            Log.e(TimeUtil.class.getName(), e.toString());
+            LogUtils.e(TimeUtils.class.getName(), e.toString());
         }
 
         return result;
@@ -120,10 +118,9 @@ public class TimeUtil {
         String year = calendar.get(Calendar.YEAR) + "";
         String month = nf.format(calendar.get(Calendar.MONTH) + 1);
         String day = nf.format(calendar.get(Calendar.DAY_OF_MONTH));
-        StringBuffer today = new StringBuffer(year);
-        today.append(month).append(day);
 
-        return Integer.valueOf(today.toString());
+        String today = year+month+day;
+        return Integer.valueOf(today);
     }
 
     /**
@@ -161,9 +158,9 @@ public class TimeUtil {
                 weekdayStr = "Sat";
                 break;
         }
-        StringBuffer today = new StringBuffer(year + "");
-        today.append("/" + month).append("/" + day).append("  " + weekdayStr);
-        return today.toString();
+
+        String today = year+"/"+month+"/"+day+" "+weekdayStr;
+        return today;
     }
 
 }

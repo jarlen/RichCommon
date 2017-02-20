@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-package cn.jarlen.richcommon.utils;
+package cn.jarlen.richcommon.util;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -26,7 +26,7 @@ import android.graphics.BitmapFactory;
  * Created by jarlen on 2017/1/10.
  */
 
-public class ImageUtil {
+public class ImageUtils {
 
 
     public static Bitmap decodeSampledBitmapFromResource(Context context, int resId,

@@ -1,4 +1,4 @@
-package cn.jarlen.richcommon2;
+package cn.jarlen.richcommon2.mvp.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +8,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import cn.jarlen.richcommon.mvp.view.BaseMvpActivity;
-import cn.jarlen.richcommon2.adapter.RvMultiActivity;
+import cn.jarlen.richcommon2.R;
+import cn.jarlen.richcommon2.mvp.presenter.AddPresenter;
+import cn.jarlen.richcommon2.adapter.multi.RvMultiActivity;
 
 /**
  * Created by jarlen on 2016/11/23.
@@ -16,7 +18,6 @@ import cn.jarlen.richcommon2.adapter.RvMultiActivity;
 public class AddActivity extends BaseMvpActivity<IAdd, IAddView> implements IAddView, View.OnClickListener {
 
     private TextView result;
-    private Button testBtn;
 
     private EditText inputOne;
     private EditText inputTwo;
@@ -40,7 +41,7 @@ public class AddActivity extends BaseMvpActivity<IAdd, IAddView> implements IAdd
     @Override
     public void onBindView(Bundle savedInstanceState) {
         result = (TextView) findViewById(R.id.result);
-        testBtn = (Button) findViewById(R.id.testBtn);
+        Button testBtn = (Button) findViewById(R.id.testBtn);
         testBtn.setOnClickListener(this);
         inputOne = (EditText) findViewById(R.id.input_one);
         inputTwo = (EditText) findViewById(R.id.input_two);

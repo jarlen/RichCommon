@@ -1,4 +1,4 @@
-package cn.jarlen.richcommon2;
+package cn.jarlen.richcommon2.mvp.view;
 
 import cn.jarlen.richcommon.mvp.presenter.IBasePresenter;
 

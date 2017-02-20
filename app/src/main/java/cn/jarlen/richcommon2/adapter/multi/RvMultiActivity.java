@@ -1,4 +1,4 @@
-package cn.jarlen.richcommon2.adapter;
+package cn.jarlen.richcommon2.adapter.multi;
 
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,11 +20,6 @@ import cn.jarlen.richcommon2.data.Bean;
 
 public class RvMultiActivity extends BaseActivity {
 
-    private RecyclerView recyclerView;
-
-    private MultiTestAdapter testAdapter;
-
-
     @Override
     protected int getLayoutId() {
         return R.layout.activity_rv_adapter;
@@ -32,9 +27,9 @@ public class RvMultiActivity extends BaseActivity {
 
     @Override
     protected void onBindView() {
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        testAdapter = new MultiTestAdapter(this);
+        MultiTestAdapter testAdapter = new MultiTestAdapter(this);
         recyclerView.setAdapter(testAdapter);
 
         List<Bean> datas = new ArrayList<Bean>();

@@ -57,5 +57,5 @@ public abstract class BaseActivity extends FragmentActivity{
 
     protected abstract void onBindView();
 
-    protected void preBindView(){};
+    protected void preBindView(){}
 }

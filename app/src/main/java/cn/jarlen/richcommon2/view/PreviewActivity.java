@@ -1,12 +1,11 @@
-package cn.jarlen.richcommon2;
+package cn.jarlen.richcommon2.view;
 
 import android.widget.ImageView;
 
 import cn.jarlen.richcommon.ui.BaseActivity;
+import cn.jarlen.richcommon2.R;
 
 public class PreviewActivity extends BaseActivity {
-
-    private ImageView mPhotoview;
 
     @Override
     protected int getLayoutId() {
@@ -15,7 +14,7 @@ public class PreviewActivity extends BaseActivity {
 
     @Override
     protected void onBindView() {
-        mPhotoview = (ImageView) findViewById(R.id.photoview);
+        ImageView mPhotoview = (ImageView) findViewById(R.id.photoview);
         mPhotoview.setImageResource(R.drawable.cs_logo);
     }
 

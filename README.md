@@ -30,7 +30,7 @@ repositories {
 ##ChangeLogs
 
 
-####发布richcommon1.2.7    2016-1-15
+####发布richcommon1.2.7    2017-1-15
 
 **1. 调整基于RecycleView列表多类型扩展**
 

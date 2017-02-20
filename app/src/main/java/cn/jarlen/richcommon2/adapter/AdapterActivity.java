@@ -13,10 +13,6 @@ import cn.jarlen.richcommon2.R;
 
 public class AdapterActivity extends BaseActivity {
 
-    private ListView mListView;
-
-    private CommonAdapter commonAdapter;
-
     @Override
     protected int getLayoutId() {
         return R.layout.activity_adapter;
@@ -24,8 +20,8 @@ public class AdapterActivity extends BaseActivity {
 
     @Override
     protected void onBindView() {
-        mListView = (ListView) findViewById(R.id.listview);
-        commonAdapter = new CommonAdapter<String>(this) {
+        ListView mListView = (ListView) findViewById(R.id.listview);
+        CommonAdapter commonAdapter = new CommonAdapter<String>(this) {
 
             @Override
             public void onBindView(ViewHolder viewHolder, String item) {
