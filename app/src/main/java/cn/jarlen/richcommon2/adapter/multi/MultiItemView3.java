@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import cn.jarlen.richcommon.adapter.RvViewHolder;
 import cn.jarlen.richcommon.adapter.multiple.BaseRvMultiItemView;
+import cn.jarlen.richcommon.util.LogUtils;
 import cn.jarlen.richcommon2.R;
 import cn.jarlen.richcommon2.data.Bean;
 
@@ -19,22 +20,23 @@ public class MultiItemView3 extends BaseRvMultiItemView<Bean> {
 
     public MultiItemView3(Context context) {
         super(context);
-    }
-
-    @Override
-    protected int getLayoutResId() {
-        return R.layout.layout_rv_item_three;
+        LogUtils.d("jarlen","creat");
     }
 
     @Override
     protected void onBindView(RvViewHolder viewHolder, Bean item) {
         Log.e("jarlen","onBindView--->"+viewHolder);
         TextView name = viewHolder.getView(R.id.name);
-        name.setText(item.getName());
+        name.setText("MultiItemView3 : "+item.getName());
     }
 
     @Override
-    public boolean isForViewType(@NonNull Bean item, int position) {
-        return 3 == item.getType();
+    protected boolean isForViewType(@NonNull Bean item) {
+        return item.getType()== 3;
+    }
+
+    @Override
+    public int getLayoutResId(Bean item) {
+        return R.layout.layout_rv_item_three;
     }
 }

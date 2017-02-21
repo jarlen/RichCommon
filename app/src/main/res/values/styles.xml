@@ -5,4 +5,31 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="chat_text_date_style">
+        <item name="android:layout_marginTop">@dimen/padding_12</item>
+        <item name="android:padding">@dimen/padding_6</item>
+        <item name="android:textColor">@color/cor6</item>
+        <item name="android:textSize">@dimen/size4</item>
+        <item name="android:background">@drawable/timestampe_bg</item>
+    </style>
+
+    <style name="chat_content_data_style">
+        <item name="android:minHeight">@dimen/padding_40</item>
+        <item name="android:maxWidth">@dimen/chat_msg_max_width</item>
+        <item name="android:gravity">left|center</item>
+        <item name="android:textSize">@dimen/size2</item>
+        <item name="android:lineSpacingExtra">2dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:paddingTop">@dimen/padding_12</item>
+        <item name="android:paddingBottom">@dimen/padding_12</item>
+        <item name="android:autoLink">web</item>
+    </style>
+
+    <style name="chat_text_name_style">
+        <item name="android:textColor">@color/cor2</item>
+        <item name="android:textSize">@dimen/size4</item>
+        <item name="android:gravity">center</item>
+    </style>
+
 </resources>

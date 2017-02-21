@@ -32,7 +32,7 @@ public class RvMultiItemManager<T> {
     /**
      * This id is used internally to claim that the
      */
-    static final int FALLBACK_MULTI_VIEW_TYPE = Integer.MAX_VALUE - 1;
+    private static final int FALLBACK_MULTI_VIEW_TYPE = Integer.MAX_VALUE - 1;
 
     private static final List<Object> PAYLOADS_EMPTY_LIST = Collections.emptyList();
 
@@ -40,6 +40,7 @@ public class RvMultiItemManager<T> {
      * Map for ViewType to multiItemView
      */
     protected SparseArrayCompat<IRvMultiItemView<T>> multiItemViews = new SparseArrayCompat();
+
     protected IRvMultiItemView<T> fallbackMultiItemView;
 
     public RvMultiItemManager<T> addMultiItemView(@NonNull IRvMultiItemView<T> multiItemView) {
@@ -117,7 +118,12 @@ public class RvMultiItemManager<T> {
             IRvMultiItemView<T> itemView = multiItemViews.valueAt(i);
             boolean match = itemView.isForViewType(item, position);
             if (match) {
-                return multiItemViews.keyAt(i);
+                int resId = itemView.getLayoutResId(item);
+                if (resId != i) {
+                    multiItemViews.removeAt(i);
+                    multiItemViews.put(resId, itemView);
+                }
+                return resId;
             }
         }
 

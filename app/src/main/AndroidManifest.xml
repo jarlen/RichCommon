@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".mvp.view.AddActivity"
+            android:name=".adapter.multi.RvMultiActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,11 +19,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".adapter.multi.RvMultiActivity"
-            android:screenOrientation="portrait"/>
+        <!--<activity android:name=".adapter.multi.RvMultiActivity"-->
+            <!--android:screenOrientation="portrait"/>-->
 
-        <activity android:name=".adapter.RvAdapterActivity"
-            android:screenOrientation="portrait"/>
+        <!--<activity android:name=".adapter.RvAdapterActivity"-->
+            <!--android:screenOrientation="portrait"/>-->
 
         <!-- <activity android:name="cn.jarlen.richcommon.PreviewActivity" -->
         <!-- android:screenOrientation="portrait"/> -->

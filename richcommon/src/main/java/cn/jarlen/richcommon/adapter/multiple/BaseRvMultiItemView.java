@@ -33,8 +33,8 @@ import cn.jarlen.richcommon.adapter.RvViewHolder;
 public abstract class BaseRvMultiItemView<D> implements IRvMultiItemView<D> {
 
     protected Context mContext;
-
     private D data;
+    private int position;
 
     public BaseRvMultiItemView(Context context) {
         this.mContext = context;
@@ -42,11 +42,24 @@ public abstract class BaseRvMultiItemView<D> implements IRvMultiItemView<D> {
 
     @Override
     public RvViewHolder onCreateViewHolder(ViewGroup parent) {
-        RvViewHolder viewHolder = RvViewHolder.getViewHolder(mContext, parent, getLayoutResId());
+        RvViewHolder viewHolder = RvViewHolder.getViewHolder(mContext, parent, getLayoutResId(data));
         return viewHolder;
     }
 
-    protected abstract int getLayoutResId();
+    @Override
+    public boolean isForViewType(@NonNull D item, int position) {
+        boolean match = isForViewType(item);
+        if (match) {
+            this.data = item;
+            this.position = position;
+            return match;
+        }
+        return match;
+    }
+
+    public int getPosition() {
+        return position;
+    }
 
     @Override
     public void onBindViewHolder(@NonNull D item, int position, @NonNull RvViewHolder holder, @NonNull List<Object> payloads) {
@@ -54,11 +67,13 @@ public abstract class BaseRvMultiItemView<D> implements IRvMultiItemView<D> {
         onBindView(holder, item);
     }
 
-    protected D getData(){
+    protected D getData() {
         return data;
     }
 
     protected abstract void onBindView(RvViewHolder viewHolder, D item);
+
+    protected abstract boolean isForViewType(@NonNull D item);
 
     @Override
     public boolean onFailedToRecycleView(@NonNull RvViewHolder holder) {

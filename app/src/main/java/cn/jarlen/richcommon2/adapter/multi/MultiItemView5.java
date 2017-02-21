@@ -16,27 +16,27 @@ import cn.jarlen.richcommon2.data.Bean;
  * Created by hjl on 2017/1/12.
  */
 
-public class MultiItemView0 extends BaseRvMultiItemView<Bean> {
+public class MultiItemView5 extends BaseRvMultiItemView<Bean> {
 
-    public MultiItemView0(Context context) {
+    public MultiItemView5(Context context) {
         super(context);
-        LogUtils.d("jarlen", "creat");
+        LogUtils.d("jarlen","creat");
     }
 
     @Override
     protected void onBindView(RvViewHolder viewHolder, Bean item) {
-        Log.e("jarlen", "onBindView--->" + viewHolder);
-        TextView tv = viewHolder.getView(R.id.name);
-        tv.setText(item.getName());
+        Log.e("jarlen","onBindView--->"+viewHolder);
+        TextView name = viewHolder.getView(R.id.name);
+        name.setText("MultiItemView4 : "+item.getName());
     }
 
     @Override
     protected boolean isForViewType(@NonNull Bean item) {
-        return item.getType() == 0;
+        return item.getType() == 5;
     }
 
     @Override
     public int getLayoutResId(Bean item) {
-        return R.layout.layout_list_item;
+        return R.layout.layout_rv_item_five;
     }
 }

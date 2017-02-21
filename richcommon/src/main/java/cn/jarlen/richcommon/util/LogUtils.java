@@ -33,7 +33,7 @@ import java.util.Locale;
  * @author hjl
  */
 public class LogUtils {
-	public static String TAG = LogUtils.class.getName();
+	public static String TAG = LogUtils.class.getSimpleName();
 
 	public static boolean DEBUG = android.util.Log.isLoggable(TAG,
 			android.util.Log.INFO);

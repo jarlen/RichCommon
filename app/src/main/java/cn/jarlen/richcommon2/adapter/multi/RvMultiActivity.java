@@ -36,9 +36,8 @@ public class RvMultiActivity extends BaseActivity {
 
         for (int index = 0; index < 1000; index++) {
             Bean bean = new Bean();
-            bean.setType(index % 3);
+            bean.setType(index%2);
             bean.setName("test " + index);
-
             datas.add(bean);
         }
 
@@ -59,11 +58,13 @@ public class RvMultiActivity extends BaseActivity {
 
         @Override
         protected void preMultiItemView(RvMultiItemManager itemManager) {
-            itemManager.addMultiItemView(new MultiItemView1(mContext));
-            itemManager.addMultiItemView(new MultiItemView2(mContext));
-            itemManager.addMultiItemView(new MultiItemView3(mContext));
-            itemManager.addMultiItemView(new MultiItemView4(mContext));
-            itemManager.addMultiItemView(new MultiItemView0(mContext));
+//            itemManager.addMultiItemView(new NormalMessageView(mContext));
+//            itemManager.addMultiItemView(new MultiItemView0(mContext));
+//            itemManager.addMultiItemView(new MultiItemView3(mContext));
+//            itemManager.addMultiItemView(new MultiItemView4(mContext));
+//            itemManager.addMultiItemView(new MultiItemView1(mContext));
+//            itemManager.addMultiItemView(new MultiItemView2(mContext));
+            itemManager.addMultiItemView(new MessageTextView(mContext));
         }
     }
 }

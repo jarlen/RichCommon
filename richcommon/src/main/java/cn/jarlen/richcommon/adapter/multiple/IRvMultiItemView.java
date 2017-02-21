@@ -18,6 +18,7 @@
 
 package cn.jarlen.richcommon.adapter.multiple;
 
+import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.view.ViewGroup;
 
@@ -26,19 +27,19 @@ import java.util.List;
 import cn.jarlen.richcommon.adapter.RvViewHolder;
 
 
-public interface IRvMultiItemView<T> {
+public interface IRvMultiItemView<D> {
 
-
-    boolean isForViewType(@NonNull T item, int position);
-
+    boolean isForViewType(@NonNull D item, int position);
 
     RvViewHolder onCreateViewHolder(ViewGroup parent);
 
-    void onBindViewHolder(@NonNull T item, int position,
+    void onBindViewHolder(@NonNull D item, int position,
                           @NonNull RvViewHolder holder, @NonNull List<Object> payloads);
 
     void onViewRecycled(@NonNull RvViewHolder viewHolder);
 
+    @LayoutRes
+    int getLayoutResId(D item);
 
     boolean onFailedToRecycleView(@NonNull RvViewHolder holder);
 
