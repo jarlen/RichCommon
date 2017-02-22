@@ -2,11 +2,10 @@ package cn.jarlen.richcommon2.adapter.multi;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import cn.jarlen.richcommon.adapter.RvViewHolder;
-import cn.jarlen.richcommon.adapter.multiple.BaseRvMultiItemView;
+import cn.jarlen.richcommon.adapter.multiple.RvMultiItemView;
 import cn.jarlen.richcommon2.R;
 import cn.jarlen.richcommon2.data.Bean;
 
@@ -15,7 +14,7 @@ import cn.jarlen.richcommon2.data.Bean;
  * Created by hjl on 2017/2/21.
  */
 
-public class MessageTextView extends BaseRvMultiItemView<Bean> {
+public class MessageTextView extends RvMultiItemView<Bean> {
 
     public MessageTextView(Context context) {
         super(context);

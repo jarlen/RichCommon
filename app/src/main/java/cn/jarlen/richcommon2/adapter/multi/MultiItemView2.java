@@ -6,7 +6,7 @@ import android.util.Log;
 import android.widget.TextView;
 
 import cn.jarlen.richcommon.adapter.RvViewHolder;
-import cn.jarlen.richcommon.adapter.multiple.BaseRvMultiItemView;
+import cn.jarlen.richcommon.adapter.multiple.RvMultiItemView;
 import cn.jarlen.richcommon.util.LogUtils;
 import cn.jarlen.richcommon2.R;
 import cn.jarlen.richcommon2.data.Bean;
@@ -16,7 +16,7 @@ import cn.jarlen.richcommon2.data.Bean;
  * Created by hjl on 2017/1/12.
  */
 
-public class MultiItemView2 extends BaseRvMultiItemView<Bean> {
+public class MultiItemView2 extends RvMultiItemView<Bean> {
     public MultiItemView2(Context context) {
         super(context);
         LogUtils.d("jarlen","creat");

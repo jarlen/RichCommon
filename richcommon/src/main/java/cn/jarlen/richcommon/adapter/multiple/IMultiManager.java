@@ -16,24 +16,41 @@
  */
 package cn.jarlen.richcommon.adapter.multiple;
 
-import android.support.annotation.LayoutRes;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
-
-import cn.jarlen.richcommon.adapter.ViewHolder;
 
 /**
  * Created by hjl on 2017/2/22.
  */
 
-public interface IMultiItemView<D> {
+public interface IMultiManager<D> {
 
-    @LayoutRes
-    int getLayoutResId();
+    /**
+     * 注册列表item类型
+     * @param multiItemView
+     */
+    void registerMultiView(@NonNull IMultiItemView multiItemView);
 
-    void updataView(ViewHolder viewHolder, D data);
+    /**
+     * 清除列表item类型
+     */
+    void unRegisterMultiViews();
 
-    boolean isForViewType(D data, int position);
+    /**
+     * 获得item类型数
+     * @return
+     */
+    int getViewTypeCount();
 
-    ViewHolder getViewHolder(ViewGroup parent, View convertView, int position);
+    /**
+     * 通过业务条件获取item类型
+     * @param data
+     * @return
+     */
+    int getItemViewType(D data,int position);
+
+    IMultiItemView getMultiItemForViewType(int viewType);
+
+    View getView(D data, int position, View convertView, ViewGroup parent);
 }

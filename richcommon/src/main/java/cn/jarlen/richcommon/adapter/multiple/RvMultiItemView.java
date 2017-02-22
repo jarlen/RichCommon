@@ -30,13 +30,13 @@ import cn.jarlen.richcommon.adapter.RvViewHolder;
  * Created by jarlen on 2017/1/11.
  */
 
-public abstract class BaseRvMultiItemView<D> implements IRvMultiItemView<D> {
+public abstract class RvMultiItemView<D> implements IRvMultiItemView<D> {
 
     protected Context mContext;
     private D data;
     private int position;
 
-    public BaseRvMultiItemView(Context context) {
+    public RvMultiItemView(Context context) {
         this.mContext = context;
     }
 
