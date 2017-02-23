@@ -23,10 +23,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import cn.jarlen.richcommon.adapter.ViewHolder;
-import cn.jarlen.richcommon.util.LogUtils;
 
 /**
- * Created by hjl on 2017/2/22.
+ * Created by hjl on 2016/9/11.
  */
 
 public class MultiManager<D> implements IMultiManager<D> {
@@ -85,7 +84,7 @@ public class MultiManager<D> implements IMultiManager<D> {
         int resId = multiItemViews.keyAt(itemViewType);
         IMultiItemView multiItemView = getMultiItemForResId(resId);
         ViewHolder viewHolder = multiItemView.getViewHolder(parent, convertView, position);
-        multiItemView.updateView(viewHolder, data);
+        multiItemView.updateView(viewHolder, data,position);
         return viewHolder.getConvertView();
     }
 }

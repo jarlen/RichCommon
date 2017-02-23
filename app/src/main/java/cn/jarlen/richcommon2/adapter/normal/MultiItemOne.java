@@ -23,7 +23,7 @@ public class MultiItemOne extends MultiItemView<Bean> {
     }
 
     @Override
-    protected void onBindView(ViewHolder viewHolder, Bean data) {
+    protected void onBindView(ViewHolder viewHolder, Bean data,int position) {
         TextView textView = viewHolder.getView(R.id.message_tv);
         textView.setText(data.getName());
     }

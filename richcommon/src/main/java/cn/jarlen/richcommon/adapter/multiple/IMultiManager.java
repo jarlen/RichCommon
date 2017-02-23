@@ -22,7 +22,7 @@ import android.view.ViewGroup;
 
 /**
  * manager of list item type
- * Created by jarlen on 2017/2/22.
+ * Created by jarlen on 2016/9/4.
  */
 
 public interface IMultiManager<D> {

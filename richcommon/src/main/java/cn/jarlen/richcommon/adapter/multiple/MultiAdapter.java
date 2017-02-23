@@ -28,13 +28,13 @@ import java.util.List;
 /**
  * Data adapter supporting multiple types of item
  *
- * Created by jarlen on 2017/2/22.
+ * Created by jarlen on 2016/9/4.
  */
 
 public abstract class MultiAdapter<D> extends BaseAdapter {
 
     protected List<D> listData = new ArrayList<>();
-    protected IMultiManager multiManager = null;
+    private IMultiManager multiManager = null;
     protected Context mContext;
 
     protected ListView mListView;
@@ -49,6 +49,10 @@ public abstract class MultiAdapter<D> extends BaseAdapter {
 
     public MultiAdapter(Context context, List<D> datas) {
         this(context, datas, null);
+    }
+
+    public IMultiManager getMultiManager() {
+        return multiManager;
     }
 
     public MultiAdapter(Context context, List<D> datas, ListView listView) {

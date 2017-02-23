@@ -23,7 +23,7 @@ import android.view.ViewGroup;
 import cn.jarlen.richcommon.adapter.ViewHolder;
 
 /**
- * Created by jarlen on 2017/2/22.
+ * Created by jarlen on 2016/9/4.
  */
 
 public interface IMultiItemView<D> {
@@ -39,8 +39,9 @@ public interface IMultiItemView<D> {
      * Update the current item data
      * @param viewHolder
      * @param data
+     * @param position
      */
-    void updateView(ViewHolder viewHolder, D data);
+    void updateView(ViewHolder viewHolder, D data, int position);
 
     /**
      * Check whether the current item

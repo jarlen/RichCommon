@@ -25,14 +25,10 @@ import cn.jarlen.richcommon.adapter.ViewHolder;
 
 /**
  * item view
- * Created by hjl on 2017/2/22.
+ * Created by hjl on 2016/9/11.
  */
 
 public abstract class MultiItemView<D> implements IMultiItemView<D> {
-
-    private D data;
-
-    private int position;
 
     protected Context mContext;
 
@@ -40,21 +36,9 @@ public abstract class MultiItemView<D> implements IMultiItemView<D> {
         this.mContext = context;
     }
 
-    /**
-     * get position of this item
-     * @return
-     */
-    public int getPosition() {
-        return position;
-    }
-
     @Override
     public boolean isForViewType(D item, int position) {
         boolean match = isForViewType(item);
-        if (match) {
-            this.data = item;
-            this.position = position;
-        }
         return match;
     }
 
@@ -64,8 +48,8 @@ public abstract class MultiItemView<D> implements IMultiItemView<D> {
     }
 
     @Override
-    public void updateView(ViewHolder viewHolder, D item) {
-        onBindView(viewHolder, item);
+    public void updateView(ViewHolder viewHolder, D item,int position) {
+        onBindView(viewHolder, item,position);
     }
 
     /**
@@ -75,7 +59,7 @@ public abstract class MultiItemView<D> implements IMultiItemView<D> {
      * @param item
      * data
      */
-    protected abstract void onBindView(ViewHolder viewHolder, D item);
+    protected abstract void onBindView(ViewHolder viewHolder, D item,int position);
 
     /**
      * Check whether the current item
@@ -85,11 +69,4 @@ public abstract class MultiItemView<D> implements IMultiItemView<D> {
      */
     protected abstract boolean isForViewType(@NonNull D item);
 
-    /**
-     * get data of this item
-     * @return
-     */
-    public D getData() {
-        return data;
-    }
 }
