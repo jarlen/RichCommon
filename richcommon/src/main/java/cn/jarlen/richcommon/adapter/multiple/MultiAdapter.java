@@ -26,7 +26,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by hjl on 2017/2/22.
+ * Data adapter supporting multiple types of item
+ *
+ * Created by jarlen on 2017/2/22.
  */
 
 public abstract class MultiAdapter<D> extends BaseAdapter {
@@ -41,7 +43,7 @@ public abstract class MultiAdapter<D> extends BaseAdapter {
         this(context, null, null);
     }
 
-    public MultiAdapter(Context context,ListView listView) {
+    public MultiAdapter(Context context, ListView listView) {
         this(context, null, listView);
     }
 
@@ -55,33 +57,48 @@ public abstract class MultiAdapter<D> extends BaseAdapter {
             this.listData = datas;
         }
         this.mListView = listView;
-        multiManager = new MultiManager();
+        multiManager = new MultiManager(context);
         registerItemViewType(multiManager);
     }
 
-    public void addDatas(List<D> datas){
-        if(listData != null){
+    /**
+     * Add multiple data
+     * @param datas
+     */
+    public void addDatas(List<D> datas) {
+        if (listData != null) {
             listData.addAll(datas);
         }
         notifyDataSetChanged();
     }
 
-    public void addDatas(D data){
-        if(listData != null){
+    /**
+     * Add single data
+     * @param data
+     */
+    public void addDatas(D data) {
+        if (listData != null) {
             listData.add(data);
         }
         notifyDataSetChanged();
     }
 
-    public void delete(int position){
-        if(listData != null){
+    /**
+     * Delete a single data by position
+     * @param position
+     */
+    public void delete(int position) {
+        if (listData != null) {
             listData.remove(position);
         }
         notifyDataSetChanged();
     }
 
-    public void clearAll(){
-        if(listData != null){
+    /**
+     * Delete all the datas
+     */
+    public void clearAll() {
+        if (listData != null) {
             listData.clear();
         }
         notifyDataSetChanged();
@@ -107,7 +124,7 @@ public abstract class MultiAdapter<D> extends BaseAdapter {
 
     @Override
     public int getItemViewType(int position) {
-        return multiManager.getItemViewType(listData.get(position),position);
+        return multiManager.getItemViewType(listData.get(position), position);
     }
 
     @Override
@@ -117,9 +134,14 @@ public abstract class MultiAdapter<D> extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        return multiManager.getView(listData.get(position), position, convertView, parent);
+        View view = multiManager.getView(listData.get(position), position, convertView, parent);
+        return view;
     }
 
+    /**
+     * update single item by position
+     * @param position
+     */
     public void updateItem(int position) {
         if (mListView != null) {
             int visiblePosition = mListView.getFirstVisiblePosition();
@@ -131,5 +153,9 @@ public abstract class MultiAdapter<D> extends BaseAdapter {
         }
     }
 
+    /**
+     * Register list item type
+     * @param multiManager
+     */
     protected abstract void registerItemViewType(IMultiManager multiManager);
 }

@@ -16,18 +16,26 @@
  */
 package cn.jarlen.richcommon.adapter.multiple;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v4.util.SparseArrayCompat;
 import android.view.View;
 import android.view.ViewGroup;
 
 import cn.jarlen.richcommon.adapter.ViewHolder;
+import cn.jarlen.richcommon.util.LogUtils;
 
 /**
  * Created by hjl on 2017/2/22.
  */
 
 public class MultiManager<D> implements IMultiManager<D> {
+
+    private Context mContext;
+
+    public MultiManager(Context context) {
+        this.mContext = context;
+    }
 
     private SparseArrayCompat<IMultiItemView> multiItemViews = new SparseArrayCompat<IMultiItemView>();
 
@@ -48,16 +56,16 @@ public class MultiManager<D> implements IMultiManager<D> {
     }
 
     @Override
-    public int getItemViewType(D data,int position) {
+    public int getItemViewType(D data, int position) {
 
         int itemViewCount = multiItemViews.size();
 
         for (int index = 0; index < itemViewCount; index++) {
             int viewType = multiItemViews.keyAt(index);
             IMultiItemView itemView = multiItemViews.get(viewType);
-            boolean match = itemView.isForViewType(data,position);
+            boolean match = itemView.isForViewType(data, position);
             if (match) {
-                return itemView.getLayoutResId();
+                return index;
             }
         }
 
@@ -66,17 +74,18 @@ public class MultiManager<D> implements IMultiManager<D> {
     }
 
     @Override
-    public IMultiItemView getMultiItemForViewType(int viewType) {
+    public IMultiItemView getMultiItemForResId(int viewType) {
         IMultiItemView multiItemView = multiItemViews.get(viewType);
         return multiItemView;
     }
 
-
     @Override
     public View getView(D data, int position, View convertView, ViewGroup parent) {
-        IMultiItemView multiItemView = getMultiItemForViewType(getItemViewType(data,position));
+        int itemViewType = getItemViewType(data, position);
+        int resId = multiItemViews.keyAt(itemViewType);
+        IMultiItemView multiItemView = getMultiItemForResId(resId);
         ViewHolder viewHolder = multiItemView.getViewHolder(parent, convertView, position);
-        multiItemView.updataView(viewHolder, data);
+        multiItemView.updateView(viewHolder, data);
         return viewHolder.getConvertView();
     }
 }

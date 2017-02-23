@@ -29,7 +29,7 @@ import android.view.ViewGroup;
  * <br>View view = viewHolder.getView(resId);
  * <br>return viewHolder.getConvertView();
  * <br>
- *     Created by jarlen on 2016/6/22.
+ * Created by jarlen on 2016/6/22.
  */
 public class ViewHolder {
     private View mConvertView;
@@ -37,7 +37,7 @@ public class ViewHolder {
     private int mPosition;
 
     private ViewHolder(Context context, int position, int layoutId,
-                      ViewGroup parent) {
+                       ViewGroup parent) {
         this.mPosition = position;
         this.mViews = new SparseArray<View>();
         this.mConvertView = LayoutInflater.from(context).inflate(layoutId,

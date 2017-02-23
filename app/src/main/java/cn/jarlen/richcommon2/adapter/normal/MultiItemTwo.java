@@ -2,6 +2,8 @@ package cn.jarlen.richcommon2.adapter.normal;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import cn.jarlen.richcommon.adapter.ViewHolder;

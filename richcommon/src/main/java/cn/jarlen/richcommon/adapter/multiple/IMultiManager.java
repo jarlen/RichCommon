@@ -21,36 +21,59 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * Created by hjl on 2017/2/22.
+ * manager of list item type
+ * Created by jarlen on 2017/2/22.
  */
 
 public interface IMultiManager<D> {
 
     /**
-     * 注册列表item类型
+     * Register list item type
+     *
      * @param multiItemView
+     * item type
      */
     void registerMultiView(@NonNull IMultiItemView multiItemView);
 
     /**
-     * 清除列表item类型
+     * Clear list item type
      */
     void unRegisterMultiViews();
 
     /**
-     * 获得item类型数
+     * Get the number of item types
      * @return
      */
     int getViewTypeCount();
 
     /**
-     * 通过业务条件获取item类型
+     * Get item type by business condition
+     *
      * @param data
+     * data
      * @return
      */
-    int getItemViewType(D data,int position);
+    int getItemViewType(D data, int position);
 
-    IMultiItemView getMultiItemForViewType(int viewType);
+    /**
+     * Get the current item type by item layout resource ID
+     * @param resId
+     * resource ID
+     * @return
+     */
+    IMultiItemView getMultiItemForResId(int resId);
 
+    /**
+     * updata view
+     * @param data
+     * data
+     * @param position
+     * position of updating the current item
+     * @param convertView
+     * the current item view
+     * @param parent
+     * parent view of the current item
+     * @return
+     */
     View getView(D data, int position, View convertView, ViewGroup parent);
 }

@@ -23,17 +23,40 @@ import android.view.ViewGroup;
 import cn.jarlen.richcommon.adapter.ViewHolder;
 
 /**
- * Created by hjl on 2017/2/22.
+ * Created by jarlen on 2017/2/22.
  */
 
 public interface IMultiItemView<D> {
 
+    /**
+     * get resource of this item's layout
+     * @return
+     */
     @LayoutRes
     int getLayoutResId();
 
-    void updataView(ViewHolder viewHolder, D data);
+    /**
+     * Update the current item data
+     * @param viewHolder
+     * @param data
+     */
+    void updateView(ViewHolder viewHolder, D data);
 
+    /**
+     * Check whether the current item
+     * @param data
+     * data
+     * @param position
+     * @return
+     */
     boolean isForViewType(D data, int position);
 
+    /**
+     * Get current reuse component
+     * @param parent
+     * @param convertView
+     * @param position
+     * @return
+     */
     ViewHolder getViewHolder(ViewGroup parent, View convertView, int position);
 }

@@ -45,7 +45,7 @@ public abstract class RvMultiAdapter<D> extends RecyclerView.Adapter<RvViewHolde
 
     @Override
     public int getItemViewType(int position) {
-        if(listData == null || listData.isEmpty()){
+        if (listData == null || listData.isEmpty()) {
             return super.getItemViewType(position);
         }
         return itemManager.getItemViewType(listData.get(position), position);

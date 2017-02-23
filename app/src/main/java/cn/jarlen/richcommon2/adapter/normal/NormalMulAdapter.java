@@ -2,7 +2,6 @@ package cn.jarlen.richcommon2.adapter.normal;
 
 import android.content.Context;
 import android.widget.ListView;
-
 import cn.jarlen.richcommon.adapter.multiple.IMultiManager;
 import cn.jarlen.richcommon.adapter.multiple.MultiAdapter;
 import cn.jarlen.richcommon2.data.Bean;
@@ -16,6 +15,7 @@ public class NormalMulAdapter extends MultiAdapter<Bean> {
     public NormalMulAdapter(Context context, ListView listView) {
         super(context, listView);
     }
+
 
     @Override
     protected void registerItemViewType(IMultiManager multiManager) {

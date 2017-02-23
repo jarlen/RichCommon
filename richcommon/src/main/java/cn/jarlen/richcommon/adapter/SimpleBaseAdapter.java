@@ -19,6 +19,7 @@ package cn.jarlen.richcommon.adapter;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.widget.BaseAdapter;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,7 +63,7 @@ public abstract class SimpleBaseAdapter<D> extends BaseAdapter {
         this.notifyDataSetChanged();
     }
 
-    public void addData(D data){
+    public void addData(D data) {
         if (listData != null) {
             listData.add(data);
         }

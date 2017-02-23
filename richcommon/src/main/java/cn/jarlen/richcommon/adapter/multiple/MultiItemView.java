@@ -24,6 +24,7 @@ import android.view.ViewGroup;
 import cn.jarlen.richcommon.adapter.ViewHolder;
 
 /**
+ * item view
  * Created by hjl on 2017/2/22.
  */
 
@@ -33,41 +34,61 @@ public abstract class MultiItemView<D> implements IMultiItemView<D> {
 
     private int position;
 
-    private Context mContext;
+    protected Context mContext;
 
     public MultiItemView(Context context) {
         this.mContext = context;
     }
 
+    /**
+     * get position of this item
+     * @return
+     */
     public int getPosition() {
         return position;
     }
 
     @Override
-    public boolean isForViewType(D data,int position) {
-        boolean match = isForViewType(data);
+    public boolean isForViewType(D item, int position) {
+        boolean match = isForViewType(item);
         if (match) {
-            this.data = data;
+            this.data = item;
             this.position = position;
         }
         return match;
     }
 
-    @Override
     public ViewHolder getViewHolder(ViewGroup parent, View convertView, int position) {
-        ViewHolder vh =  ViewHolder.getViewHolder(mContext, parent, convertView, position, getLayoutResId());
+        ViewHolder vh = ViewHolder.getViewHolder(mContext, parent, convertView, position, getLayoutResId());
         return vh;
     }
 
     @Override
-    public void updataView(ViewHolder viewHolder, D data) {
-        onBindView(viewHolder, data);
+    public void updateView(ViewHolder viewHolder, D item) {
+        onBindView(viewHolder, item);
     }
 
-    protected abstract void onBindView(ViewHolder viewHolder, D data);
+    /**
+     * bind data onto view
+     * @param viewHolder
+     * the current view component
+     * @param item
+     * data
+     */
+    protected abstract void onBindView(ViewHolder viewHolder, D item);
 
+    /**
+     * Check whether the current item
+     * @param item
+     *
+     * @return
+     */
     protected abstract boolean isForViewType(@NonNull D item);
 
+    /**
+     * get data of this item
+     * @return
+     */
     public D getData() {
         return data;
     }

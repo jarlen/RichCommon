@@ -28,7 +28,7 @@ public class MultiActivity extends BaseActivity {
     protected void onBindView() {
         listView = (ListView) findViewById(R.id.listview);
 
-        normalMulAdapter = new NormalMulAdapter(this,listView);
+        normalMulAdapter = new NormalMulAdapter(this, listView);
 
         listView.setAdapter(normalMulAdapter);
 
@@ -36,7 +36,7 @@ public class MultiActivity extends BaseActivity {
 
         for (int index = 0; index < 1000; index++) {
             Bean bean = new Bean();
-            bean.setType(index%2);
+            bean.setType(index % 2);
             bean.setName("test " + index);
             datas.add(bean);
         }
