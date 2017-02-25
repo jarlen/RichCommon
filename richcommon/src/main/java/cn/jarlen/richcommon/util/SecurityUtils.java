@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-package cn.jarlen.richcommon.dataoption;
+package cn.jarlen.richcommon.util;
 
 import java.security.MessageDigest;
 import java.util.Locale;

@@ -25,8 +25,6 @@ import java.io.IOException;
 import java.security.MessageDigest;
 import java.text.DecimalFormat;
 
-import cn.jarlen.richcommon.dataoption.SecurityUtils;
-
 /**
  * DESCRIBE: File tools
  * Created by jarlen on 2016/6/22.
