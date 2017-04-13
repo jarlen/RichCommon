@@ -94,6 +94,9 @@ public class AppUtils {
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
+        catch (Exception e){
+            e.printStackTrace();
+        }
         return applicationInfo != null;
     }
 
