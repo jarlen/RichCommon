@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".view.ScrollViewActivity"
+            android:name=".MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,21 +19,21 @@
             </intent-filter>
         </activity>
 
-        <!-- <activity android:name=".adapter.multi.RvMultiActivity" -->
-        <!-- android:screenOrientation="portrait"/> -->
-
-
-        <!-- <activity android:name=".adapter.RvAdapterActivity" -->
-        <!-- android:screenOrientation="portrait"/> -->
-
-
-        <!-- <activity android:name="cn.jarlen.richcommon.PreviewActivity" -->
-        <!-- android:screenOrientation="portrait"/> -->
-        <!-- <activity android:name=".AdapterActivity"></activity> -->
-        <!-- <activity android:name=".WaterMarkActivity"></activity> -->
-        <!--<activity-->
-            <!--android:name=".view.ScrollViewActivity"-->
-            <!--android:label="@string/title_activity_scroll_view"></activity>-->
+        <activity
+            android:name=".view.WaterMarkActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.ScrollViewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.PreviewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.view.AddActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ViewHolderActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

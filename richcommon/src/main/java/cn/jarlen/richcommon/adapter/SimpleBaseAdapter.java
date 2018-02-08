@@ -46,6 +46,10 @@ public abstract class SimpleBaseAdapter<D> extends BaseAdapter {
         return listData.size();
     }
 
+    public Context getContext() {
+        return context;
+    }
+
     @Override
     public Object getItem(int arg0) {
         return listData.get(arg0);

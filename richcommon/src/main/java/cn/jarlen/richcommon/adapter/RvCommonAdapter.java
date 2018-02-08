@@ -66,6 +66,10 @@ public abstract class RvCommonAdapter<D> extends RecyclerView.Adapter<RvViewHold
         this.notifyDataSetChanged();
     }
 
+    public Context getContext() {
+        return mContext;
+    }
+
     public void addData(D data) {
         if (listData != null) {
             listData.add(data);

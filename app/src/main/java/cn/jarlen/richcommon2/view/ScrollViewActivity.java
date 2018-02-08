@@ -22,7 +22,7 @@ public class ScrollViewActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scroll_view);
-        listView = (ListViewInScrollView) findViewById(R.id.listview);
+        listView = (ListViewInScrollView) findViewById(R.id.listview_in_scroll_view);
         adapter = new CommonAdapter<String>(this) {
             @Override
             public void onBindView(ViewHolder viewHolder, String item) {
