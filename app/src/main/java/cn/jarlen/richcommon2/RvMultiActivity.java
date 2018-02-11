@@ -1,4 +1,4 @@
-package cn.jarlen.richcommon2.adapter.multi;
+package cn.jarlen.richcommon2;
 
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,6 +11,7 @@ import cn.jarlen.richcommon.adapter.multiple.RvMultiAdapter;
 import cn.jarlen.richcommon.adapter.multiple.RvMultiItemManager;
 import cn.jarlen.richcommon.ui.BaseActivity;
 import cn.jarlen.richcommon2.R;
+import cn.jarlen.richcommon2.adapter.multi.MessageTextView;
 import cn.jarlen.richcommon2.data.Bean;
 
 /**

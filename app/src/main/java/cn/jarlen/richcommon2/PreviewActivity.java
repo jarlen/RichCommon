@@ -1,4 +1,4 @@
-package cn.jarlen.richcommon2.view;
+package cn.jarlen.richcommon2;
 
 import android.widget.ImageView;
 

@@ -1,4 +1,4 @@
-package cn.jarlen.richcommon2.adapter.normal;
+package cn.jarlen.richcommon2;
 
 import android.widget.ListView;
 
@@ -7,6 +7,7 @@ import java.util.List;
 
 import cn.jarlen.richcommon.ui.BaseActivity;
 import cn.jarlen.richcommon2.R;
+import cn.jarlen.richcommon2.adapter.normal.NormalMulAdapter;
 import cn.jarlen.richcommon2.data.Bean;
 
 /**

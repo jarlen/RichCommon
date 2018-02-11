@@ -1,4 +1,4 @@
-package cn.jarlen.richcommon2.view;
+package cn.jarlen.richcommon2;
 
 import cn.jarlen.richcommon.ui.BaseActivity;
 import cn.jarlen.richcommon.view.WaterMarkView;

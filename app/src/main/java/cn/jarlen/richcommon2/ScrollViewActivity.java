@@ -1,7 +1,9 @@
-package cn.jarlen.richcommon2.view;
+package cn.jarlen.richcommon2;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -9,8 +11,8 @@ import java.util.List;
 
 import cn.jarlen.richcommon.adapter.CommonAdapter;
 import cn.jarlen.richcommon.adapter.ViewHolder;
+import cn.jarlen.richcommon.util.ToastUtils;
 import cn.jarlen.richcommon.view.ListViewInScrollView;
-import cn.jarlen.richcommon2.R;
 
 public class ScrollViewActivity extends Activity {
 
@@ -37,16 +39,26 @@ public class ScrollViewActivity extends Activity {
         };
 
         listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                String warnContent = getResources().getString(R.string.warning_click, adapter.getItem(position));
+
+                ToastUtils.makeToast(ScrollViewActivity.this).setText(warnContent).show();
+            }
+        });
         initData();
     }
 
 
-    private void initData(){
+    private void initData() {
 
         List<String> datas = new ArrayList<>();
 
-        for(int index = 0;index < 50;index++){
-            datas.add("测试 : "+index);
+        for (int index = 0; index < 50; index++) {
+            datas.add("测试 : " + index);
         }
 
         adapter.addDataList(datas);

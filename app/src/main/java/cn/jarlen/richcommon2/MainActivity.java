@@ -3,7 +3,6 @@ package cn.jarlen.richcommon2;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -12,9 +11,6 @@ import java.util.List;
 import cn.jarlen.richcommon2.adapter.TestAdapter;
 import cn.jarlen.richcommon2.data.TestItem;
 import cn.jarlen.richcommon2.mvp.view.AddActivity;
-import cn.jarlen.richcommon2.view.PreviewActivity;
-import cn.jarlen.richcommon2.view.ScrollViewActivity;
-import cn.jarlen.richcommon2.view.WaterMarkActivity;
 
 public class MainActivity extends Activity {
 

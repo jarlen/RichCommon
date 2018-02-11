@@ -20,13 +20,13 @@
         </activity>
 
         <activity
-            android:name=".view.WaterMarkActivity"
+            android:name=".WaterMarkActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".view.ScrollViewActivity"
+            android:name=".ScrollViewActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".view.PreviewActivity"
+            android:name=".PreviewActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".mvp.view.AddActivity"
