@@ -17,6 +17,7 @@
 package cn.jarlen.richcommon.util;
 
 import android.content.Context;
+import android.support.annotation.StringRes;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.widget.ImageView;
@@ -59,6 +60,11 @@ public class ToastUtils {
 
     public ToastUtils setText(String message) {
         this.mText = message;
+        return this;
+    }
+
+    public ToastUtils setText(@StringRes int messageRes) {
+        this.mText = mContext.getResources().getString(messageRes);
         return this;
     }
 
