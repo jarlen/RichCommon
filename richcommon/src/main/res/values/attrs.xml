@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <declare-styleable name="WaterMarkView">
         <attr name="wm_degree" format="integer|reference" />
@@ -8,5 +8,44 @@
         <attr name="wm_textSize" format="dimension|reference" />
         <attr name="wm_dx" format="dimension|reference" />
         <attr name="wm_dy" format="dimension|reference" />
+    </declare-styleable>
+
+    <declare-styleable name="ToolbarButton" tools:ignore="ResourceName">
+        <attr name="buttonText" format="reference|string" />
+        <attr name="buttonTextSize" format="reference" />
+        <attr name="buttonPadding" format="reference" />
+        <attr name="buttonTextColor" format="reference" />
+        <attr name="buttonIcon" format="reference" />
+        <attr name="Visibility" format="reference">
+            <enum name="VISIBLE" value="0x00000000" />
+            <enum name="INVISIBLE" value="0x00000004" />
+            <enum name="GONE" value="0x00000008" />
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="CommonToolBar" tools:ignore="ResourceName">
+        <attr name="titleText" format="reference" />
+        <attr name="titleColor" format="reference" />
+        <attr name="titleBold" format="boolean" />
+        <attr name="titleCenter" format="boolean" />
+        <attr name="toolbarBackground" format="reference" />
+        <attr name="titleSize" format="reference|dimension" />
+        <attr name="leftFirstIcon" format="reference" />
+        <attr name="leftFirstIconIsShown" format="boolean" />
+        <attr name="leftFirstText" format="reference|string" />
+        <attr name="leftButtonColor" format="reference" />
+        <attr name="leftSecondIcon" format="reference" />
+        <attr name="leftSecondText" format="reference|string" />
+        <attr name="rightFirstIcon" format="reference" />
+        <attr name="rightFirstText" format="reference|string" />
+        <attr name="rightSecondIcon" format="reference" />
+        <attr name="rightSecondText" format="reference|string" />
+        <attr name="rightButtonColor" format="reference" />
+        <attr name="dividerIsShown" format="boolean" />
+        <attr name="btnTextSize" format="reference|dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="CommonButton" tools:ignore="ResourceName">
+        <attr name="alpha_enable" format="float" />
+        <attr name="alpha_press" format="float" />
     </declare-styleable>
 </resources>
