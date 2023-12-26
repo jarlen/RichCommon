@@ -17,9 +17,10 @@
 package cn.jarlen.richcommon.adapter.multiple;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
 
 import cn.jarlen.richcommon.adapter.ViewHolder;
 
@@ -48,23 +49,22 @@ public abstract class MultiItemView<D> implements IMultiItemView<D> {
     }
 
     @Override
-    public void updateView(ViewHolder viewHolder, D item,int position) {
-        onBindView(viewHolder, item,position);
+    public void updateView(ViewHolder viewHolder, D item, int position) {
+        onBindView(viewHolder, item, position);
     }
 
     /**
      * bind data onto view
-     * @param viewHolder
-     * the current view component
-     * @param item
-     * data
+     *
+     * @param viewHolder the current view component
+     * @param item       data
      */
-    protected abstract void onBindView(ViewHolder viewHolder, D item,int position);
+    protected abstract void onBindView(ViewHolder viewHolder, D item, int position);
 
     /**
      * Check whether the current item
-     * @param item
      *
+     * @param item
      * @return
      */
     protected abstract boolean isForViewType(@NonNull D item);

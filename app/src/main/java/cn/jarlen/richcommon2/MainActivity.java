@@ -2,8 +2,9 @@ package cn.jarlen.richcommon2;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,9 +16,7 @@ import cn.jarlen.richcommon2.mvp.view.AddActivity;
 public class MainActivity extends Activity {
 
     private RecyclerView mListView;
-
     private TestAdapter testAdapter;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

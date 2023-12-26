@@ -1,9 +1,10 @@
 package cn.jarlen.richcommon2.adapter.multi;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 
 import cn.jarlen.richcommon.adapter.RvViewHolder;
 import cn.jarlen.richcommon.adapter.multiple.RvMultiItemView;

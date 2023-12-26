@@ -17,10 +17,11 @@
 package cn.jarlen.richcommon.adapter.multiple;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v4.util.SparseArrayCompat;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.collection.SparseArrayCompat;
 
 import cn.jarlen.richcommon.adapter.ViewHolder;
 
@@ -84,7 +85,7 @@ public class MultiManager<D> implements IMultiManager<D> {
         int resId = multiItemViews.keyAt(itemViewType);
         IMultiItemView multiItemView = getMultiItemForResId(resId);
         ViewHolder viewHolder = multiItemView.getViewHolder(parent, convertView, position);
-        multiItemView.updateView(viewHolder, data,position);
+        multiItemView.updateView(viewHolder, data, position);
         return viewHolder.getConvertView();
     }
 }

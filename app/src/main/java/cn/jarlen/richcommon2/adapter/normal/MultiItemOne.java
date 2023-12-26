@@ -1,11 +1,9 @@
 package cn.jarlen.richcommon2.adapter.normal;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 
 import cn.jarlen.richcommon.adapter.ViewHolder;
 import cn.jarlen.richcommon.adapter.multiple.MultiItemView;
@@ -23,7 +21,7 @@ public class MultiItemOne extends MultiItemView<Bean> {
     }
 
     @Override
-    protected void onBindView(ViewHolder viewHolder, Bean data,int position) {
+    protected void onBindView(ViewHolder viewHolder, Bean data, int position) {
         TextView textView = viewHolder.getView(R.id.message_tv);
         textView.setText(data.getName());
     }

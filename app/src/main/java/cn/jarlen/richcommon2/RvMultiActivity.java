@@ -1,8 +1,9 @@
 package cn.jarlen.richcommon2;
 
 import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,6 @@ import java.util.List;
 import cn.jarlen.richcommon.adapter.multiple.RvMultiAdapter;
 import cn.jarlen.richcommon.adapter.multiple.RvMultiItemManager;
 import cn.jarlen.richcommon.ui.BaseActivity;
-import cn.jarlen.richcommon2.R;
 import cn.jarlen.richcommon2.adapter.multi.MessageTextView;
 import cn.jarlen.richcommon2.data.Bean;
 
@@ -37,7 +37,7 @@ public class RvMultiActivity extends BaseActivity {
 
         for (int index = 0; index < 1000; index++) {
             Bean bean = new Bean();
-            bean.setType(index%2);
+            bean.setType(index % 2);
             bean.setName("test " + index);
             datas.add(bean);
         }
@@ -51,7 +51,7 @@ public class RvMultiActivity extends BaseActivity {
     }
 
 
-    private class MultiTestAdapter extends RvMultiAdapter<Bean>{
+    private class MultiTestAdapter extends RvMultiAdapter<Bean> {
 
         public MultiTestAdapter(Context context) {
             super(context);

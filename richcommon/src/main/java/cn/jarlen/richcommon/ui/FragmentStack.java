@@ -16,10 +16,11 @@
  */
 package cn.jarlen.richcommon.ui;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import cn.jarlen.richcommon.R;
 
 /**
@@ -34,24 +35,21 @@ public class FragmentStack {
 
     /**
      * set Animations of Fragment about show or hide
-     * @param in_anim
-     * show Animations
-     * @param out_anim
-     * hide Animations
+     *
+     * @param in_anim  show Animations
+     * @param out_anim hide Animations
      */
-    public static void setCustomAnimations(int in_anim,int out_anim){
+    public static void setCustomAnimations(int in_anim, int out_anim) {
         anim_In = in_anim;
         anim_out = out_anim;
     }
 
     /**
      * put one fragment(which is contained by activity) into stack
-     * @param context
-     * the activity
-     * @param containerId
-     * fragment containerId
-     * @param newFragment
-     * fragment object
+     *
+     * @param context     the activity
+     * @param containerId fragment containerId
+     * @param newFragment fragment object
      */
     public static void addFragmentToStack(FragmentActivity context,
                                           int containerId, Fragment newFragment) {
@@ -60,14 +58,13 @@ public class FragmentStack {
                 .beginTransaction();
         ft.replace(containerId, newFragment, newFragment.getClass()
                 .getSimpleName());
-        ft.setCustomAnimations(anim_In,anim_out);
+        ft.setCustomAnimations(anim_In, anim_out);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         ft.addToBackStack(null);
         ft.commit();
     }
 
     /**
-     *
      * @param mActivity
      */
     public static void popBackStack(FragmentActivity mActivity) {
@@ -76,7 +73,6 @@ public class FragmentStack {
     }
 
     /**
-     *
      * @param context
      * @param containerId
      * @param newFragment
@@ -88,7 +84,7 @@ public class FragmentStack {
                 .beginTransaction();
         ft.replace(containerId, newFragment, newFragment.getClass()
                 .getSimpleName());
-        ft.setCustomAnimations(anim_In,anim_out);
+        ft.setCustomAnimations(anim_In, anim_out);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         ft.addToBackStack(null);
         ft.commit();
@@ -99,7 +95,7 @@ public class FragmentStack {
         FragmentManager fragmentManager = context.getSupportFragmentManager();
         FragmentTransaction ft = fragmentManager
                 .beginTransaction();
-        ft.setCustomAnimations(anim_In,anim_out);
+        ft.setCustomAnimations(anim_In, anim_out);
         ft.replace(containerId, newFragment, newFragment.getClass()
                 .getSimpleName());
         // ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
@@ -132,7 +128,7 @@ public class FragmentStack {
         try {
             FragmentManager fragmentManager = context.getSupportFragmentManager();
             FragmentTransaction ft = fragmentManager.beginTransaction();
-            ft.setCustomAnimations(anim_In,anim_out);
+            ft.setCustomAnimations(anim_In, anim_out);
             ft.add(containerId, newFragment, newFragment.getClass().getSimpleName())
                     .commit();
         } catch (IllegalStateException e) {
@@ -146,14 +142,14 @@ public class FragmentStack {
     public static void showFragment(FragmentActivity context, Fragment fragment) {
         FragmentManager fragmentManager = context.getSupportFragmentManager();
         FragmentTransaction ft = fragmentManager.beginTransaction();
-        ft.setCustomAnimations(anim_In,anim_out);
+        ft.setCustomAnimations(anim_In, anim_out);
         ft.show(fragment).commit();
     }
 
     public static void showChildFragment(Fragment context, Fragment fragment) {
         FragmentManager fragmentManager = context.getChildFragmentManager();
         FragmentTransaction ft = fragmentManager.beginTransaction();
-        ft.setCustomAnimations(anim_In,anim_out);
+        ft.setCustomAnimations(anim_In, anim_out);
         ft.show(fragment).commit();
     }
 
@@ -164,14 +160,13 @@ public class FragmentStack {
     }
 
     /**
-     *
      * @param context
      * @param fragment
      */
     public static void hideChildFragment(Fragment context, Fragment fragment) {
         FragmentManager fragmentManager = context.getChildFragmentManager();
         FragmentTransaction ft = fragmentManager.beginTransaction();
-        ft.setCustomAnimations(anim_In,anim_out);
+        ft.setCustomAnimations(anim_In, anim_out);
         ft.hide(fragment).commit();
     }
 

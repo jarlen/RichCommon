@@ -18,8 +18,9 @@
 package cn.jarlen.richcommon.adapter.multiple;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
 
 import java.util.List;
 

@@ -18,7 +18,8 @@ package cn.jarlen.richcommon.mvp.presenter;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+
+import androidx.fragment.app.FragmentActivity;
 
 import cn.jarlen.richcommon.mvp.view.IBaseView;
 

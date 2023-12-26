@@ -17,10 +17,11 @@
  */
 package cn.jarlen.richcommon.adapter.multiple;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.util.SparseArrayCompat;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.collection.SparseArrayCompat;
 
 import java.util.Collections;
 import java.util.List;

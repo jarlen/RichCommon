@@ -9,7 +9,6 @@ import java.util.List;
 import cn.jarlen.richcommon.adapter.CommonAdapter;
 import cn.jarlen.richcommon.adapter.ViewHolder;
 import cn.jarlen.richcommon.ui.BaseActivity;
-import cn.jarlen.richcommon2.R;
 
 public class AdapterActivity extends BaseActivity {
 
@@ -37,8 +36,8 @@ public class AdapterActivity extends BaseActivity {
         mListView.setAdapter(commonAdapter);
 
         List<String> data = new ArrayList<>();
-        for(int index = 0;index < 1000;index++){
-            data.add("测试: "+index);
+        for (int index = 0; index < 1000; index++) {
+            data.add("测试: " + index);
         }
         commonAdapter.addDataList(data);
     }

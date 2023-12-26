@@ -1,8 +1,9 @@
 package cn.jarlen.richcommon2.adapter.multi;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 
 import cn.jarlen.richcommon.adapter.RvViewHolder;
 import cn.jarlen.richcommon.adapter.multiple.RvMultiItemView;
@@ -29,15 +30,15 @@ public class MessageTextView extends RvMultiItemView<Bean> {
 
     @Override
     protected boolean isForViewType(@NonNull Bean item) {
-        return item.getType()== 0 || item.getType()== 1;
+        return item.getType() == 0 || item.getType() == 1;
     }
 
     @Override
     public int getLayoutResId(Bean item) {
         int flag = item.getType();
-        switch (flag){
+        switch (flag) {
             case 0:
-            return R.layout.message_text_received;
+                return R.layout.message_text_received;
             case 1:
                 return R.layout.message_text_send;
             default:

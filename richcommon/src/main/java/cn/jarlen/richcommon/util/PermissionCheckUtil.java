@@ -7,9 +7,10 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
+
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -38,14 +39,14 @@ public class PermissionCheckUtil {
     /**
      * Request a set of permissions, showing rationale if the system requests it.
      *
-     * @param object         Activity or Fragment requesting permissions. Should implement
-     *                       {@link ActivityCompat.OnRequestPermissionsResultCallback}
-     *                       or {@link android.support.v13.app##FragmentCompat#OnRequestPermissionsResultCallback}
-     * @param rationale      a message explaining why the application needs this set of permissions, will
-     *                       be displayed if the user rejects the request the first time.
+     * @param object              Activity or Fragment requesting permissions. Should implement
+     *                            {@link ActivityCompat.OnRequestPermissionsResultCallback}
+     *                            or {@link android.support.v13.app##FragmentCompat#OnRequestPermissionsResultCallback}
+     * @param rationale           a message explaining why the application needs this set of permissions, will
+     *                            be displayed if the user rejects the request the first time.
      * @param snackbarActionResId custom text for snackbar action button
-     * @param requestCode    request code to track this request, must be < 256.
-     * @param perms          a set of permissions to be requested.
+     * @param requestCode         request code to track this request, must be < 256.
+     * @param perms               a set of permissions to be requested.
      */
     public static void requestPermissions(final Object object, String rationale, int snackbarActionResId,
                                           final int requestCode, final String... perms) {
@@ -79,18 +80,17 @@ public class PermissionCheckUtil {
 
 
     /**
-     *
      * prompt the user to go to the app's settings screen and enable permissions. If the
      * user clicks snackbar's action, they are sent to the settings screen. The result is returned
      * to the Activity via {@link Activity#onActivityResult(int, int, Intent)}.
      *
-     * @param object Activity or Fragment requesting permissions.
-     * @param rationale a message explaining why the application needs this set of permissions, will
+     * @param object         Activity or Fragment requesting permissions.
+     * @param rationale      a message explaining why the application needs this set of permissions, will
      *                       be displayed on the snackbar.
      * @param snackbarAction text disPlayed on the snackbar's action
-     * @param requestCode If >= 0, this code will be returned in onActivityResult() when the activity exits.
+     * @param requestCode    If >= 0, this code will be returned in onActivityResult() when the activity exits.
      */
-    public static void goSettings2Permissions(final Object object, String rationale, String snackbarAction, final int requestCode){
+    public static void goSettings2Permissions(final Object object, String rationale, String snackbarAction, final int requestCode) {
         checkCallingObjectSuitability(object);
 
         final Activity activity = getActivity(object);
@@ -115,9 +115,10 @@ public class PermissionCheckUtil {
     /**
      * Check if at least one permission in the list of denied permissions has been permanently
      * denied (user clicked "Never ask again").
-     * @param object Activity or Fragment requesting permissions.
+     *
+     * @param object            Activity or Fragment requesting permissions.
      * @param deniedPermissions list of denied permissions, usually from
-     *        {@link PermissionCallbacks#onPermissionsDenied(int, List)}
+     *                          {@link PermissionCallbacks#onPermissionsDenied(int, List)}
      * @return {@code true} if at least one permission in the list was permanently denied.
      */
     public static boolean somePermissionPermanentlyDenied(Object object, final String... deniedPermissions) {
@@ -148,7 +149,8 @@ public class PermissionCheckUtil {
 
     /**
      * Check if a permission has been permanently denied (user clicked "Never ask again").
-     * @param object Activity or Fragment requesting permissions.
+     *
+     * @param object           Activity or Fragment requesting permissions.
      * @param deniedPermission denied permission.
      * @return {@code true} if the permissions has been permanently denied.
      */
@@ -203,7 +205,6 @@ public class PermissionCheckUtil {
         }
 
     }
-
 
 
     @TargetApi(Build.VERSION_CODES.M)
@@ -296,7 +297,6 @@ public class PermissionCheckUtil {
             }
         }
     }
-
 
 
     public static boolean checkPermissions(Context context, @NonNull String[] permissions) {

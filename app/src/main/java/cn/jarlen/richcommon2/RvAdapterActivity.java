@@ -1,9 +1,10 @@
 package cn.jarlen.richcommon2;
 
 import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,6 @@ import java.util.List;
 import cn.jarlen.richcommon.adapter.RvCommonAdapter;
 import cn.jarlen.richcommon.adapter.RvViewHolder;
 import cn.jarlen.richcommon.ui.BaseActivity;
-import cn.jarlen.richcommon2.R;
 import cn.jarlen.richcommon2.data.Bean;
 
 /**

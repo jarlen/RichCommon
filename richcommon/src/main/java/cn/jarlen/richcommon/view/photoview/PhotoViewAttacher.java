@@ -16,6 +16,10 @@
  ********************************************************************************/
 package cn.jarlen.richcommon.view.photoview;
 
+import static android.view.MotionEvent.ACTION_CANCEL;
+import static android.view.MotionEvent.ACTION_DOWN;
+import static android.view.MotionEvent.ACTION_UP;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -23,8 +27,6 @@ import android.graphics.Matrix;
 import android.graphics.Matrix.ScaleToFit;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.Nullable;
-import android.support.v4.view.MotionEventCompat;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -36,13 +38,12 @@ import android.view.animation.Interpolator;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 
+import androidx.annotation.Nullable;
+import androidx.core.view.MotionEventCompat;
+
 import java.lang.ref.WeakReference;
 
 import cn.jarlen.richcommon.util.LogUtils;
-
-import static android.view.MotionEvent.ACTION_CANCEL;
-import static android.view.MotionEvent.ACTION_DOWN;
-import static android.view.MotionEvent.ACTION_UP;
 
 public class PhotoViewAttacher implements IPhotoView, View.OnTouchListener,
         OnGestureListener,
@@ -237,7 +238,6 @@ public class PhotoViewAttacher implements IPhotoView, View.OnTouchListener,
      * Clean-up the resources attached to this object. This needs to be called when the ImageView is
      * no longer used. A good example is from {@link View#onDetachedFromWindow()} or
      * from {@link android.app.Activity#onDestroy()}. This is automatically called if you are using
-     *
      */
     @SuppressWarnings("deprecation")
     public void cleanup() {
@@ -367,7 +367,7 @@ public class PhotoViewAttacher implements IPhotoView, View.OnTouchListener,
             return; // Do not drag if we are already scaling
         }
 
-       LogUtils.d(String.format("onDrag: dx: %.2f. dy: %.2f", dx, dy));
+        LogUtils.d(String.format("onDrag: dx: %.2f. dy: %.2f", dx, dy));
 
         ImageView imageView = getImageView();
         mSuppMatrix.postTranslate(dx, dy);
@@ -401,8 +401,8 @@ public class PhotoViewAttacher implements IPhotoView, View.OnTouchListener,
     @Override
     public void onFling(float startX, float startY, float velocityX,
                         float velocityY) {
-     LogUtils.d("onFling. sX: " + startX + " sY: " + startY + " Vx: "
-             + velocityX + " Vy: " + velocityY);
+        LogUtils.d("onFling. sX: " + startX + " sY: " + startY + " Vx: "
+                + velocityX + " Vy: " + velocityY);
         ImageView imageView = getImageView();
         mCurrentFlingRunnable = new FlingRunnable(imageView.getContext());
         mCurrentFlingRunnable.fling(getImageViewWidth(imageView),
@@ -621,6 +621,7 @@ public class PhotoViewAttacher implements IPhotoView, View.OnTouchListener,
 
     /**
      * Set the zoom interpolator
+     *
      * @param interpolator the zoom interpolator
      */
     public void setZoomInterpolator(Interpolator interpolator) {
@@ -662,6 +663,7 @@ public class PhotoViewAttacher implements IPhotoView, View.OnTouchListener,
 
     /**
      * Get the display matrix
+     *
      * @param matrix target matrix to copy to
      */
     @Override
@@ -712,7 +714,7 @@ public class PhotoViewAttacher implements IPhotoView, View.OnTouchListener,
         if (null != imageView && !(imageView instanceof IPhotoView)) {
             if (!ScaleType.MATRIX.equals(imageView.getScaleType())) {
                 throw new IllegalStateException(
-                        "The ImageView's ScaleType has been changed since attaching a PhotoViewAttacher. You should call setScaleType on the PhotoViewAttacher instead of on the ImageView"  );
+                        "The ImageView's ScaleType has been changed since attaching a PhotoViewAttacher. You should call setScaleType on the PhotoViewAttacher instead of on the ImageView");
             }
         }
     }
@@ -993,7 +995,7 @@ public class PhotoViewAttacher implements IPhotoView, View.OnTouchListener,
 
         /**
          * A simple callback where out of photo happened;
-         * */
+         */
         void onOutsidePhotoTap();
     }
 

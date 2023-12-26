@@ -20,6 +20,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 
+import androidx.fragment.app.FragmentActivity;
+
 import cn.jarlen.richcommon.mvp.view.IBaseView;
 
 /**

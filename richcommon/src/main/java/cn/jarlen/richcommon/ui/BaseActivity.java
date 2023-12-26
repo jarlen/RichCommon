@@ -20,14 +20,15 @@ import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentActivity;
 
 /**
  * DESCRIBE:
  * Created by jarlen on 2016/7/22.
  */
-public abstract class BaseActivity extends FragmentActivity{
+public abstract class BaseActivity extends FragmentActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         preBindView();

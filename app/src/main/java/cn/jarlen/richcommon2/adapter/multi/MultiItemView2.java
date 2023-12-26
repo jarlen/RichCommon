@@ -1,9 +1,10 @@
 package cn.jarlen.richcommon2.adapter.multi;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 
 import cn.jarlen.richcommon.adapter.RvViewHolder;
 import cn.jarlen.richcommon.adapter.multiple.RvMultiItemView;
@@ -19,19 +20,19 @@ import cn.jarlen.richcommon2.data.Bean;
 public class MultiItemView2 extends RvMultiItemView<Bean> {
     public MultiItemView2(Context context) {
         super(context);
-        LogUtils.d("jarlen","creat");
+        LogUtils.d("jarlen", "creat");
     }
 
     @Override
     protected void onBindView(RvViewHolder viewHolder, Bean item) {
-        Log.e("jarlen","onBindView--->"+viewHolder);
+        Log.e("jarlen", "onBindView--->" + viewHolder);
         TextView name = viewHolder.getView(R.id.name);
-        name.setText("MultiItemView2 : "+item.getName());
+        name.setText("MultiItemView2 : " + item.getName());
     }
 
     @Override
     protected boolean isForViewType(@NonNull Bean item) {
-        return item.getType()== 2;
+        return item.getType() == 2;
     }
 
 

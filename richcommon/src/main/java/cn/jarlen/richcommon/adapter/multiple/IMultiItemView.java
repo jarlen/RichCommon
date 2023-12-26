@@ -16,9 +16,10 @@
  */
 package cn.jarlen.richcommon.adapter.multiple;
 
-import android.support.annotation.LayoutRes;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.LayoutRes;
 
 import cn.jarlen.richcommon.adapter.ViewHolder;
 
@@ -30,6 +31,7 @@ public interface IMultiItemView<D> {
 
     /**
      * get resource of this item's layout
+     *
      * @return
      */
     @LayoutRes
@@ -37,6 +39,7 @@ public interface IMultiItemView<D> {
 
     /**
      * Update the current item data
+     *
      * @param viewHolder
      * @param data
      * @param position
@@ -45,8 +48,8 @@ public interface IMultiItemView<D> {
 
     /**
      * Check whether the current item
-     * @param data
-     * data
+     *
+     * @param data     data
      * @param position
      * @return
      */
@@ -54,6 +57,7 @@ public interface IMultiItemView<D> {
 
     /**
      * Get current reuse component
+     *
      * @param parent
      * @param convertView
      * @param position

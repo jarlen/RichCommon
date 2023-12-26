@@ -16,9 +16,10 @@
  */
 package cn.jarlen.richcommon.adapter.multiple;
 
-import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
 
 /**
  * manager of list item type
@@ -30,8 +31,7 @@ public interface IMultiManager<D> {
     /**
      * Register list item type
      *
-     * @param multiItemView
-     * item type
+     * @param multiItemView item type
      */
     void registerMultiView(@NonNull IMultiItemView multiItemView);
 
@@ -42,6 +42,7 @@ public interface IMultiManager<D> {
 
     /**
      * Get the number of item types
+     *
      * @return
      */
     int getViewTypeCount();
@@ -49,30 +50,26 @@ public interface IMultiManager<D> {
     /**
      * Get item type by business condition
      *
-     * @param data
-     * data
+     * @param data data
      * @return
      */
     int getItemViewType(D data, int position);
 
     /**
      * Get the current item type by item layout resource ID
-     * @param resId
-     * resource ID
+     *
+     * @param resId resource ID
      * @return
      */
     IMultiItemView getMultiItemForResId(int resId);
 
     /**
      * updata view
-     * @param data
-     * data
-     * @param position
-     * position of updating the current item
-     * @param convertView
-     * the current item view
-     * @param parent
-     * parent view of the current item
+     *
+     * @param data        data
+     * @param position    position of updating the current item
+     * @param convertView the current item view
+     * @param parent      parent view of the current item
      * @return
      */
     View getView(D data, int position, View convertView, ViewGroup parent);

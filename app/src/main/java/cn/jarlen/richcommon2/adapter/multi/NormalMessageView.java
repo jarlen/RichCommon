@@ -1,9 +1,10 @@
 package cn.jarlen.richcommon2.adapter.multi;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 
 import cn.jarlen.richcommon.adapter.RvViewHolder;
 import cn.jarlen.richcommon.adapter.multiple.RvMultiItemView;
@@ -30,7 +31,7 @@ public class NormalMessageView extends RvMultiItemView<Bean> {
         TextView textView = viewHolder.getView(R.id.message_tv);
         textView.setText(item.getName());
 
-        if(item.getType()%7 == 6){
+        if (item.getType() % 7 == 6) {
             TextView flag = viewHolder.getView(R.id.flag_tv);
             flag.setText("测试");
         }
@@ -38,15 +39,15 @@ public class NormalMessageView extends RvMultiItemView<Bean> {
 
     @Override
     protected boolean isForViewType(@NonNull Bean item) {
-        return item.getType()== 5 || item.getType()== 6;
+        return item.getType() == 5 || item.getType() == 6;
     }
 
     @Override
     public int getLayoutResId(Bean item) {
         int flag = item.getType();
-        switch (flag){
+        switch (flag) {
             case 5:
-            return R.layout.layout_message_one_send;
+                return R.layout.layout_message_one_send;
             case 6:
                 return R.layout.layout_message_one_receiver;
             default:

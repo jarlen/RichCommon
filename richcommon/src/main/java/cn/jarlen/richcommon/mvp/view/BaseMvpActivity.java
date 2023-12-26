@@ -18,13 +18,14 @@ package cn.jarlen.richcommon.mvp.view;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
 import android.view.KeyEvent;
 
-import cn.jarlen.richcommon.util.LogUtils;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentActivity;
+
 import cn.jarlen.richcommon.mvp.presenter.BaseActivityPresenter;
 import cn.jarlen.richcommon.mvp.presenter.IBasePresenter;
+import cn.jarlen.richcommon.util.LogUtils;
 
 /**
  * View(Activity) of MVP
