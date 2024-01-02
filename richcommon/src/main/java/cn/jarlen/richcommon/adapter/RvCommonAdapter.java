@@ -43,9 +43,33 @@ public abstract class RvCommonAdapter<D> extends RecyclerView.Adapter<RvViewHold
         return viewHolder;
     }
 
+    public List<D> getListData() {
+        return listData;
+    }
+
     @Override
     public void onBindViewHolder(RvViewHolder viewHolder, int position) {
-        onBindView(viewHolder, listData.get(position));
+        D data = null;
+        int dataPosition = getDataPosition(position);
+        if (dataPosition >= 0 && dataPosition < listData.size()) {
+            data = listData.get(dataPosition);
+        }
+
+        onBindView(viewHolder, data, position);
+    }
+
+    /**
+     * 获取数据的真实索引,可由子类决定是否重新计算
+     *
+     * @param position
+     * @return
+     */
+    public int getDataPosition(int position) {
+        return position;
+    }
+
+    public Context getContext() {
+        return mContext;
     }
 
     @Override
@@ -56,25 +80,58 @@ public abstract class RvCommonAdapter<D> extends RecyclerView.Adapter<RvViewHold
         return listData.size();
     }
 
-    public abstract void onBindView(RvViewHolder viewHolder, D item);
+    public abstract void onBindView(RvViewHolder viewHolder, D item, int position);
 
     public abstract int getLayoutResId(int viewType);
 
     public void addDataList(List<D> mList) {
+        if (mList == null) {
+            return;
+        }
         if (listData != null) {
             listData.addAll(mList);
         }
         this.notifyDataSetChanged();
     }
 
-    public Context getContext() {
-        return mContext;
+    public void addDataList(int index, List<D> mList) {
+        if (mList == null || index > listData.size() || index < 0) {
+            return;
+        }
+        if (index + 1 > listData.size()) {
+            listData.addAll(mList);
+        } else {
+            listData.addAll(index, mList);
+
+        }
+        this.notifyItemRangeChanged(index, mList.size());
     }
 
     public void addData(D data) {
+        if (data == null) {
+            return;
+        }
         if (listData != null) {
             listData.add(data);
+            notifyItemInserted(listData.indexOf(data));
         }
+    }
+
+    public void addData(int index, D data) {
+        if (data == null || index > listData.size() || index < 0) {
+            return;
+        }
+        listData.add(index, data);
+        notifyItemInserted(listData.indexOf(data));
+    }
+
+    public void setDataList(List<D> datas) {
+        if (datas == null || datas.isEmpty()) {
+            listData.clear();
+            this.notifyDataSetChanged();
+            return;
+        }
+        listData = datas;
         this.notifyDataSetChanged();
     }
 
@@ -85,9 +142,34 @@ public abstract class RvCommonAdapter<D> extends RecyclerView.Adapter<RvViewHold
         this.notifyDataSetChanged();
     }
 
+    public boolean isEmpty() {
+        return listData == null || listData.isEmpty();
+    }
+
     public void removeData(int position) {
         if (listData != null) {
             listData.remove(position);
+        }
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, listData.size() - position);
+    }
+
+    public void removeDataList(List<D> dataList) {
+        if (dataList == null) {
+            return;
+        }
+        if (listData != null) {
+            listData.removeAll(dataList);
+        }
+        this.notifyDataSetChanged();
+    }
+
+    public void removeData(D data) {
+        if (data == null) {
+            return;
+        }
+        if (listData != null) {
+            listData.remove(data);
         }
         this.notifyDataSetChanged();
     }

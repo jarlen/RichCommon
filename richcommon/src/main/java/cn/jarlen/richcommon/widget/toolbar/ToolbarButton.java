@@ -73,7 +73,7 @@ public class ToolbarButton extends LinearLayout {
     private TextView buildText(Context context, TypedArray typedArray) {
         String text = typedArray.getString(R.styleable.ToolbarButton_buttonText);
         int textRes = typedArray.getResourceId(R.styleable.ToolbarButton_buttonText, -1);
-        int textColor = typedArray.getResourceId(R.styleable.ToolbarButton_buttonTextColor, R.color.common_widget_toolbar_btn_color);
+        int textColor = typedArray.getResourceId(R.styleable.ToolbarButton_buttonTextColor, R.color.common_widget_toolbar_btn_text_color);
         int textSize = typedArray.getResourceId(R.styleable.ToolbarButton_buttonTextSize, R.dimen.common_widget_toolbar_title_button_text_size);
 
         TextView textButton = new TextView(context);
@@ -128,24 +128,29 @@ public class ToolbarButton extends LinearLayout {
     }
 
     public void setColor(@ColorInt int color) {
+        setColor(ColorStateList.valueOf(color));
+    }
+
+    public void setColor(ColorStateList colorStateList) {
         int childCount = getChildCount();
-        if (childCount > 0) {
-            for (int i = 0; i < childCount; i++) {
-                View childAt = getChildAt(i);
-                if (childAt instanceof ImageView) {
-                    ImageView imageView = (ImageView) childAt;
-                    Drawable originalDrawable = imageView.getDrawable();
-                    if (null != originalDrawable) {
-                        originalDrawable = originalDrawable.mutate();
-                        Drawable wrappedDrawable = DrawableCompat.wrap(originalDrawable);
-                        wrappedDrawable.setTint(color);
-                        imageView.setImageDrawable(wrappedDrawable);
-                    }
+        if (childCount <= 0) {
+            return;
+        }
+        for (int i = 0; i < childCount; i++) {
+            View childAt = getChildAt(i);
+            if (childAt instanceof ImageView) {
+                ImageView imageView = (ImageView) childAt;
+                Drawable originalDrawable = imageView.getDrawable();
+                if (null != originalDrawable) {
+                    originalDrawable = originalDrawable.mutate();
+                    Drawable wrappedDrawable = DrawableCompat.wrap(originalDrawable);
+                    wrappedDrawable.setTintList(colorStateList);
+                    imageView.setImageDrawable(wrappedDrawable);
                 }
-                if (childAt instanceof TextView) {
-                    TextView textView = (TextView) childAt;
-                    textView.setTextColor(color);
-                }
+            }
+            if (childAt instanceof TextView) {
+                TextView textView = (TextView) childAt;
+                textView.setTextColor(colorStateList);
             }
         }
     }
@@ -177,7 +182,7 @@ public class ToolbarButton extends LinearLayout {
         return null;
     }
 
-    public void setButtonText(String text) {
+    public void setButtonText(CharSequence text) {
         TextView textView = getTextView();
         if (textView != null) {
             textView.setText(text);

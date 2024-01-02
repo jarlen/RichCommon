@@ -2,6 +2,8 @@ package cn.jarlen.richcommon.widget.toolbar;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -40,8 +42,7 @@ public class CommonToolBar extends RelativeLayout implements View.OnClickListene
         initView(context, attrs);
     }
 
-    private int titleColorId;
-    private int leftFirstButtonIconId;
+    private int leftFirstBtnIconId;
     private int leftButtonColorId;
     private int rightButtonColorId;
     private int leftSecondBtnIconId;
@@ -51,98 +52,74 @@ public class CommonToolBar extends RelativeLayout implements View.OnClickListene
 
     private void initView(Context context, AttributeSet attrs) {
         toolbarLayout = LayoutInflater.from(context).inflate(R.layout.common_widget_layout_tool_bar, null);
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CommonToolBar);
-        if (toolbarLayout != null) {
-            //设置Title
-            int titleTextId = typedArray.getResourceId(R.styleable.CommonToolBar_titleText, 0);
-            isTitleCenter = typedArray.getBoolean(R.styleable.CommonToolBar_titleCenter, false);
-            titleColorId = typedArray.getResourceId(R.styleable.CommonToolBar_titleColor, 0);
-            float titleSize = typedArray.getDimensionPixelSize(R.styleable.CommonToolBar_titleSize, getResources().getDimensionPixelSize(R.dimen.common_widget_toolbar_title_text_size));
-            float btnTextSize = typedArray.getDimensionPixelSize(R.styleable.CommonToolBar_btnTextSize, getResources().getDimensionPixelSize(R.dimen.common_widget_toolbar_title_button_text_size));
-            setTitle(titleTextId, isTitleCenter);
-            setTitleSize(titleSize);
-            setTitleColor(getResources().getColor(titleColorId));
-            setTitleBold(typedArray.getBoolean(R.styleable.CommonToolBar_titleBold, false));
-            //设置背景
-//            toolbarLayout.setBackground(getBackground());
-
-            //配置左侧第一个按钮样式
-            ToolbarButton leftFirstBtn = toolbarLayout.findViewById(R.id.toolbar_left_first_btn);
-
-            leftFirstBtn.setButtonTextSize(btnTextSize);
-            int leftFirstButtonText = typedArray.getResourceId(R.styleable.CommonToolBar_leftFirstText, 0);
-            leftFirstButtonIconId = typedArray.getResourceId(R.styleable.CommonToolBar_leftFirstIcon, 0);
-            if (leftFirstButtonText > 0) {
-                leftFirstBtn.setButtonText(leftFirstButtonText);
-            }
-            if (leftFirstButtonIconId > 0) {
-                leftFirstBtn.setButtonIcon(AppCompatResources.getDrawable(getContext(), leftFirstButtonIconId));
-            }
-            boolean leftFirstIconIsShown = typedArray.getBoolean(R.styleable.CommonToolBar_leftFirstIconIsShown, true);
-            boolean leftFirstButtonIsShown = (leftFirstButtonText > 0 || leftFirstButtonIconId > 0);
-            bindClick2Button(leftFirstButtonIsShown, leftFirstBtn);
-            if (!leftFirstIconIsShown) {
-                leftFirstBtn.setIconVisibility(View.GONE);
-            }
-            //配置左侧第二个按钮样式
-            ToolbarButton leftSecondBtn = toolbarLayout.findViewById(R.id.toolbar_left_second_btn);
-
-            leftSecondBtn.setButtonTextSize(btnTextSize);
-            int leftSecondBtnText = typedArray.getResourceId(R.styleable.CommonToolBar_leftSecondText, 0);
-            leftSecondBtnIconId = typedArray.getResourceId(R.styleable.CommonToolBar_leftSecondIcon, 0);
-            if (leftSecondBtnText > 0) {
-                leftSecondBtn.setButtonText(leftSecondBtnText);
-            }
-            if (leftSecondBtnIconId > 0) {
-                leftSecondBtn.setButtonIcon(AppCompatResources.getDrawable(getContext(), leftSecondBtnIconId));
-            }
-
-            bindClick2Button((leftSecondBtnText > 0 || leftSecondBtnIconId > 0), leftSecondBtn);
-            //配置右侧第一个按钮样式
-            ToolbarButton rightFirstBtn = toolbarLayout.findViewById(R.id.toolbar_right_first_btn);
-
-            rightFirstBtn.setButtonTextSize(btnTextSize);
-            int rightFirstBtnText = typedArray.getResourceId(R.styleable.CommonToolBar_rightFirstText, 0);
-            rightFirstBtnIconId = typedArray.getResourceId(R.styleable.CommonToolBar_rightFirstIcon, 0);
-            if (rightFirstBtnText > 0) {
-                rightFirstBtn.setButtonText(rightFirstBtnText);
-            }
-            if (rightFirstBtnIconId > 0) {
-                rightFirstBtn.setButtonIcon(AppCompatResources.getDrawable(getContext(), rightFirstBtnIconId));
-            }
-            bindClick2Button((rightFirstBtnText > 0 || rightFirstBtnIconId > 0), rightFirstBtn);
-            //配置右侧第二个按钮样式
-            ToolbarButton rightSecondBtn = toolbarLayout.findViewById(R.id.toolbar_right_second_btn);
-
-            rightSecondBtn.setButtonTextSize(btnTextSize);
-            int rightSecondBtnText = typedArray.getResourceId(R.styleable.CommonToolBar_rightSecondText, 0);
-            rightSecondBtnIconId = typedArray.getResourceId(R.styleable.CommonToolBar_rightSecondIcon, 0);
-            if (rightSecondBtnText > 0) {
-                rightSecondBtn.setButtonText(rightSecondBtnText);
-            }
-            if (rightSecondBtnIconId > 0) {
-                rightSecondBtn.setButtonIcon(AppCompatResources.getDrawable(getContext(), rightSecondBtnIconId));
-            }
-
-            bindClick2Button((rightSecondBtnText > 0 || rightSecondBtnIconId > 0), rightSecondBtn);
-            boolean isDividerShown = typedArray.getBoolean(R.styleable.CommonToolBar_dividerIsShown, true);
-            setDividerShown(isDividerShown);
-
-            leftButtonColorId = typedArray.getResourceId(R.styleable.CommonToolBar_leftButtonColor, 0);
-            if (leftButtonColorId > 0) {
-                leftFirstBtn.setColor(getResources().getColor(leftButtonColorId));
-                leftSecondBtn.setColor(getResources().getColor(leftButtonColorId));
-            }
-
-            rightButtonColorId = typedArray.getResourceId(R.styleable.CommonToolBar_rightButtonColor, 0);
-
-            if (rightButtonColorId > 0) {
-                rightFirstBtn.setColor(getResources().getColor(rightButtonColorId));
-                rightSecondBtn.setColor(getResources().getColor(rightButtonColorId));
-            }
-
-            addView(toolbarLayout, LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+        if (toolbarLayout == null) {
+            return;
         }
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CommonToolBar);
+        //设置Title
+        int titleTextId = typedArray.getResourceId(R.styleable.CommonToolBar_titleText, Resources.ID_NULL);
+        CharSequence titleText = titleTextId == Resources.ID_NULL
+                ? typedArray.getText(R.styleable.CommonToolBar_titleText)
+                : getResources().getString(titleTextId);
+
+        isTitleCenter = typedArray.getBoolean(R.styleable.CommonToolBar_titleCenter, false);
+        float titleSize = typedArray.getDimensionPixelSize(R.styleable.CommonToolBar_titleSize, getResources().getDimensionPixelSize(R.dimen.common_widget_toolbar_title_text_size));
+        ColorStateList titleColorStateList = typedArray.getColorStateList(R.styleable.CommonToolBar_titleColor);
+        setTitle(titleText,
+                titleSize,
+                titleColorStateList,
+                isTitleCenter,
+                typedArray.getBoolean(R.styleable.CommonToolBar_titleBold, false));
+        //设置背景
+//            toolbarLayout.setBackground(getBackground());
+        /*设置toolbar按钮*/
+        float btnTextSize = typedArray.getDimensionPixelSize(R.styleable.CommonToolBar_btnTextSize, getResources().getDimensionPixelSize(R.dimen.common_widget_toolbar_title_button_text_size));
+        //配置左侧第一个按钮样式
+        ColorStateList leftBtnColor = typedArray.getColorStateList(R.styleable.CommonToolBar_leftBtnColor);
+        if (leftBtnColor == null) {
+            leftBtnColor = ColorStateList.valueOf(Color.BLACK);
+        }
+        int leftFirstBtnTextId = typedArray.getResourceId(R.styleable.CommonToolBar_leftFirstText, Resources.ID_NULL);
+        CharSequence leftFirstBtnText = leftFirstBtnTextId == Resources.ID_NULL
+                ? typedArray.getText(R.styleable.CommonToolBar_leftFirstText)
+                : getResources().getString(leftFirstBtnTextId);
+        Drawable leftFirstBtnDrawable = typedArray.getDrawable(R.styleable.CommonToolBar_leftFirstIcon);
+        boolean leftFirstBtnIsShown = typedArray.getBoolean(R.styleable.CommonToolBar_leftFirstBtnIsShown, true);
+        setButton(leftFirstBtnText, leftBtnColor, btnTextSize, leftFirstBtnDrawable, leftFirstBtnIsShown, ToolBarButtonType.LEFT_FIRST_BUTTON);
+
+        //配置左侧第二个按钮样式
+        int leftSecondBtnTextId = typedArray.getResourceId(R.styleable.CommonToolBar_leftSecondText, Resources.ID_NULL);
+        CharSequence leftSecondBtnText = leftSecondBtnTextId == Resources.ID_NULL
+                ? typedArray.getText(R.styleable.CommonToolBar_leftSecondText)
+                : getResources().getString(leftSecondBtnTextId);
+        Drawable leftSecondBtnDrawable = typedArray.getDrawable(R.styleable.CommonToolBar_leftSecondIcon);
+        setButton(leftSecondBtnText, leftBtnColor, btnTextSize, leftSecondBtnDrawable, true, ToolBarButtonType.LEFT_SECOND_BUTTON);
+
+        //配置右侧第一个按钮样式
+        ColorStateList rightBtnColor = typedArray.getColorStateList(R.styleable.CommonToolBar_rightBtnColor);
+        if (rightBtnColor == null) {
+            rightBtnColor = ColorStateList.valueOf(Color.BLACK);
+        }
+
+        int rightFirstBtnTextId = typedArray.getResourceId(R.styleable.CommonToolBar_rightFirstText, Resources.ID_NULL);
+        CharSequence rightFirstBtnText = rightFirstBtnTextId == Resources.ID_NULL
+                ? typedArray.getText(R.styleable.CommonToolBar_rightFirstText)
+                : getResources().getString(rightFirstBtnTextId);
+        Drawable rightFirstBtnDrawable = typedArray.getDrawable(R.styleable.CommonToolBar_rightFirstIcon);
+        setButton(rightFirstBtnText, rightBtnColor, btnTextSize, rightFirstBtnDrawable, true, ToolBarButtonType.RIGHT_FIRST_BUTTON);
+
+        //配置右侧第二个按钮样式
+        int rightSecondBtnTextId = typedArray.getResourceId(R.styleable.CommonToolBar_rightSecondText, Resources.ID_NULL);
+        CharSequence rightSecondBtnText = rightSecondBtnTextId == Resources.ID_NULL
+                ? typedArray.getText(R.styleable.CommonToolBar_rightSecondText)
+                : getResources().getString(rightSecondBtnTextId);
+        Drawable rightSecondBtnDrawable = typedArray.getDrawable(R.styleable.CommonToolBar_rightSecondIcon);
+        setButton(rightSecondBtnText, rightBtnColor, btnTextSize, rightSecondBtnDrawable, true, ToolBarButtonType.RIGHT_SECOND_BUTTON);
+
+        boolean isDividerShown = typedArray.getBoolean(R.styleable.CommonToolBar_dividerIsShown, true);
+        setDividerShown(isDividerShown);
+
+        addView(toolbarLayout, LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
     }
 
     @Override
@@ -215,7 +192,7 @@ public class CommonToolBar extends RelativeLayout implements View.OnClickListene
         if (titleTextId <= 0) {
             return;
         }
-        setTitle(getResources().getString(titleTextId), isTitleCenter, Typeface.NORMAL);
+        setTitle(getResources().getString(titleTextId), isTitleCenter, false);
     }
 
     /**
@@ -224,8 +201,8 @@ public class CommonToolBar extends RelativeLayout implements View.OnClickListene
      * @param titleText     标题
      * @param isTitleCenter 是否居中
      */
-    public void setTitle(String titleText, boolean isTitleCenter) {
-        setTitle(titleText, isTitleCenter, Typeface.NORMAL);
+    public void setTitle(CharSequence titleText, boolean isTitleCenter) {
+        setTitle(titleText, isTitleCenter, false);
     }
 
     /**
@@ -272,12 +249,13 @@ public class CommonToolBar extends RelativeLayout implements View.OnClickListene
     }
 
     /**
-     * 设置标题
+     * 设置标题参数
      *
-     * @param titleText     文字
+     * @param titleText     标题文字
      * @param isTitleCenter 是否居中
+     * @param isBold        标题是否加粗
      */
-    public void setTitle(String titleText, boolean isTitleCenter, int typeFace) {
+    public void setTitle(CharSequence titleText, boolean isTitleCenter, boolean isBold) {
         TextView titleView = toolbarLayout.findViewById(R.id.toolbar_title);
         if (isTitleCenter) {
             titleView.setGravity(Gravity.CENTER);
@@ -289,9 +267,36 @@ public class CommonToolBar extends RelativeLayout implements View.OnClickListene
             titleView.setVisibility(GONE);
         } else {
             titleView.setVisibility(VISIBLE);
-            titleView.setTypeface(Typeface.defaultFromStyle(typeFace));
             titleView.setText(titleText);
         }
+        titleView.setTypeface(isBold ? Typeface.DEFAULT_BOLD : Typeface.DEFAULT);
+    }
+
+    /**
+     * 设置标题参数
+     *
+     * @param titleText           标题
+     * @param titleSize           标题字体大小(px)
+     * @param titleColorStateList 标题颜色
+     * @param isTitleCenter       是否居中
+     * @param isBold              标题是否加粗
+     */
+    private void setTitle(CharSequence titleText, float titleSize, ColorStateList titleColorStateList, boolean isTitleCenter, boolean isBold) {
+        TextView titleView = toolbarLayout.findViewById(R.id.toolbar_title);
+        titleView.setTextSize(TypedValue.COMPLEX_UNIT_PX, titleSize);
+        titleView.setTextColor(titleColorStateList);
+        if (isTitleCenter) {
+            titleView.setGravity(Gravity.CENTER);
+        } else {
+            titleView.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
+        }
+        if (TextUtils.isEmpty(titleText)) {
+            titleView.setVisibility(GONE);
+        } else {
+            titleView.setVisibility(VISIBLE);
+            titleView.setText(titleText);
+        }
+        titleView.setTypeface(isBold ? Typeface.DEFAULT_BOLD : Typeface.DEFAULT);
     }
 
     /**
@@ -300,7 +305,6 @@ public class CommonToolBar extends RelativeLayout implements View.OnClickListene
      * @param titleColor 标题颜色
      */
     public void setTitleColor(@ColorInt int titleColor) {
-
         TextView titleView = toolbarLayout.findViewById(R.id.toolbar_title);
         titleView.setTextColor(titleColor);
     }
@@ -311,7 +315,6 @@ public class CommonToolBar extends RelativeLayout implements View.OnClickListene
      * @param isBold 标题是否加粗
      */
     public void setTitleBold(boolean isBold) {
-
         TextView titleView = toolbarLayout.findViewById(R.id.toolbar_title);
         titleView.getPaint().setFakeBoldText(isBold);
     }
@@ -322,7 +325,6 @@ public class CommonToolBar extends RelativeLayout implements View.OnClickListene
      * @param titleColor 标题颜色
      */
     public void setTitleAlpha(float alpha, @ColorInt int titleColor) {
-
         TextView titleView = toolbarLayout.findViewById(R.id.toolbar_title);
         if (titleColor > 0) {
             titleView.setTextColor(titleColor);
@@ -341,7 +343,7 @@ public class CommonToolBar extends RelativeLayout implements View.OnClickListene
         switch (buttonType) {
             case LEFT_FIRST_BUTTON:
                 buttonId = R.id.toolbar_left_first_btn;
-                leftFirstButtonIconId = 0;
+                leftFirstBtnIconId = 0;
                 break;
             case LEFT_SECOND_BUTTON:
                 buttonId = R.id.toolbar_left_second_btn;
@@ -460,6 +462,33 @@ public class CommonToolBar extends RelativeLayout implements View.OnClickListene
         }
     }
 
+    public void setButton(CharSequence btnText,
+                          ColorStateList colorStateList,
+                          float btnTextSize,
+                          Drawable btnDrawable,
+                          boolean isShown,
+                          ToolBarButtonType buttonType) {
+        ToolbarButton toolbarButton = getButtonIdByType(buttonType);
+        if (toolbarButton == null) {
+            return;
+        }
+        toolbarButton.setButtonTextSize(btnTextSize);
+        toolbarButton.setColor(colorStateList);
+        toolbarButton.setEnabled(true);
+        toolbarButton.setClickable(true);
+        toolbarButton.setOnClickListener(this);
+        toolbarButton.setVisibility(isShown ? VISIBLE : GONE);
+        if (btnDrawable != null) {
+            toolbarButton.setButtonText(null);
+            toolbarButton.setButtonIcon(btnDrawable);
+        } else if (!TextUtils.isEmpty(btnText)) {
+            toolbarButton.setButtonIcon((Bitmap) null);
+            toolbarButton.setButtonText(btnText);
+        } else {
+            toolbarButton.setVisibility(GONE);
+        }
+    }
+
     public ToolbarButton getButtonIdByType(ToolBarButtonType buttonType) {
         int buttonId = 0;
         switch (buttonType) {
@@ -553,35 +582,5 @@ public class CommonToolBar extends RelativeLayout implements View.OnClickListene
         }
     }
 
-    private void setColors() {
-        if (isResIdOK(titleColorId)) {
-            setTitleColor(getResources().getColor(titleColorId));
-        }
-        if (isResIdOK(leftFirstButtonIconId)) {
-            setButtonIcon(ToolBarButtonType.LEFT_FIRST_BUTTON, AppCompatResources.getDrawable(getContext(), leftFirstButtonIconId));
-        }
-        if (isResIdOK(leftSecondBtnIconId)) {
-            setButtonIcon(ToolBarButtonType.LEFT_SECOND_BUTTON, AppCompatResources.getDrawable(getContext(), leftSecondBtnIconId));
-        }
-        if (isResIdOK(rightFirstBtnIconId)) {
-            setButtonIcon(ToolBarButtonType.RIGHT_FIRST_BUTTON, AppCompatResources.getDrawable(getContext(), rightFirstBtnIconId));
-        }
-        if (isResIdOK(rightSecondBtnIconId)) {
-            setButtonIcon(ToolBarButtonType.RIGHT_SECOND_BUTTON, AppCompatResources.getDrawable(getContext(), rightSecondBtnIconId));
-        }
-
-        if (isResIdOK(leftButtonColorId)) {
-            setButtonColor(ToolBarButtonType.LEFT_FIRST_BUTTON, getResources().getColor(leftButtonColorId));
-            setButtonColor(ToolBarButtonType.LEFT_SECOND_BUTTON, getResources().getColor(leftButtonColorId));
-        }
-        if (isResIdOK(rightButtonColorId)) {
-            setButtonColor(ToolBarButtonType.RIGHT_FIRST_BUTTON, getResources().getColor(rightButtonColorId));
-            setButtonColor(ToolBarButtonType.RIGHT_SECOND_BUTTON, getResources().getColor(rightButtonColorId));
-        }
-    }
-
-    private boolean isResIdOK(int resId) {
-        return resId > 0;
-    }
 }
 

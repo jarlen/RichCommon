@@ -14,8 +14,8 @@
         <attr name="buttonText" format="reference|string" />
         <attr name="buttonTextSize" format="reference" />
         <attr name="buttonPadding" format="reference" />
-        <attr name="buttonTextColor" format="reference" />
-        <attr name="buttonIcon" format="reference" />
+        <attr name="buttonTextColor" format="color" />
+        <attr name="buttonIcon" format="reference|color" />
         <attr name="Visibility" format="reference">
             <enum name="VISIBLE" value="0x00000000" />
             <enum name="INVISIBLE" value="0x00000004" />
@@ -23,23 +23,23 @@
         </attr>
     </declare-styleable>
     <declare-styleable name="CommonToolBar" tools:ignore="ResourceName">
-        <attr name="titleText" format="reference" />
-        <attr name="titleColor" format="reference" />
+        <attr name="titleText" format="integer|string" />
+        <attr name="titleColor" format="color" />
         <attr name="titleBold" format="boolean" />
         <attr name="titleCenter" format="boolean" />
-        <attr name="toolbarBackground" format="reference" />
+        <attr name="toolbarBackground" format="reference|color" />
         <attr name="titleSize" format="reference|dimension" />
-        <attr name="leftFirstIcon" format="reference" />
-        <attr name="leftFirstIconIsShown" format="boolean" />
+        <attr name="leftFirstIcon" format="reference|color" />
+        <attr name="leftFirstBtnIsShown" format="boolean" />
         <attr name="leftFirstText" format="reference|string" />
-        <attr name="leftButtonColor" format="reference" />
-        <attr name="leftSecondIcon" format="reference" />
+        <attr name="leftBtnColor" format="color" />
+        <attr name="leftSecondIcon" format="reference|color" />
         <attr name="leftSecondText" format="reference|string" />
-        <attr name="rightFirstIcon" format="reference" />
+        <attr name="rightFirstIcon" format="reference|color" />
         <attr name="rightFirstText" format="reference|string" />
-        <attr name="rightSecondIcon" format="reference" />
+        <attr name="rightSecondIcon" format="reference|color" />
         <attr name="rightSecondText" format="reference|string" />
-        <attr name="rightButtonColor" format="reference" />
+        <attr name="rightBtnColor" format="color" />
         <attr name="dividerIsShown" format="boolean" />
         <attr name="btnTextSize" format="reference|dimension" />
     </declare-styleable>

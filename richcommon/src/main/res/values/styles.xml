@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
+    <style name="common_widget_toolbar_normal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/common_widget_toolbar_height</item>
+        <item name="android:minHeight">@dimen/common_widget_toolbar_height</item>
+        <item name="titleCenter">true</item>
+        <item name="leftFirstIcon">@drawable/common_widget_ic_toolbar_back</item>
+        <item name="titleColor">@color/common_widget_toolbar_title_text_color</item>
+        <item name="android:background">@color/common_widget_toolbar_normal_bg_color</item>
+        <item name="dividerIsShown">false</item>
+    </style>
+
     <style name="common_widget_toolbar_transform">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/common_widget_toolbar_height</item>
