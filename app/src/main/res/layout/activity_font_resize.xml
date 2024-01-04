@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <cn.jarlen.richcommon.widget.toolbar.CommonToolBar
+        android:id="@+id/toolbar_font_resize"
+        style="@style/common_widget_toolbar_normal"
+        app:titleText="@string/font_resize_title" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/fsv"
+        android:layout_below="@+id/toolbar_font_resize"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_review_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/font_resize_review_hint"
+            android:textColor="#FF333333"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:background="#FFFFFFFF"
+            android:gravity="start|center"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
+            android:text="@string/font_resize_preview_content"
+            android:textColor="#FF333333"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_opt_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="108dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/font_resize_opt_hint"
+            android:textColor="#FF333333"
+            android:textSize="14dp" />
+    </LinearLayout>
+
+    <cn.jarlen.richcommon.widget.FontResizeView
+        android:id="@+id/fsv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white"
+        android:paddingStart="35dp"
+        android:paddingTop="48dp"
+        android:paddingEnd="35dp"
+        android:paddingBottom="40dp"
+        app:frv_leftTextColor="#000000"
+        app:frv_lineColor="#989898"
+        app:frv_lineStrokeWidth="1dp"
+        app:frv_maxSize="16.8dp"
+        app:frv_middleTextColor="#000000"
+        app:frv_minSize="12.6dp"
+        app:frv_rightTextColor="#000000"
+        app:frv_sliderDrawable="@drawable/ic_fsv_slider"
+        app:frv_sliderRadius="12dp"
+        app:frv_standardGrade="2"
+        app:frv_totalGrade="4" />
+</RelativeLayout>

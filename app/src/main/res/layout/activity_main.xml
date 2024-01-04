@@ -8,8 +8,7 @@
     <cn.jarlen.richcommon.widget.toolbar.CommonToolBar
         android:id="@+id/toolbar"
         style="@style/common_widget_toolbar_normal"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        app:dividerIsShown="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

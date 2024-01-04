@@ -12,6 +12,7 @@ import java.util.List;
 import cn.jarlen.richcommon.sample.adapter.TestAdapter;
 import cn.jarlen.richcommon.sample.adapter.ViewHolderActivity;
 import cn.jarlen.richcommon.sample.data.TestItem;
+import cn.jarlen.richcommon.sample.font.FontResizeActivity;
 import cn.jarlen.richcommon.sample.mvp.view.AddActivity;
 import cn.jarlen.richcommon.sample.toolbar.ToolBarActivity;
 import cn.jarlen.richcommon.sample.watermark.WaterMarkActivity;
@@ -33,6 +34,7 @@ public class MainActivity extends Activity {
         StatusBarUtil.darkMode(this);
 
         mListView = (RecyclerView) findViewById(R.id.rv_list_view);
+        mListView.setLayoutManager(new GridLayoutManager(this, 2));
         testAdapter = new TestAdapter(this);
 
         List<TestItem> itemList = new ArrayList<>();
@@ -42,9 +44,9 @@ public class MainActivity extends Activity {
         itemList.add(new TestItem("MVP模式", AddActivity.class));
         itemList.add(new TestItem("通用ViewHolder", ViewHolderActivity.class));
         itemList.add(new TestItem("ToolBar", ToolBarActivity.class));
+        itemList.add(new TestItem("调整字体大小", FontResizeActivity.class));
         testAdapter.addDataList(itemList);
 
-        mListView.setLayoutManager(new GridLayoutManager(this, 2));
         mListView.setAdapter(testAdapter);
     }
 

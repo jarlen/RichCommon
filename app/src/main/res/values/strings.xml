@@ -4,4 +4,9 @@
     <string name="warning_input">请输入相关数据</string>
     <string name="warning_click">你点击了%s</string>
     <string name="toolbar" tools:ignore="ExtraTranslation">CommonToolBar</string>
+
+    <string name="font_resize_title">字体大小</string>
+    <string name="font_resize_opt_hint">滑动滑块调整字体大小</string>
+    <string name="font_resize_review_hint">字体大小预览</string>
+    <string name="font_resize_preview_content">设置后，会改变资讯、工作、通讯录和我的等相关页面字体大小。如果在使用过程中存在问题或意见，可以反馈给我们</string>
 </resources>

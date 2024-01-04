@@ -14,7 +14,7 @@ public class PreviewActivity extends BaseActivity {
     @Override
     protected void onBindView() {
         ImageView mPhotoview = (ImageView) findViewById(R.id.photoview);
-        mPhotoview.setImageResource(R.drawable.cs_logo);
+        mPhotoview.setImageResource(R.drawable.img_preview);
     }
 
     @Override

@@ -41,6 +41,10 @@
             android:name=".toolbar.ToolBarActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".font.FontResizeActivity"
+            android:exported="false"/>
+
     </application>
 
 </manifest>
