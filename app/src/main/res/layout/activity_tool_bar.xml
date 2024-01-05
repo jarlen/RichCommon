@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <cn.jarlen.richcommon.widget.toolbar.CommonToolBar
+        android:id="@+id/toolbar1"
+        style="@style/common_widget_toolbar_normal"
+        app:leftFirstBtnIsShown="false"
+        app:titleCenter="true"
+        app:titleText="首页ToolBar" />
+
+    <cn.jarlen.richcommon.widget.toolbar.CommonToolBar
+        android:id="@+id/toolbar2"
+        style="@style/common_widget_toolbar_normal"
+        android:layout_marginTop="40dp"
+        app:leftFirstBtnIsShown="true"
+        app:titleText="居中标题" />
+
+    <cn.jarlen.richcommon.widget.toolbar.CommonToolBar
+        android:id="@+id/toolbar3"
+        style="@style/common_widget_toolbar_normal"
+        android:layout_marginTop="40dp"
+        app:leftSecondText="居左标题"
+        app:titleText="居中标题" />
+
+    <cn.jarlen.richcommon.widget.toolbar.CommonToolBar
+        android:id="@+id/toolbar4"
+        style="@style/common_widget_toolbar_normal"
+        android:layout_marginTop="40dp"
+        app:leftSecondIcon="@drawable/ei_icon_map_enter"
+        app:titleText="居中标题" />
+
+    <cn.jarlen.richcommon.widget.toolbar.CommonToolBar
+        android:id="@+id/toolbar5"
+        style="@style/common_widget_toolbar_normal"
+        android:layout_marginTop="40dp"
+        app:leftFirstBtnIsShown="true"
+        app:leftSecondIcon="@drawable/ei_icon_map_enter"
+        app:rightFirstIcon="@drawable/common_widget_ic_toolbar_edit"
+        app:rightSecondIcon="@drawable/wr_ic_today"
+        app:titleText="居中标题" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <declare-styleable name="WaterMarkView">
+        <attr name="wm_degree" format="integer|reference" />
+        <attr name="wm_text" format="string|reference" />
+        <attr name="wm_textColor" format="color|reference" />
+        <attr name="wm_textSize" format="dimension|reference" />
+        <attr name="wm_dx" format="dimension|reference" />
+        <attr name="wm_dy" format="dimension|reference" />
+    </declare-styleable>
+
+    <declare-styleable name="ToolbarButton" tools:ignore="ResourceName">
+        <attr name="buttonText" format="reference|string" />
+        <attr name="buttonTextSize" format="reference" />
+        <attr name="buttonPadding" format="reference" />
+        <attr name="buttonTextColor" format="color" />
+        <attr name="buttonIcon" format="reference|color" />
+        <attr name="Visibility" format="reference">
+            <enum name="VISIBLE" value="0x00000000" />
+            <enum name="INVISIBLE" value="0x00000004" />
+            <enum name="GONE" value="0x00000008" />
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="CommonToolBar" tools:ignore="ResourceName">
+        <attr name="titleText" format="integer|string" />
+        <attr name="titleColor" format="color" />
+        <attr name="titleBold" format="boolean" />
+        <attr name="titleCenter" format="boolean" />
+        <attr name="toolbarBackground" format="reference|color" />
+        <attr name="titleSize" format="reference|dimension" />
+        <attr name="leftFirstIcon" format="reference|color" />
+        <attr name="leftFirstBtnIsShown" format="boolean" />
+        <attr name="leftFirstText" format="reference|string" />
+        <attr name="leftBtnColor" format="color" />
+        <attr name="leftSecondIcon" format="reference|color" />
+        <attr name="leftSecondText" format="reference|string" />
+        <attr name="rightFirstIcon" format="reference|color" />
+        <attr name="rightFirstText" format="reference|string" />
+        <attr name="rightSecondIcon" format="reference|color" />
+        <attr name="rightSecondText" format="reference|string" />
+        <attr name="rightBtnColor" format="color" />
+        <attr name="dividerIsShown" format="boolean" />
+        <attr name="btnTextSize" format="reference|dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="CommonButton" tools:ignore="ResourceName">
+        <attr name="alpha_enable" format="float" />
+        <attr name="alpha_press" format="float" />
+    </declare-styleable>
+
+    <declare-styleable name="FontResizeView" tools:ignore="ResourceName">
+        <attr name="frv_minSize" format="reference|dimension" /> <!--最小size-->
+        <attr name="frv_maxSize" format="reference|dimension" /> <!--最大size-->
+        <attr name="frv_totalGrade" format="integer" />   <!--可调整的等级、即总的等级-->
+        <attr name="frv_standardGrade" format="integer" />  <!--标准等级-->
+
+        <attr name="frv_leftText" format="reference|string" />  <!--左边文本，默认为 'A'-->
+        <attr name="frv_middleText" format="reference|string" />  <!--标准文本，默认为 '标准'-->
+        <attr name="frv_rightText" format="reference|string" />  <!--右边文本，默认为 'A'-->
+        <attr name="frv_leftTextColor" format="reference|color" />  <!--左边文本颜色，默认为全黑-->
+        <attr name="frv_middleTextColor" format="reference|color" />  <!--中间文本颜色，默认为全黑-->
+        <attr name="frv_rightTextColor" format="reference|color" />  <!--右边文本颜色，默认为全黑-->
+        <attr name="frv_textMargin" format="dimension|reference" />
+
+        <attr name="frv_sliderDrawable" format="reference" />  <!--滑块drawable-->
+        <attr name="frv_sliderRadius" format="reference|dimension" />  <!--滑块drawable大小-->
+
+        <attr name="frv_lineColor" format="reference|color" />  <!--线条颜色-->
+        <attr name="frv_lineStrokeWidth" format="reference|dimension" />  <!--线条宽度，即粗细程度-->
+        <attr name="frv_verticalLineLength" format="reference|dimension" />  <!--纵向线条长度-->
+    </declare-styleable>
+</resources>

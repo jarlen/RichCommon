@@ -1,0 +1,6 @@
+.idea/
+RichCommon.iml
+app/build/
+.gradle/
+build/
+app/app.iml

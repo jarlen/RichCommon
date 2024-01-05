@@ -1,0 +1,12 @@
+<resources>
+    <string name="monday">星期一</string>
+    <string name="tuesday">星期二</string>
+    <string name="wednesday">星期三</string>
+    <string name="thursday">星期四</string>
+    <string name="friday">星期五</string>
+    <string name="saturday">星期六</string>
+    <string name="sunday">星期日</string>
+
+    <string name="format_mdhm">MM-dd HH:mm</string>
+    <string name="format_ymd">yyyy/MM/dd</string>
+</resources>

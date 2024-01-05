@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cn.jarlen.richcommon.sample">
+
+    <application
+        android:name=".UiApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/cs_logo"
+        android:label="@string/app_name"
+        android:screenOrientation="portrait"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="2.2" />
+
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".watermark.WaterMarkActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ScrollViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PreviewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".mvp.view.AddActivity"
+            android:exported="false" />
+        <activity
+            android:name=".adapter.ViewHolderActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".toolbar.ToolBarActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".font.FontResizeActivity"
+            android:exported="false"/>
+
+    </application>
+
+</manifest>
