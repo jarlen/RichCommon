@@ -77,5 +77,13 @@
         <attr name="btv_border_width" format="dimension|reference" />
         <attr name="btv_border_color" format="color|reference" />
     </declare-styleable>
+
+    <declare-styleable name="RoundImageView" tools:ignore="ResourceName">
+        <attr name="round_radius" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="MaxHeightNestedScrollView" tools:ignore="ResourceName">
+        <attr name="mhnsv_maxHeight" format="reference|dimension" /><!--最大高度-->
+    </declare-styleable>
     
 </resources>
