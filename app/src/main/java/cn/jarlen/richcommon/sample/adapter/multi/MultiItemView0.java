@@ -25,7 +25,7 @@ public class MultiItemView0 extends RvMultiItemView<Bean> {
     }
 
     @Override
-    protected void onBindView(RvViewHolder viewHolder, Bean item) {
+    protected void onBindView(RvViewHolder viewHolder, Bean item, int position) {
         Log.e("jarlen", "onBindView--->" + viewHolder);
         TextView tv = viewHolder.getView(R.id.name);
         tv.setText(item.getName());

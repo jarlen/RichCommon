@@ -75,6 +75,19 @@ public abstract class RvMultiAdapter<D> extends RecyclerView.Adapter<RvViewHolde
         return listData.size();
     }
 
+    public void setDataList(List<D> mList) {
+        if (listData == null) {
+            listData = new ArrayList<>();
+        }
+        listData.clear();
+        listData.addAll(mList);
+        this.notifyDataSetChanged();
+    }
+
+    public List<D> getAllData() {
+        return listData;
+    }
+
     public void addDataList(List<D> mList) {
         if (listData != null) {
             listData.addAll(mList);
@@ -89,6 +102,17 @@ public abstract class RvMultiAdapter<D> extends RecyclerView.Adapter<RvViewHolde
         this.notifyDataSetChanged();
     }
 
+    public void addData(int position, D data) {
+        if (listData != null) {
+            listData.add(0, data);
+        }
+        this.notifyDataSetChanged();
+    }
+
+    public D getData(int position) {
+        return listData.get(position);
+    }
+
     public void clearDataList() {
         if (listData != null) {
             listData.clear();
@@ -99,6 +123,20 @@ public abstract class RvMultiAdapter<D> extends RecyclerView.Adapter<RvViewHolde
     public void removeData(int position) {
         if (listData != null) {
             listData.remove(position);
+        }
+        this.notifyDataSetChanged();
+    }
+
+    public void removeData(D item) {
+        if (listData != null) {
+            listData.remove(item);
+        }
+        this.notifyDataSetChanged();
+    }
+
+    public void removeDatas() {
+        if (listData != null) {
+            listData.clear();
         }
         this.notifyDataSetChanged();
     }

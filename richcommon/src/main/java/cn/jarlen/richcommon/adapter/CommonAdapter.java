@@ -36,6 +36,10 @@ public abstract class CommonAdapter<D> extends BaseAdapter {
         this.mContext = context;
     }
 
+    public List<D> getListData() {
+        return listData;
+    }
+
     @Override
     public int getItemViewType(int position) {
         if (listData == null || listData.isEmpty()) {
@@ -89,6 +93,13 @@ public abstract class CommonAdapter<D> extends BaseAdapter {
             listData.remove(position);
         }
         this.notifyDataSetChanged();
+    }
+
+    public void removeData(D item){
+        if (listData != null) {
+            listData.remove(item);
+        }
+        notifyDataSetChanged();
     }
 
     @Override

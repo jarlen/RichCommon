@@ -70,4 +70,12 @@
         <attr name="frv_lineStrokeWidth" format="reference|dimension" />  <!--线条宽度，即粗细程度-->
         <attr name="frv_verticalLineLength" format="reference|dimension" />  <!--纵向线条长度-->
     </declare-styleable>
+
+    <declare-styleable name="BorderTextView" tools:ignore="ResourceName">
+        <attr name="btv_corners_radius" format="dimension|reference" />
+        <attr name="btv_solid_color" format="color|reference" />
+        <attr name="btv_border_width" format="dimension|reference" />
+        <attr name="btv_border_color" format="color|reference" />
+    </declare-styleable>
+    
 </resources>

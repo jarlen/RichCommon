@@ -25,7 +25,7 @@ public class MultiItemView3 extends RvMultiItemView<Bean> {
     }
 
     @Override
-    protected void onBindView(RvViewHolder viewHolder, Bean item) {
+    protected void onBindView(RvViewHolder viewHolder, Bean item, int position) {
         Log.e("jarlen", "onBindView--->" + viewHolder);
         TextView name = viewHolder.getView(R.id.name);
         name.setText("MultiItemView3 : " + item.getName());
