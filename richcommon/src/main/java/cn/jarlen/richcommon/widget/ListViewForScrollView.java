@@ -6,7 +6,7 @@ import android.widget.ListView;
 
 /**
  * <b>Description: </b>
- * Created by <a href="mailto:syl@xdja.com">syl</a> on 2017/7/31.
+ * Created by jarlen on 2017/7/31.
  */
 public class ListViewForScrollView extends ListView {
 

@@ -9,7 +9,7 @@ import androidx.appcompat.widget.AppCompatTextView;
  * press下透明度发生变化的TextView，复杂布局想实现该效果可见
  * {@link CommonClickLinearLayout}
  *
- * @author zhuruyi
+ * @author jarlen
  * @date 201/09/30
  */
 
