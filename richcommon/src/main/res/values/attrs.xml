@@ -82,6 +82,13 @@
         <attr name="round_radius" format="dimension" />
     </declare-styleable>
 
+    <declare-styleable name="CircleImageView" tools:ignore="ResourceName">
+        <attr name="border_width" format="dimension" />
+        <attr name="border_color" format="color" />
+        <attr name="border_overlay" format="boolean" />
+        <attr name="fill_color" format="color" />
+    </declare-styleable>
+
     <declare-styleable name="MaxHeightNestedScrollView" tools:ignore="ResourceName">
         <attr name="mhnsv_maxHeight" format="reference|dimension" /><!--最大高度-->
     </declare-styleable>
