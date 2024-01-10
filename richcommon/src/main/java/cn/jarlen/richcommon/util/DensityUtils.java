@@ -21,6 +21,7 @@ public class DensityUtils {
 
     /**
      * 将px转换成dp
+     *
      * @param context 上下文
      * @param pxValue px值
      * @return 转换后的dp
@@ -36,19 +37,20 @@ public class DensityUtils {
      * @param dipValue dp值
      * @return 转换后的double类型px
      */
-    public static double dp2px(Context context, float dipValue) {
+    public static float dp2px(Context context, float dipValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
-        return dipValue*scale;
+        return dipValue * scale;
     }
 
     /**
      * 获取状态栏的高度
+     *
      * @param context 上下文
      * @return 状态栏的高度
      */
     public static int getStatusBarHeight(@NonNull Context context) {
         Resources resources = context.getResources();
-        int resourceId = resources.getIdentifier("status_bar_height", "dimen","android");
+        int resourceId = resources.getIdentifier("status_bar_height", "dimen", "android");
         return resources.getDimensionPixelSize(resourceId);
     }
 }

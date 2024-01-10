@@ -70,4 +70,27 @@
         <attr name="frv_lineStrokeWidth" format="reference|dimension" />  <!--线条宽度，即粗细程度-->
         <attr name="frv_verticalLineLength" format="reference|dimension" />  <!--纵向线条长度-->
     </declare-styleable>
+
+    <declare-styleable name="BorderTextView" tools:ignore="ResourceName">
+        <attr name="btv_corners_radius" format="dimension|reference" />
+        <attr name="btv_solid_color" format="color|reference" />
+        <attr name="btv_border_width" format="dimension|reference" />
+        <attr name="btv_border_color" format="color|reference" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundImageView" tools:ignore="ResourceName">
+        <attr name="round_radius" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="CircleImageView" tools:ignore="ResourceName">
+        <attr name="border_width" format="dimension" />
+        <attr name="border_color" format="color" />
+        <attr name="border_overlay" format="boolean" />
+        <attr name="fill_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="MaxHeightNestedScrollView" tools:ignore="ResourceName">
+        <attr name="mhnsv_maxHeight" format="reference|dimension" /><!--最大高度-->
+    </declare-styleable>
+    
 </resources>

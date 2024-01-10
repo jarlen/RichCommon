@@ -42,8 +42,11 @@ public class RvViewHolder extends RecyclerView.ViewHolder {
 
         View itemView = LayoutInflater.from(context).inflate(layoutId, parent,
                 false);
-        RvViewHolder holder = new RvViewHolder(context, itemView);
-        return holder;
+        return new RvViewHolder(context, itemView);
+    }
+
+    public static RvViewHolder getViewHolder(Context context, ViewGroup parent, View itemView) {
+        return new RvViewHolder(context, itemView);
     }
 
     public <T extends View> T getView(int viewId) {
@@ -52,6 +55,7 @@ public class RvViewHolder extends RecyclerView.ViewHolder {
             view = mConvertView.findViewById(viewId);
             mViews.put(viewId, view);
         }
+        //noinspection unchecked
         return (T) view;
     }
 

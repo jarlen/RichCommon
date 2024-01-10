@@ -22,8 +22,7 @@ public class MessageTextView extends RvMultiItemView<Bean> {
     }
 
     @Override
-    protected void onBindView(RvViewHolder viewHolder, Bean item) {
-
+    protected void onBindView(RvViewHolder viewHolder, Bean item, int position) {
         TextView textView = viewHolder.getView(R.id.message_tv);
         textView.setText(item.getName());
     }

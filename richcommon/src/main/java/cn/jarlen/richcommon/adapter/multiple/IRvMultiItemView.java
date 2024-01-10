@@ -18,6 +18,7 @@
 
 package cn.jarlen.richcommon.adapter.multiple;
 
+import android.content.Context;
 import android.view.ViewGroup;
 
 import androidx.annotation.LayoutRes;
@@ -27,7 +28,11 @@ import java.util.List;
 
 import cn.jarlen.richcommon.adapter.RvViewHolder;
 
-
+/**
+ * 多类型RecycleView item接口
+ *
+ * @param <D>
+ */
 public interface IRvMultiItemView<D> {
 
     boolean isForViewType(@NonNull D item, int position);
@@ -38,6 +43,8 @@ public interface IRvMultiItemView<D> {
                           @NonNull RvViewHolder holder, @NonNull List<Object> payloads);
 
     void onViewRecycled(@NonNull RvViewHolder viewHolder);
+
+    Context getContext();
 
     @LayoutRes
     int getLayoutResId(D item);

@@ -23,8 +23,7 @@ public class NormalMessageView extends RvMultiItemView<Bean> {
     }
 
     @Override
-    protected void onBindView(RvViewHolder viewHolder, Bean item) {
-
+    protected void onBindView(RvViewHolder viewHolder, Bean item, int position) {
         ImageView imge = viewHolder.getView(R.id.user_head_img);
         imge.setImageResource(R.drawable.cs_logo);
 

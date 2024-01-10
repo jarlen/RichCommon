@@ -43,8 +43,7 @@ public abstract class RvMultiItemView<D> implements IRvMultiItemView<D> {
 
     @Override
     public RvViewHolder onCreateViewHolder(ViewGroup parent) {
-        RvViewHolder viewHolder = RvViewHolder.getViewHolder(mContext, parent, getLayoutResId(data));
-        return viewHolder;
+        return RvViewHolder.getViewHolder(mContext, parent, getLayoutResId(data));
     }
 
     @Override
@@ -53,9 +52,9 @@ public abstract class RvMultiItemView<D> implements IRvMultiItemView<D> {
         if (match) {
             this.data = item;
             this.position = position;
-            return match;
+            return true;
         }
-        return match;
+        return false;
     }
 
     public int getPosition() {
@@ -65,14 +64,19 @@ public abstract class RvMultiItemView<D> implements IRvMultiItemView<D> {
     @Override
     public void onBindViewHolder(@NonNull D item, int position, @NonNull RvViewHolder holder, @NonNull List<Object> payloads) {
         this.data = item;
-        onBindView(holder, item);
+        onBindView(holder, item, position);
+    }
+
+    @Override
+    public Context getContext() {
+        return mContext;
     }
 
     protected D getData() {
         return data;
     }
 
-    protected abstract void onBindView(RvViewHolder viewHolder, D item);
+    protected abstract void onBindView(RvViewHolder viewHolder, D item, int position);
 
     protected abstract boolean isForViewType(@NonNull D item);
 
