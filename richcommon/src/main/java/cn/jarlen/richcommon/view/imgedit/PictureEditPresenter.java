@@ -88,25 +88,7 @@ public class PictureEditPresenter {
      * @param canvas 画布
      */
     public void onDrawClip(Canvas canvas) {
-        canvas.translate(mClipFrame.left, mClipFrame.top);
-        canvas.drawRect(mClipFrame,mClipPaint);
-
-        // canvas.translate(mClipFrame.left, mClipFrame.top);
-        // mClipPaint.setStyle(Paint.Style.STROKE);
-        // mClipPaint.setColor(COLOR_CELL);
-        // mClipPaint.setStrokeWidth(CLIP_THICKNESS_CELL);
-        // canvas.drawLines(mCells, mPaint);
-        //
-        // canvas.translate(-frame.left, -frame.top);
-        // mClipPaint.setColor(COLOR_FRAME);
-        // mClipPaint.setStrokeWidth(CLIP_THICKNESS_FRAME);
-        // canvas.drawRect(frame, mPaint);
-        //
-        // canvas.translate(frame.left, frame.top);
-        // mClipPaint.setColor(COLOR_CORNER);
-        // mClipPaint.setStrokeWidth(CLIP_THICKNESS_SEWING);
-        // canvas.drawLines(mCorners, mPaint);
-
+        canvas.drawRect(mClipFrame, mClipPaint);
     }
 
     public void onLayout(int left, int top, int right, int bottom) {
@@ -136,19 +118,18 @@ public class PictureEditPresenter {
                     mPicBitmap.getHeight() / mShowWindow.height());
 
 
-
         }
     }
 
     private void onInitialClipFrame(int width, int height) {
-        int mClipRadius = Math.min(width, height)/2;
+        int mClipRadius = Math.min(width, height) / 2;
 
-        int clipLeft = (int) ((mShowWindow.left + mShowWindow.right) / 2);
-        int clipTop = (int) ((mShowWindow.top + mShowWindow.bottom) / 2);
-        mClipFrame.set(clipLeft - mClipRadius,
-                clipTop - mClipRadius,
-                clipLeft + mClipRadius,
-                clipTop + mClipRadius);
+        int centerX = (int) ((mShowWindow.left + mShowWindow.right) / 2);
+        int centerY = (int) ((mShowWindow.top + mShowWindow.bottom) / 2);
+        mClipFrame.set(centerX - mClipRadius,
+                centerY - mClipRadius,
+                centerX + mClipRadius,
+                centerY + mClipRadius);
     }
 
 
