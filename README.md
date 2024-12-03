@@ -1,10 +1,10 @@
-#RichCommon
+# RichCommon
 
 RichCommon是一个基于android的基础框架库；其中包括基础Activity、Fragment、Adapter类，MVP基础框架，工具Util类，水印view, 可循环回收Imageview等View
 
-##Usage
+## Usage
 
-###For Gradle
+### For Gradle
 
 ```
 dependencies {
@@ -15,7 +15,7 @@ dependencies {
 ```
 
 
-###Using SNAPSHOT
+### Using SNAPSHOT
 
 add this to repositories section in build.gradle
 
@@ -27,12 +27,12 @@ repositories {
     }
 ```
 
-##ChangeLogs
+## ChangeLogs
 
 
-####发布richcommon1.2.7    2017-1-15
+#### 发布richcommon1.2.7    2017-1-15
 
-**1. 调整基于RecycleView列表多类型扩展**
+** 1. 调整基于RecycleView列表多类型扩展**
 
 编码每个类型的View，需继承**BaseRvMultiItemView**
 
